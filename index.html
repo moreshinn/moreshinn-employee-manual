@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>墨旬《安南旬食堂》人員工作規範手冊 v5</title>
 <meta name="color-scheme" content="only light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script>
 // Apply saved theme immediately before first paint (prevents flash)
@@ -141,9 +142,10 @@ mark{background:#FFD54F;border-radius:3px;padding:0 2px;color:var(--tx)}
 .sec{margin-bottom:60px}
 .sec.hidden{display:none!important}
 
-/* Zone backgrounds removed — unified background */
 
-/* ch-hdr variants removed — all use default colour */
+
+/* Zone ch-hdr colours — now lighter/more distinct, not deep brown */
+
 
 /* Per-section read progress bar */
 .sec-prog{height:4px;background:var(--bd);border-radius:2px;margin-bottom:20px;overflow:hidden}
@@ -275,6 +277,8 @@ tbody tr:last-child td{border-bottom:none}
 .quiz-score{margin-top:14px;padding:12px 16px;border-radius:var(--rr);font-weight:700;font-size:.9rem}
 .quiz-score.pass{background:var(--tb);color:#2D6A2D;border-left:4px solid var(--tl)}
 .quiz-score.fail{background:#FFEBEE;color:#B71C1C;border-left:4px solid #E53935}
+.quiz-remind{background:linear-gradient(135deg,#FFF3E0,#FFF8EE);border:1.5px dashed var(--nl);border-radius:var(--rr);padding:10px 14px;margin:12px 0 8px;font-size:.83rem;color:#7B4800;font-weight:600;display:flex;align-items:center;gap:8px}
+.quiz-remind::before{content:'📌';flex-shrink:0}
 .quiz-btn{padding:8px 20px;border-radius:var(--rr);background:var(--pr);color:#fff;border:none;cursor:pointer;font-size:.88rem;font-family:'Noto Sans TC',sans-serif;font-weight:700;margin-top:12px;transition:background .18s}
 .quiz-btn:hover{background:var(--sc)}
 
@@ -297,6 +301,34 @@ tbody tr:last-child td{border-bottom:none}
 .closing-inner{display:inline-block;background:var(--md);border-radius:var(--rr);padding:22px 40px}
 .closing-tag{font-family:'Noto Serif TC',serif;color:var(--pr);font-weight:700;font-size:.96rem;letter-spacing:.1em}
 .closing-meta{color:var(--mu);font-size:.8rem;margin-top:9px;line-height:1.7}
+
+/* Screenshot image overlay */
+.img-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:1000;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.img-overlay.show{display:flex}
+.img-overlay img{max-width:100%;max-height:75vh;border-radius:10px;box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.img-overlay-hint{color:#fff;font-size:.88rem;margin-top:14px;text-align:center;line-height:1.7;opacity:.9}
+.img-overlay-hint strong{color:#FFD54F}
+.img-overlay-close{margin-top:16px;padding:10px 28px;border-radius:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.88rem;cursor:pointer;font-family:'Noto Sans TC',sans-serif}
+.img-overlay-close:hover{background:rgba(255,255,255,.25)}
+.img-overlay-share{margin-top:10px;padding:10px 28px;border-radius:20px;background:#4CAF50;border:none;color:#fff;font-size:.9rem;font-weight:700;cursor:pointer;font-family:'Noto Sans TC',sans-serif;display:none}
+.img-overlay-share.show{display:block}
+
+/* Screenshot section */
+.sc-capture-box{background:var(--md);border-radius:var(--rr);padding:20px 22px;margin:24px 0 0;text-align:center}
+.sc-name-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;justify-content:center}
+.sc-name-label{font-size:.88rem;font-weight:700;color:var(--pr);white-space:nowrap}
+.sc-name-input{flex:1;max-width:200px;padding:8px 14px;border-radius:20px;border:2px solid var(--ac);background:var(--wh);color:var(--tx);font-size:.9rem;font-family:'Noto Sans TC',sans-serif;outline:none;transition:border-color .18s}
+.sc-name-input:focus{border-color:var(--pr)}
+.sc-name-input.error{border-color:#E53935;animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.sc-capture-box .sc-cap-title{font-family:'Noto Serif TC',serif;font-size:.95rem;font-weight:700;color:var(--pr);margin-bottom:6px}
+.sc-capture-box .sc-cap-desc{font-size:.83rem;color:var(--mu);margin-bottom:16px;line-height:1.7}
+.sc-capture-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:24px;background:var(--pr);color:#fff;border:none;cursor:pointer;font-size:.9rem;font-weight:700;font-family:'Noto Sans TC',sans-serif;transition:background .18s;box-shadow:var(--sh)}
+.sc-capture-btn:hover{background:var(--sc)}
+.sc-capture-btn:disabled{opacity:.6;cursor:not-allowed}
+.sc-capture-hint{font-size:.78rem;color:var(--mu);margin-top:10px}
+/* Capture overlay area */
+#captureTarget{background:var(--lt);padding:0}
 
 /* Back to top */
 .btt{position:fixed;bottom:28px;right:28px;width:42px;height:42px;border-radius:50%;background:var(--pr);color:#fff;border:none;cursor:pointer;font-size:1rem;box-shadow:0 4px 14px rgba(123,63,30,.28);display:none;align-items:center;justify-content:center;transition:all .18s;z-index:100}
@@ -461,7 +493,7 @@ html.fXL{font-size:19px}
 <!-- ════════════ QUICKSTART ════════════ -->
 <section class="sec hidden" id="qs">
 <div class="sec-prog"><div class="sec-prog-fill" id="spf-qs" style="width:0%"></div></div>
-<div class="ch-hdr ch-hdr--nav"><div class="cl">新人專區</div><h2>入職清單</h2></div>
+<div class="ch-hdr"><div class="cl">新人專區</div><h2>入職清單</h2></div>
 <div class="ch-intro">以下是入職前後要完成的事，一步一步來，完成一項打一個勾。有任何問題，第一步先找當班營養師（院內分機 #1481 或 #1482）。</div>
 <div class="role-tag">所有新進人員</div>
 
@@ -471,14 +503,14 @@ html.fXL{font-size:19px}
   <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">辦理供膳體檢（<span class="ct-link" onclick="event.stopPropagation();go('ch1');setTimeout(()=>jmp('s12'),100)">詳見第 1.2 節</span>）</div><div class="cn">安南醫院第三棟大樓 1 樓（供膳 C，無需預約），或外部檢驗所。記得保留費用收據。</div></div></li>
   <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">取得合格體檢報告後，第一時間通知主管</div><div class="cn">以約定繳交日期、辦理入職手續並確定入職日——確定入職日後，才會進到下一個項目</div></div></li>
   <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">準備所有入職文件</div><div class="cn">身分證影本、土地銀行存摺影本、Google 帳號、<span class="ct-emph">2 吋大頭照（請提前準備，容易忘記！）</span></div></div></li>
-  <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">開立土地銀行薪轉帳戶</div><div class="cn">開戶如銀行人員詢問公司聯繫方式，請提供：07-2351536 洽人資部</div></div></li>
+  <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">開立土地銀行薪轉帳戶</div><div class="cn">開戶時，若銀行人員詢問公司聯繫方式，請提供：07-2351536 洽人資部</div></div></li>
   <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">準備白色雨鞋及口罩</div><div class="cn">為確保尺寸合適，入職首日請自備合腳白色雨鞋，攜帶至工作場域更換</div></div></li>
 </ul>
 
 <div class="h3">第二階段：入職第一天</div>
 <div class="cl-prog-row"><span class="cl-prog-txt" id="p2txt">0 / 6</span><div class="cl-bar"><div class="cl-bar-fill" id="p2bar" style="width:0%"></div></div></div>
 <ul class="cl" id="cl2">
-  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">填寫新人入職檢核表，並提交所有入職文件給主管</div><div class="cn"></div></div></li>
+  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">填寫入職資料表，並提交所有入職文件給主管</div><div class="cn"><a class="ct-link" href="https://forms.gle/htdLoUXnjudWNUbU8" target="_blank">📋 墨旬《安南旬食堂》新人入職資料表</a>（點此開啟填寫）</div></div></li>
   <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">領取置物櫃鑰匙、制服、名牌、網帽、圍裙，並填寫領用表</div><div class="cn">制服三件；圍裙為消耗品</div></div></li>
   <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">領取營養科鑰匙／磁扣（適用：營養師、廚師、事務員）</div><div class="cn"></div></div></li>
   <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">加入 LINE 工作群組</div><div class="cn">業務群組＋休閒交流群組都要加入</div></div></li>
@@ -508,7 +540,7 @@ html.fXL{font-size:19px}
 <!-- ════════════ QUICK REF ════════════ -->
 <section class="sec hidden" id="qr">
 <div class="sec-prog"><div class="sec-prog-fill" id="spf-qr" style="width:0%"></div></div>
-<div class="ch-hdr ch-hdr--nav"><div class="cl">管理者優先確認</div><h2>易變動資訊彙整</h2></div>
+<div class="ch-hdr"><div class="cl">管理者優先確認</div><h2>易變動資訊彙整</h2></div>
 <div class="ch-intro">以下資訊最容易隨時間更新——費用、聯絡人、表單。管理者每次修訂時，請優先核對這一頁。</div>
 
 <div class="h2">重要費用</div>
@@ -537,7 +569,7 @@ html.fXL{font-size:19px}
 <div class="tw"><table>
   <thead><tr><th>表單名稱</th><th>使用時機</th><th>向誰索取</th></tr></thead>
   <tbody>
-    <tr><td>新人入職檢核表</td><td>入職當週</td><td>墨旬經理</td></tr>
+    <tr><td><a href="https://forms.gle/htdLoUXnjudWNUbU8" target="_blank" style="color:var(--pr);font-weight:700">新人入職資料表（Google 表單）</a></td><td>入職當天線上填寫</td><td>自行掃碼或點連結</td></tr>
     <tr><td>請假／換班申請單</td><td>請假、調班時</td><td>營養師</td></tr>
     <tr><td>加班申請表</td><td>需延後下班或加班前</td><td>營養師（營養師對經理）</td></tr>
     <tr><td>公司請款單</td><td>費用請款時</td><td>營養師</td></tr>
@@ -566,8 +598,8 @@ html.fXL{font-size:19px}
 <div class="acc">
   <button class="acc-btn" onclick="ta(this)">提交入職資料 <span class="acc-arr">▼</span></button>
   <div class="acc-body">
-    <p>新進員工需於入職前完成體檢，收到合格體檢報告後，應第一時間通知主管以約定繳交日期、辦理入職手續並確定入職日，再依約定日向業務主管（墨旬經理）提交下列文件，完成新人入職檢核表：</p>
-    <ul class="dl"><li>體檢資料正本或副本 1 份</li><li>身分證正反影本 1 份</li><li>薪轉帳戶（土地銀行）存摺影本 1 份——開戶時請告知銀行：總部聯繫電話 07-2351536 人資部</li><li>Google 帳號 1 組</li><li><strong>2 吋大頭照 1 張（辦理安南醫院識別證用，請提前備妥，勿臨時遺忘）</strong></li><li>其他依需求之相關文件（如證照、電腦等）</li></ul>
+    <p>新進員工需於入職前完成體檢，收到合格體檢報告後，應第一時間通知主管以約定繳交日期、辦理入職手續並確定入職日，再依約定日向業務主管（墨旬經理）提交下列文件，並填寫 <a href="https://forms.gle/htdLoUXnjudWNUbU8" target="_blank" style="color:var(--pr);font-weight:700;text-decoration:underline">墨旬《安南旬食堂》新人入職資料表</a>：</p>
+    <ul class="dl"><li>體檢資料正本或副本 1 份</li><li>身分證正反影本 1 份</li><li>薪轉帳戶（土地銀行）存摺影本 1 份——開戶如銀行人員詢問公司聯繫方式，請提供：07-2351536 洽人資部</li><li>Google 帳號 1 組</li><li><strong>2 吋大頭照 1 張（辦理安南醫院識別證用，請提前備妥，勿臨時遺忘）</strong></li><li>其他依需求之相關文件（如證照、電腦等）</li></ul>
     <div class="note">📌 所有人事資料應如實填寫，若經查證不符事實，將以偽造文書懲處。</div>
   </div>
 </div>
@@ -750,6 +782,7 @@ html.fXL{font-size:19px}
       <label><input type="radio" name="q3ch1" value="d"> 無上限；等到通過為止</label>
     </div>
   </div>
+  <div class="quiz-remind">別忘了作答！交卷前確認每題都已選擇，通過 80 分才算完成這章。</div>
   <button class="quiz-btn" onclick="gradeQuiz('ch1',{'q1ch1':'b','q2ch1':'b','q3ch1':'b'})">提交答案</button>
   <div class="quiz-score" id="qs-ch1" style="display:none"></div>
 </div>
@@ -828,7 +861,8 @@ html.fXL{font-size:19px}
   <tbody>
     <tr><td>薪資、津貼</td><td>每月 10 日（例：3/10 發放 2 月薪資）</td></tr>
     <tr><td>績效獎金</td><td>每月 10 日發放上上月績效（例：3/10 發放 1 月績效）</td></tr>
-    <tr><td>遇假日或天災</td><td>順延至下一個工作日</td></tr>
+    <tr><td>遇國定假日</td><td>原則上提前至前一個工作日發放</td></tr>
+    <tr><td>遇天災（颱風等）</td><td>順延至下一個工作日發放</td></tr>
   </tbody>
 </table></div>
 
@@ -939,6 +973,7 @@ html.fXL{font-size:19px}
       <label><input type="radio" name="q4ch2" value="d"> 等颱風天再問主管要多少薪資</label>
     </div>
   </div>
+  <div class="quiz-remind">別忘了作答！交卷前確認每題都已選擇，通過 80 分才算完成這章。</div>
   <button class="quiz-btn" onclick="gradeQuiz('ch2',{'q1ch2':'b','q2ch2':'c','q3ch2':'c','q4ch2':'b'})">提交答案</button>
   <div class="quiz-score" id="qs-ch2" style="display:none"></div>
 </div>
@@ -1070,6 +1105,7 @@ html.fXL{font-size:19px}
       <label><input type="radio" name="q2ch3" value="d"> 必須請假，不得工作</label>
     </div>
   </div>
+  <div class="quiz-remind">別忘了作答！交卷前確認每題都已選擇，通過 80 分才算完成這章。</div>
   <button class="quiz-btn" onclick="gradeQuiz('ch3',{'q1ch3':'a','q2ch3':'b'})">提交答案</button>
   <div class="quiz-score" id="qs-ch3" style="display:none"></div>
 </div>
@@ -1227,6 +1263,7 @@ html.fXL{font-size:19px}
       <label><input type="radio" name="q2ch4" value="d"> 行政事務員</label>
     </div>
   </div>
+  <div class="quiz-remind">別忘了作答！交卷前確認每題都已選擇，通過 80 分才算完成這章。</div>
   <button class="quiz-btn" onclick="gradeQuiz('ch4',{'q1ch4':'c','q2ch4':'c'})">提交答案</button>
   <div class="quiz-score" id="qs-ch4" style="display:none"></div>
 </div>
@@ -1241,7 +1278,7 @@ html.fXL{font-size:19px}
 <!-- ════════════ APPENDIX 1 ════════════ -->
 <section class="sec hidden" id="a1">
 <div class="sec-prog"><div class="sec-prog-fill" id="spf-a1" style="width:0%"></div></div>
-<div class="ch-hdr ch-hdr--appendix"><div class="cl">附件一</div><h2>緊急聯絡人資訊</h2></div>
+<div class="ch-hdr"><div class="cl">附件一</div><h2>緊急聯絡人資訊</h2></div>
 <div class="ch-intro">如遇緊急事件，應於第一時間主動聯繫、通報以下人員。請記住院內分機，手機不在時也能聯繫。</div>
 
 <div class="tw"><table>
@@ -1262,7 +1299,7 @@ html.fXL{font-size:19px}
 <!-- ════════════ APPENDIX 2 ════════════ -->
 <section class="sec hidden" id="a2">
 <div class="sec-prog"><div class="sec-prog-fill" id="spf-a2" style="width:0%"></div></div>
-<div class="ch-hdr ch-hdr--appendix"><div class="cl">附件二</div><h2>制服與名牌發放管理辦法</h2></div>
+<div class="ch-hdr"><div class="cl">附件二</div><h2>制服與名牌發放管理辦法</h2></div>
 <div class="ch-intro">本辦法說明制服與名牌之配發、補發、回收及報廢標準。相關費用請參閱「易變動資訊彙整」頁。</div>
 
 <div class="h2">配發標準</div>
@@ -1320,6 +1357,7 @@ html.fXL{font-size:19px}
       <label><input type="radio" name="q2a2" value="d"> 14 天</label>
     </div>
   </div>
+  <div class="quiz-remind">別忘了作答！交卷前確認每題都已選擇，通過 80 分才算完成這章。</div>
   <button class="quiz-btn" onclick="gradeQuiz('a2',{'q1a2':'b','q2a2':'c'})">提交答案</button>
   <div class="quiz-score" id="qs-a2" style="display:none"></div>
 </div>
@@ -1333,7 +1371,7 @@ html.fXL{font-size:19px}
 <!-- ════════════ APPENDIX 3 ════════════ -->
 <section class="sec hidden" id="a3">
 <div class="sec-prog"><div class="sec-prog-fill" id="spf-a3" style="width:0%"></div></div>
-<div class="ch-hdr ch-hdr--appendix"><div class="cl">附件三</div><h2>滯銷品管理辦法</h2></div>
+<div class="ch-hdr"><div class="cl">附件三</div><h2>滯銷品管理辦法</h2></div>
 <div class="ch-intro">本辦法旨在明確控管食品數量與流向，降低浪費，確保流程透明，並避免私自取用或爭議行為。本辦法涵蓋兩大類品項，管理方式不同，請先確認品項類別再依相應流程執行。</div>
 
 <!-- ── 分類說明 ── -->
@@ -1394,7 +1432,7 @@ html.fXL{font-size:19px}
       <div style="flex:1;padding-bottom:18px">
         <div style="font-weight:700;font-size:.9rem;color:var(--pr);margin-bottom:4px">滯銷數量登記（各餐期關帳）</div>
         <div style="font-size:.85rem;color:var(--tx);line-height:1.7">負責人：<strong>當餐關帳人員</strong><br>
-          早餐截止：<strong>08:30</strong>　|　午餐截止：<strong>13:30</strong>　|　晚餐截止：<strong>18:00</strong></div>
+          早餐截止：<strong>08:30</strong>　|　午餐截止：<strong>13:30</strong>　|　晚餐截止：<strong>18:00 前</strong></div>
       </div>
     </div>
 
@@ -1424,6 +1462,7 @@ html.fXL{font-size:19px}
 
 <!-- ── 領用規定 ── -->
 <div class="h2">四、領用規定</div>
+<div class="note">📌 <strong>僅「已滯銷品」開放領取。</strong>尚在販售期間、尚未關帳結算之品項，不論剩餘數量多少，一律不開放領取。未經核准取用者，視同偷竊，依公司規定處理。</div>
 <div class="warn">⚠ 須經墨旬營養師登記後方可領取，不得私自取用。僅得於該餐期結束後領取，不得於販售期間預訂或保留。</div>
 
 <div class="h3">4-1　免費領取品項（仍需登記）</div>
@@ -1531,6 +1570,7 @@ html.fXL{font-size:19px}
       <label><input type="radio" name="q3a3" value="c"> 只需補繳費用</label>
     </div>
   </div>
+  <div class="quiz-remind">別忘了作答！交卷前確認每題都已選擇，通過 80 分才算完成這章。</div>
   <button class="quiz-btn" onclick="gradeQuiz('a3',{'q1a3':'b','q2a3':'b','q3a3':'b'})">提交答案</button>
   <div class="quiz-score" id="qs-a3" style="display:none"></div>
 </div>
@@ -1544,7 +1584,7 @@ html.fXL{font-size:19px}
 <!-- ════════════ PENALTY ════════════ -->
 <section class="sec hidden" id="pen">
 <div class="sec-prog"><div class="sec-prog-fill" id="spf-pen" style="width:0%"></div></div>
-<div class="ch-hdr ch-hdr--appendix"><div class="cl">罰則附件</div><h2>臺南市立安南醫院商場違規事項罰扣表</h2></div>
+<div class="ch-hdr"><div class="cl">罰則附件</div><h2>臺南市立安南醫院商場違規事項罰扣表</h2></div>
 <div class="ch-intro">本表內容依院方規定原封不動呈現。表格中<span style="color:#B71C1C;font-weight:700">紅色粗體</span>為高風險違規關鍵字，<span style="color:#E65100;font-weight:600">橘色</span>為中風險關鍵字。</div>
 <p style="font-size:.82rem;color:var(--mu)">114.05.19 版　|　商場管理辦法 114 年 05 月 15 日修訂</p>
 <p>自 2026 年 2 月起，凡屬人員可避免、可自我檢核之疏失案件，將依本人員工作規範與其罰則進行列管與處理。每一筆疏失案件，皆須填寫「墨旬人員業務檢討改善單（自檢表）」，並由督管與主管共同判定責任歸屬與處理方式。若經院方開罰，但由內部評估屬可給予寬限者，公司願吸收罰則並給予人員改善機會；其餘經判定屬個人責任者，將依規範執行個人罰則。</p>
@@ -1609,12 +1649,12 @@ html.fXL{font-size:19px}
 <div class="quiz-wrap" id="quiz-pen">
   <h4>📝 了解違規的嚴重度——不是要背金額，而是要知道底線在哪裡</h4>
   <div class="q-item">
-    <div class="q-text">1. 以下哪個行為，院方罰扣金額最高，且可能導致契約終止？</div>
+    <div class="q-text">1. 以下哪類違規，院方罰扣金額最高（20,000 元）？</div>
     <div class="q-opts">
-      <label><input type="radio" name="q1pen" value="a"> 垃圾桶超過八分滿</label>
-      <label><input type="radio" name="q1pen" value="b"> 服務態度不佳</label>
-      <label><input type="radio" name="q1pen" value="c"> 承攬商嚴重違約且連續三次書面通知未改善</label>
-      <label><input type="radio" name="q1pen" value="d"> 廣告物未經允許張貼</label>
+      <label><input type="radio" name="q1pen" value="a"> 員工儀容不整、未穿制服</label>
+      <label><input type="radio" name="q1pen" value="b"> 垃圾分類不確實</label>
+      <label><input type="radio" name="q1pen" value="c"> 發生火災或疑似食物中毒且可歸責於承包商</label>
+      <label><input type="radio" name="q1pen" value="d"> 服務態度不佳</label>
     </div>
   </div>
   <div class="q-item">
@@ -1634,6 +1674,7 @@ html.fXL{font-size:19px}
       <label><input type="radio" name="q3pen" value="d"> 垃圾分類不正確</label>
     </div>
   </div>
+  <div class="quiz-remind">別忘了作答！交卷前確認每題都已選擇，通過 80 分才算完成這章。</div>
   <button class="quiz-btn" onclick="gradeQuiz('pen',{'q1pen':'c','q2pen':'b','q3pen':'c'})">提交答案</button>
   <div class="quiz-score" id="qs-pen" style="display:none"></div>
 </div>
@@ -1646,9 +1687,10 @@ html.fXL{font-size:19px}
 
 <!-- ════════════ SELF CHECK ════════════ -->
 <section class="sec hidden" id="selfcheck">
-<div class="ch-hdr ch-hdr--closing"><div class="cl">閱讀進度</div><h2>Self Check</h2></div>
+<div class="ch-hdr"><div class="cl">閱讀進度</div><h2>Self Check</h2></div>
 <div class="ch-intro">以下是手冊各章節的閱讀狀況總覽。點擊任一章節可直接跳轉閱讀；每章讀完後點「標記本章已讀」，這裡的狀態就會更新。</div>
 
+<div id="captureTarget">
 <div class="sc-overall" id="scOverall">
   <div class="sc-pct" id="scPct">0%</div>
   <div>
@@ -1663,6 +1705,22 @@ html.fXL{font-size:19px}
 
 <div class="h2">章末小考總覽</div>
 <div id="quizSummary"></div>
+</div><!-- /captureTarget -->
+
+<div class="sc-capture-box">
+  <div class="sc-cap-title">📸 截圖並傳給主管</div>
+  <div class="sc-cap-desc">
+    完成閱讀與小考後，請填寫姓名、生成進度圖，<strong>長按儲存後以 LINE 傳給主管</strong>確認完成入職培訓。
+  </div>
+  <div class="sc-name-row">
+    <label class="sc-name-label" for="scNameInput">你的姓名：</label>
+    <input class="sc-name-input" id="scNameInput" type="text" placeholder="請輸入姓名" maxlength="10" autocomplete="off">
+  </div>
+  <button class="sc-capture-btn" id="captureBtn" onclick="doCapture()">
+    📷 生成進度截圖
+  </button>
+  <div class="sc-capture-hint" id="captureHint">新人請於完成閱讀手冊及每章小考後，填寫姓名並生成進度圖，長按儲存後以 LINE 傳給主管確認。</div>
+</div>
 
 <div class="nav-row">
   <button class="nav-btn ghost" onclick="go('pen',true)">← 上一頁</button>
@@ -1673,7 +1731,7 @@ html.fXL{font-size:19px}
 <!-- ════════════ CLOSING ════════════ -->
 <section class="sec hidden" id="end">
 <div class="sec-prog"><div class="sec-prog-fill" id="spf-end" style="width:0%"></div></div>
-<div class="ch-hdr ch-hdr--closing"><div class="cl">結語</div><h2>職場尊重與申訴機制</h2></div>
+<div class="ch-hdr"><div class="cl">結語</div><h2>職場尊重與申訴機制</h2></div>
 <div class="ch-intro">本手冊不僅是一份工作規範，更是墨旬對每一位同仁的制度承諾。</div>
 
 <p>本公司重視每一位同仁的價值與發展，強調團隊文化應建立於紀律、尊重、誠信與專業之上。本規範所列各項制度，旨在確保營運秩序、明確責任分工，並建構一個穩定、值得信賴的職場環境。</p>
@@ -1701,6 +1759,16 @@ html.fXL{font-size:19px}
 
 </div><!-- /content -->
 </main>
+
+<!-- Image preview overlay -->
+<div class="img-overlay" id="imgOverlay">
+  <img id="overlayImg" src="" alt="入職閱讀進度">
+  <div class="img-overlay-hint">
+    新人請於完成閱讀手冊及每章小考後，<strong>長按圖片</strong>儲存，並以 LINE 傳給主管確認。<br>
+    <span style="font-size:.8rem;opacity:.75">iOS：長按圖片 → 加入照片 或 傳送 ｜ Android：長按 → 儲存 或 分享</span>
+  </div>
+  <button class="img-overlay-close" onclick="closeOverlay()">✕ 關閉</button>
+</div>
 
 <div class="unread-reminder" id="unreadReminder">👆 別忘了標記本章已讀！再按一次可直接跳過。</div>
 <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
@@ -1818,9 +1886,7 @@ function jmp(id) {
 
 // ── Section scroll progress ────────────────────────────────────────────────────
 let currentSection = 'cover';
-function trackSection(id) {
-  currentSection = id;
-}
+function trackSection(id) { currentSection = id; }
 
 // ── Mark read ──────────────────────────────────────────────────────────────────
 function markRead(id) {
@@ -2151,6 +2217,237 @@ function toggleDark() {
   try { localStorage.setItem('mx_dark', next); } catch(e){}
 }
 
+// ── Screenshot: generate styled card then open in new tab for sharing ────────────
+function doCapture() {
+  var btn = document.getElementById('captureBtn');
+  var hint = document.getElementById('captureHint');
+  if (!btn) return;
+
+  // Check name input
+  var nameInput = document.getElementById('scNameInput');
+  var userName = nameInput ? nameInput.value.trim() : '';
+  if (!userName) {
+    if (nameInput) {
+      nameInput.classList.add('error');
+      nameInput.focus();
+      setTimeout(function(){ nameInput.classList.remove('error'); }, 600);
+    }
+    hint.textContent = '⚠ 請先填寫姓名再生成截圖！';
+    hint.style.color = '#E53935';
+    setTimeout(function(){ hint.textContent='新人請於完成閱讀手冊及每章小考後，填寫姓名並生成進度圖，長按儲存後以 LINE 傳給主管確認。'; hint.style.color=''; }, 2500);
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ 生成中...';
+  hint.textContent = '請稍候，正在生成完整進度圖...';
+
+  // Build a complete progress card using Canvas API directly
+  // This avoids html2canvas rendering issues and creates a clean shareable card
+  setTimeout(function() {
+    try {
+      var canvas = document.createElement('canvas');
+      var dpr = window.devicePixelRatio || 2;
+      var W = 680, H_BASE = 520;
+
+      // Calculate actual height needed
+      var quizChaps = ['ch1','ch2','ch3','ch4','a2','a3','pen'];
+      var quizNames = {
+        ch1:'第一章 人事管理', ch2:'第二章 排班出勤薪資',
+        ch3:'第三章 行為與衛生', ch4:'第四章 工作內容職責',
+        a2:'附件二 制服管理', a3:'附件三 滯銷品管理', pen:'罰則附件'
+      };
+      var readDone = SECTIONS.filter(function(s){ return readState[s]; }).length;
+      var quizPassed = quizChaps.filter(function(id){ return quizState[id] && quizState[id].passed; }).length;
+      var H = H_BASE + quizChaps.length * 36 + 60;
+
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+
+      var ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // Background
+      ctx.fillStyle = '#FDF3EC';
+      ctx.fillRect(0, 0, W, H);
+
+      // Top bar
+      ctx.fillStyle = '#7B3F1E';
+      ctx.fillRect(0, 0, W, 56);
+
+      // Title in bar
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 16px "Noto Sans TC", sans-serif';
+      ctx.fillText('墨旬《安南旬食堂》人員工作規範手冊', 24, 35);
+
+      // Version
+      ctx.fillStyle = 'rgba(255,255,255,0.65)';
+      ctx.font = '12px "Noto Sans TC", sans-serif';
+      ctx.fillText('v5  115.03.30', W - 110, 35);
+
+      // Card area
+      ctx.fillStyle = '#fff';
+      roundRect(ctx, 20, 72, W-40, H-92, 12);
+      ctx.fill();
+
+      // Title inside card
+      ctx.fillStyle = '#7B3F1E';
+      ctx.font = 'bold 20px "Noto Sans TC", sans-serif';
+      ctx.fillText('入職培訓閱讀進度', 36, 108);
+
+      // Divider
+      ctx.strokeStyle = '#E8C9B0';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(36, 120); ctx.lineTo(W-36, 120); ctx.stroke();
+
+      // Name, date, time
+      var today = new Date();
+      var dateStr = today.getFullYear() + '/' +
+        String(today.getMonth()+1).padStart(2,'0') + '/' +
+        String(today.getDate()).padStart(2,'0');
+      var timeStr = String(today.getHours()).padStart(2,'0') + ':' +
+        String(today.getMinutes()).padStart(2,'0');
+      var nameInput2 = document.getElementById('scNameInput');
+      var userName2 = nameInput2 ? nameInput2.value.trim() : '';
+
+      ctx.fillStyle = '#7B3F1E';
+      ctx.font = 'bold 16px "Noto Sans TC", sans-serif';
+      ctx.fillText(userName2, 36, 140);
+
+      ctx.fillStyle = '#8C6B55';
+      ctx.font = '13px "Noto Sans TC", sans-serif';
+      ctx.fillText(dateStr + '  ' + timeStr, 36, 160);
+
+      // Read progress stat box
+      var pct = Math.round(readDone / SECTIONS.length * 100);
+      drawStatBox(ctx, 36, 178, 280, readDone + ' / ' + SECTIONS.length + ' 章節', '閱讀進度', pct === 100 ? '#4CAF50' : '#D4956A');
+
+      // Quiz progress stat box
+      var qpct = Math.round(quizPassed / quizChaps.length * 100);
+      drawStatBox(ctx, 336, 178, 280, quizPassed + ' / ' + quizChaps.length + ' 章', '小考通過', qpct === 100 ? '#4CAF50' : '#D4956A');
+
+      // Divider
+      ctx.strokeStyle = '#E8C9B0';
+      ctx.beginPath(); ctx.moveTo(36, 290); ctx.lineTo(W-36, 290); ctx.stroke();
+
+      // Quiz results list
+      ctx.fillStyle = '#7B3F1E';
+      ctx.font = 'bold 14px "Noto Sans TC", sans-serif';
+      ctx.fillText('章末小考結果', 36, 296);
+
+      var yQ = 318;
+      quizChaps.forEach(function(id) {
+        var q = quizState[id];
+        var name = quizNames[id] || id;
+        if (q && q.passed) {
+          ctx.fillStyle = '#2D6A2D';
+          ctx.font = '13px "Noto Sans TC", sans-serif';
+          ctx.fillText('[通過]  ' + name + '  ' + q.score + '%', 44, yQ);
+        } else if (q && !q.passed) {
+          ctx.fillStyle = '#B71C1C';
+          ctx.font = '13px "Noto Sans TC", sans-serif';
+          ctx.fillText('[未通過]  ' + name + '  ' + q.score + '%', 44, yQ);
+        } else {
+          ctx.fillStyle = '#8C6B55';
+          ctx.font = '13px "Noto Sans TC", sans-serif';
+          ctx.fillText('[ 待作答 ]  ' + name, 44, yQ);
+        }
+        yQ += 36;
+      });
+
+      // Footer
+      ctx.fillStyle = '#7B3F1E';
+      ctx.fillRect(0, H - 40, W, 40);
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.font = '12px "Noto Sans TC", sans-serif';
+      ctx.fillText('完成後請截圖此頁面，以 LINE 傳給當班營養師或墨旬經理', 24, H - 14);
+
+      // Open in new tab / trigger share
+      var imgData = canvas.toDataURL('image/png');
+      
+      // Try Web Share API first (mobile native share)
+      if (navigator.share && navigator.canShare) {
+        canvas.toBlob(function(blob) {
+          var file = new File([blob], '入職閱讀進度_' + dateStr.replace(/\//g,'') + '.png', {type:'image/png'});
+          if (navigator.canShare({files:[file]})) {
+            navigator.share({
+              title: '墨旬入職培訓閱讀進度',
+              text: '入職培訓完成記錄，請查閱。',
+              files: [file]
+            }).then(function(){
+              btn.textContent = '✓ 已分享';
+              btn.style.background = '#4CAF50';
+              hint.innerHTML = '✅ 已開啟分享，請傳給當班營養師或墨旬經理。';
+              hint.style.color = '#2D6A2D';
+            }).catch(function(){
+              openImgTab(imgData, btn, hint, dateStr);
+            });
+          } else {
+            openImgTab(imgData, btn, hint, dateStr);
+          }
+        }, 'image/png');
+      } else {
+        openImgTab(imgData, btn, hint, dateStr);
+      }
+
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = '📷 截圖閱讀進度';
+      hint.innerHTML = '請使用手機截圖功能後以 LINE 傳給主管。<br>iOS：側鍵＋音量鍵 ｜ Android：電源鍵＋音量鍵';
+      hint.style.color = '#E65100';
+    }
+  }, 100);
+}
+
+function openImgTab(imgData, btn, hint, dateStr) {
+  // Show image in overlay on same page — no popup, works on all mobile browsers
+  var overlay = document.getElementById('imgOverlay');
+  var img = document.getElementById('overlayImg');
+  if (!overlay || !img) { btn.disabled=false; btn.textContent='📷 截圖閱讀進度'; return; }
+
+  img.src = imgData;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+
+
+  btn.disabled = false;
+  btn.textContent = '✓ 圖片已生成';
+  btn.style.background = '#4CAF50';
+  hint.innerHTML = '✅ 圖片已生成，請<strong>長按儲存</strong>後以 LINE 傳給主管。';
+  hint.style.color = '#2D6A2D';
+  setTimeout(function(){ btn.textContent='📷 重新生成'; btn.style.background=''; btn.disabled=false; }, 4000);
+}
+
+function closeOverlay() {
+  var overlay = document.getElementById('imgOverlay');
+  if (overlay) overlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.lineTo(x+w-r, y); ctx.arcTo(x+w, y, x+w, y+r, r);
+  ctx.lineTo(x+w, y+h-r); ctx.arcTo(x+w, y+h, x+w-r, y+h, r);
+  ctx.lineTo(x+r, y+h); ctx.arcTo(x, y+h, x, y+h-r, r);
+  ctx.lineTo(x, y+r); ctx.arcTo(x, y, x+r, y, r);
+  ctx.closePath();
+}
+
+function drawStatBox(ctx, x, y, w, value, label, color) {
+  ctx.fillStyle = '#F7E6D8';
+  roundRect(ctx, x, y, w, 88, 10);
+  ctx.fill();
+  ctx.fillStyle = '#8C6B55';
+  ctx.font = '12px "Noto Sans TC", sans-serif';
+  ctx.fillText(label, x+14, y+22);
+  ctx.fillStyle = color;
+  ctx.font = 'bold 26px "Noto Sans TC", sans-serif';
+  ctx.fillText(value, x+14, y+60);
+}
+
 // Global assignments - placed here to ensure all functions are defined first
 window.go = go;
 window.ta = ta;
@@ -2165,6 +2462,9 @@ window.cycleFont = cycleFont;
 window.jmp = jmp;
 window.toggleDark = toggleDark;
 window.toggleCollapse = toggleCollapse;
+window.doCapture = doCapture;
+window.openImgTab = openImgTab;
+window.closeOverlay = closeOverlay;
 
 </script>
 </body>
