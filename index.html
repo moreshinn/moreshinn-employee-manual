@@ -3,1760 +3,2169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>墨旬《安南旬食堂》人員工作規範手冊</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>墨旬《安南旬食堂》人員工作規範手冊 v5</title>
+<meta name="color-scheme" content="only light">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script>
+// Apply saved theme immediately before first paint (prevents flash)
+try {
+  var t = localStorage.getItem('mx_dark');
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+} catch(e) {
+  document.documentElement.setAttribute('data-theme', 'light');
+}
+</script>
 <style>
-/* ── CSS Variables ─────────────────────────────────────────────────────── */
-:root {
-  --primary:    #7B3F1E;
-  --secondary:  #B5651D;
-  --accent:     #D4956A;
-  --light-bg:   #FDF3EC;
-  --mid-bg:     #F7E6D8;
-  --row-alt:    #FAF0EA;
-  --note-bg:    #FFF3E0;
-  --note-left:  #E8943A;
-  --tip-bg:     #EEF7EE;
-  --tip-left:   #4CAF50;
-  --white:      #FFFFFF;
-  --text:       #2D1B0E;
-  --muted:      #8C6B55;
-  --border:     #E8C9B0;
-  --sidebar-w:  280px;
-  --header-h:   64px;
-  --radius:     10px;
-  --shadow:     0 2px 16px rgba(123,63,30,.10);
-  --trans:      all .22s cubic-bezier(.4,0,.2,1);
+:root{
+  color-scheme: light;
+  --pr:#7B3F1E;--sc:#B5651D;--ac:#D4956A;
+  --lt:#FDF3EC;--md:#F7E6D8;--ra:#FAF0EA;
+  --nb:#FFF3E0;--nl:#E8943A;--tb:#EEF7EE;--tl:#4CAF50;
+  --wh:#FFFFFF;--tx:#2D1B0E;--mu:#8C6B55;--bd:#E8C9B0;
+  --sw:272px;--hh:60px;--rr:10px;
+  --sh:0 2px 14px rgba(123,63,30,.10);
 }
-[data-theme="dark"] {
-  --primary:    #D4956A;
-  --secondary:  #E8B485;
-  --accent:     #C77B3A;
-  --light-bg:   #1E1410;
-  --mid-bg:     #261A12;
-  --row-alt:    #2A1E16;
-  --note-bg:    #2E200E;
-  --note-left:  #E8943A;
-  --tip-bg:     #0E1E0E;
-  --tip-left:   #4CAF50;
-  --white:      #1A1008;
-  --text:       #F0DDD0;
-  --muted:      #C4A080;
-  --border:     #4A3020;
-  --shadow:     0 2px 20px rgba(0,0,0,.4);
+/* Explicit light theme - overrides system dark mode */
+[data-theme="light"]{
+  color-scheme: light;
+  --pr:#7B3F1E;--sc:#B5651D;--ac:#D4956A;
+  --lt:#FDF3EC;--md:#F7E6D8;--ra:#FAF0EA;
+  --nb:#FFF3E0;--nl:#E8943A;--tb:#EEF7EE;--tl:#4CAF50;
+  --wh:#FFFFFF;--tx:#2D1B0E;--mu:#8C6B55;--bd:#E8C9B0;
+  --sh:0 2px 14px rgba(123,63,30,.10);
+}
+[data-theme="light"] .hdr{background:#7B3F1E}
+[data-theme="light"] .hero{background:linear-gradient(135deg,#7B3F1E 0%,#4A1E0A 100%)}
+[data-theme="light"] .ch-hdr{background:#7B3F1E}
+
+[data-theme="light"] table{background:#FFFFFF}
+[data-theme="light"] .acc-btn,[data-theme="light"] .acc-body{background:#FFFFFF}
+[data-theme="light"] .quiz-wrap{background:#FFFFFF}
+[data-theme="light"] .card{background:#FFFFFF}
+[data-theme="light"] .sb{background:#FFFFFF}
+
+[data-theme="dark"]{
+  color-scheme: dark;
+  --pr:#D4956A;--sc:#E8B485;--ac:#C77B3A;
+  --lt:#1E1410;--md:#261A12;--ra:#2A1E16;
+  --nb:#2E200E;--nl:#E8943A;--tb:#0E1E0E;--tl:#4CAF50;
+  --wh:#1A1008;--tx:#F0DDD0;--mu:#C4A080;--bd:#4A3020;
+  --sh:0 2px 20px rgba(0,0,0,.4);
+}
+[data-theme="dark"] .hdr{background:#3D1E0A}
+[data-theme="dark"] .hero{background:linear-gradient(135deg,#3D1E0A 0%,#1A0A04 100%)}
+[data-theme="dark"] .ch-hdr{background:#3D1E0A}
+
+[data-theme="dark"] table{background:var(--wh)}
+[data-theme="dark"] .acc-btn,[data-theme="dark"] .acc-body{background:var(--wh)}
+[data-theme="dark"] .quiz-wrap{background:var(--wh)}
+[data-theme="dark"] .card{background:var(--wh)}
+[data-theme="dark"] .sb{background:var(--wh)}
+/* Block system dark mode completely - our toggle controls everything */
+html[data-theme="light"], html:not([data-theme="dark"]) {
+  background-color: #FDF3EC !important;
+  color: #2D1B0E !important;
+}
+html[data-theme="dark"] {
+  background-color: #1E1410 !important;
+  color: #F0DDD0 !important;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html{font-size:15px}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--lt);color:var(--tx);line-height:1.8;transition:background .4s ease,color .3s}
+a{color:inherit;text-decoration:none}
+
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--hh);background:var(--pr);display:flex;align-items:center;gap:12px;padding:0 16px 0 calc(var(--sw)+16px);box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.hdr-brand{font-family:'Noto Serif TC',serif;color:#fff;font-size:.95rem;font-weight:700;white-space:nowrap;opacity:.92;flex-shrink:0;display:inline-flex;align-items:center;line-height:1}
+.hdr-search{flex:1;max-width:400px;position:relative}
+.hdr-search input{width:100%;padding:7px 36px 7px 14px;border-radius:20px;border:none;background:rgba(255,255,255,.18);color:#fff;font-size:.88rem;font-family:'Noto Sans TC',sans-serif;outline:none;transition:background .2s}
+.hdr-search input::placeholder{color:rgba(255,255,255,.55)}
+.hdr-search input:focus{background:rgba(255,255,255,.28)}
+.hdr-search .si{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.65);font-size:.9rem;pointer-events:none}
+.hdr-btns{margin-left:auto;display:flex;gap:8px}
+.hdr-btn{background:rgba(255,255,255,.15);border:none;border-radius:7px;color:#fff;padding:5px 13px;font-size:.8rem;font-family:'Noto Sans TC',sans-serif;cursor:pointer;white-space:nowrap;transition:background .18s;display:inline-flex;align-items:center;line-height:1}
+.hdr-btn:hover{background:rgba(255,255,255,.28)}
+.menu-btn{display:flex;align-items:center;justify-content:center;background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;padding:4px 8px;flex-shrink:0;line-height:1;height:var(--hh)}
+
+/* Overall read progress bar (top strip) */
+.gprog{position:fixed;top:var(--hh);left:var(--sw);right:0;height:3px;z-index:190;background:transparent}
+.gprog-fill{height:100%;background:linear-gradient(90deg,var(--ac),var(--sc));width:0%;transition:width .1s}
+
+/* Sections read progress (header pill) */
+.read-pill{background:rgba(255,255,255,.2);border-radius:12px;padding:4px 12px;font-size:.75rem;color:#fff;white-space:nowrap;flex-shrink:0;display:inline-flex;align-items:center;line-height:1;transition:transform .15s,background .15s}
+.read-pill.celebrate{animation:pillPop .5s ease forwards}
+@keyframes pillPop{
+  0%{transform:scale(1)}
+  30%{transform:scale(1.25);background:rgba(76,175,80,.7)}
+  60%{transform:scale(0.95);background:rgba(76,175,80,.5)}
+  100%{transform:scale(1);background:rgba(255,255,255,.2)}
 }
 
-/* ── Reset & Base ──────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  font-family: 'Noto Sans TC', sans-serif;
-  background: var(--light-bg);
-  color: var(--text);
-  line-height: 1.8;
-  transition: background .3s, color .3s;
-  overflow-x: hidden;
+/* Search dropdown */
+.sdrop{display:none;position:fixed;top:calc(var(--hh)+6px);left:calc(var(--sw)+16px);width:400px;max-height:360px;background:#fff;border:1px solid var(--bd);border-radius:var(--rr);overflow-y:auto;box-shadow:0 8px 28px rgba(0,0,0,.14);z-index:400}
+.sdrop.on{display:block}
+.sr-item{padding:11px 16px;border-bottom:1px solid var(--bd);cursor:pointer;transition:background .14s}
+.sr-item:hover{background:var(--md)}
+.sr-item:last-child{border-bottom:none}
+.sr-title{font-size:.87rem;font-weight:700;color:var(--pr)}
+.sr-ctx{font-size:.77rem;color:var(--mu);margin-top:2px;line-height:1.5}
+.sr-none{padding:22px;text-align:center;color:var(--mu);font-size:.87rem}
+mark{background:#FFD54F;border-radius:3px;padding:0 2px;color:var(--tx)}
+
+/* Sidebar */
+.sb{position:fixed;top:var(--hh);left:0;bottom:0;width:var(--sw);background:#fff;border-right:1px solid var(--bd);overflow-y:auto;z-index:200;transition:transform .28s cubic-bezier(.4,0,.2,1);padding-bottom:40px}
+.sb::-webkit-scrollbar{width:4px}
+.sb::-webkit-scrollbar-thumb{background:var(--bd);border-radius:4px}
+.sb-top{padding:16px 18px 10px;border-bottom:1px solid var(--bd);font-size:.68rem;font-weight:700;letter-spacing:.12em;color:var(--mu);text-transform:uppercase}
+.sb-group{padding:6px 0}
+.sb-label{padding:8px 18px 3px;font-size:.68rem;font-weight:700;color:var(--ac);letter-spacing:.1em;text-transform:uppercase}
+.sb-link{display:block;padding:7px 18px 7px 22px;font-size:.86rem;color:var(--tx);border-left:3px solid transparent;cursor:pointer;transition:all .16s;line-height:1.5;background:none;border-top:none;border-right:none;border-bottom:none;width:100%;text-align:left;font-family:'Noto Sans TC',sans-serif}
+.sb-link:hover{background:var(--md);border-left-color:var(--ac);color:var(--pr)}
+.sb-link.active{background:var(--lt);border-left-color:var(--pr);color:var(--pr);font-weight:700}
+.sb-link.sub{padding-left:34px;font-size:.8rem;color:var(--mu)}
+.sb-link.sub:hover,.sb-link.sub.active{color:var(--sc)}
+.sb-read-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;background:var(--bd);vertical-align:middle}
+.sb-read-dot.done{background:var(--tl)}
+
+/* Overlay */
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:190}
+.ov.on{display:block}
+
+/* Main */
+.main{margin-left:var(--sw);padding-top:var(--hh);min-height:100vh}
+.content{max-width:840px;padding:44px 44px 80px;margin:0 auto}
+
+/* Section */
+.sec{margin-bottom:60px}
+.sec.hidden{display:none!important}
+
+/* Zone backgrounds removed — unified background */
+
+/* ch-hdr variants removed — all use default colour */
+
+/* Per-section read progress bar */
+.sec-prog{height:4px;background:var(--bd);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.sec-prog-fill{height:100%;background:var(--ac);border-radius:2px;transition:width .3s}
+
+/* Read toggle button */
+/* Read button row */
+.read-row{display:flex;justify-content:center;margin:16px 0 8px}
+.read-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;border-radius:24px;border:2px solid var(--ac);background:transparent;color:var(--sc);font-size:.88rem;font-weight:700;font-family:'Noto Sans TC',sans-serif;cursor:pointer;transition:all .22s}
+.read-btn:hover{background:var(--md)}
+.read-btn.done{background:var(--tl);border-color:var(--tl);color:#fff}
+.read-btn .rb-icon{font-size:.95rem}
+/* Unread reminder */
+.unread-reminder{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--pr);color:#fff;padding:12px 24px;border-radius:24px;font-size:.87rem;font-weight:700;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,.25);animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateX(-50%) translateY(20px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}
+
+/* Navigation row (prev/next) */
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:20px;border-top:1px solid var(--bd);gap:10px}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--rr);background:var(--pr);color:#fff;font-size:.88rem;font-weight:700;font-family:'Noto Sans TC',sans-serif;cursor:pointer;border:none;transition:background .18s;text-decoration:none}
+.nav-btn:hover{background:var(--sc)}
+.nav-btn.ghost{background:transparent;color:var(--sc);border:1px solid var(--bd)}
+.nav-btn.ghost:hover{background:var(--md)}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--pr) 0%,#4A1E0A 100%);border-radius:var(--rr);padding:40px 36px 32px;color:#fff;margin-bottom:0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)}
+.hero::after{content:'';position:absolute;bottom:-30px;left:38%;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.04)}
+.hero .hl{font-size:.72rem;font-weight:700;letter-spacing:.18em;opacity:.7;text-transform:uppercase;margin-bottom:10px}
+.hero h1{font-family:'Noto Serif TC',serif;font-size:1.7rem;font-weight:700;line-height:1.35;color:#fff;margin-bottom:6px}
+.hero .hs{font-size:.92rem;opacity:.78;margin-bottom:14px}
+.hero .hm{font-size:.76rem;opacity:.62;display:flex;gap:18px;flex-wrap:wrap}
+.hero .tl{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-size:.86rem;opacity:.78;letter-spacing:.06em}
+.ch-hdr{background:var(--pr);color:#fff;border-radius:var(--rr);padding:26px 30px;position:relative;overflow:hidden}
+
+.ch-hdr::before{content:'';position:absolute;top:-24px;right:-24px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.06)}
+.ch-hdr .cl{font-size:.72rem;font-weight:700;letter-spacing:.14em;opacity:.72;text-transform:uppercase;margin-bottom:6px}
+.ch-hdr h2{font-family:'Noto Serif TC',serif;font-size:1.45rem;font-weight:700;color:#fff}
+
+.ch-intro{background:var(--lt);border-left:4px solid var(--ac);border-radius:0 var(--rr) var(--rr) 0;padding:14px 18px;margin-top:0;font-size:.88rem;color:var(--sc);font-style:italic;line-height:1.75}
+.role-tag{display:inline-flex;align-items:center;gap:6px;background:var(--md);border:1px solid var(--bd);border-radius:18px;padding:3px 12px;font-size:.76rem;color:var(--sc);font-weight:500;margin:10px 0 0}
+.role-tag::before{content:'👤';font-size:.8rem}
+
+.h2{font-family:'Noto Serif TC',serif;font-size:1.08rem;font-weight:700;color:var(--pr);margin:34px 0 10px;padding-bottom:7px;border-bottom:2px solid var(--ac)}
+.h3{font-size:.92rem;font-weight:700;color:var(--sc);margin:22px 0 7px}
+.lbl{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);margin:14px 0 5px}
+p{margin:8px 0 10px;font-size:.9rem;line-height:1.85}
+
+/* Callout */
+.note,.tip,.sum,.warn{border-radius:0 var(--rr) var(--rr) 0;padding:12px 16px;margin:14px 0;font-size:.84rem;line-height:1.75}
+.note{background:var(--nb);border-left:5px solid var(--nl);color:#7B4800;font-weight:500}
+.tip{background:var(--tb);border-left:5px solid var(--tl);color:#2D6A2D;font-weight:500}
+.warn{background:#FFEBEE;border-left:5px solid #E53935;color:#B71C1C;font-weight:500}
+.sum{border-top:2px solid var(--ac);border-bottom:2px solid var(--ac);border-left:none;background:var(--md);color:var(--sc);font-style:italic;border-radius:0 0 var(--rr) var(--rr);margin:28px 0 0;padding:13px 18px}
+
+/* Lists */
+ul.dl,ol.dl{list-style:none;padding:0;margin:6px 0 14px}
+ul.dl li,ol.dl li{position:relative;padding:4px 0 4px 22px;font-size:.88rem;line-height:1.8;border-bottom:1px solid var(--bd)}
+ul.dl li:last-child,ol.dl li:last-child{border-bottom:none}
+ul.dl li::before{content:'●';position:absolute;left:0;color:var(--ac);font-size:.55rem;top:10px}
+ol.dl{counter-reset:s}
+ol.dl li::before{counter-increment:s;content:counter(s)".";position:absolute;left:0;color:var(--ac);font-size:.8rem;font-weight:700;top:5px}
+ul.dl.sub li{padding-left:32px;font-size:.83rem;color:var(--mu)}
+ul.dl.sub li::before{left:16px}
+
+/* Tables */
+.tw{overflow-x:auto;margin:10px 0 18px;border-radius:var(--rr);box-shadow:var(--sh)}
+table{width:100%;border-collapse:collapse;font-size:.84rem;background:#fff}
+thead tr{background:var(--sc)}
+thead th{color:#fff;padding:10px 13px;text-align:left;font-weight:700;font-size:.8rem;white-space:nowrap}
+tbody tr{transition:background .12s}
+tbody tr:nth-child(even){background:var(--ra)}
+tbody tr:hover{background:var(--md)}
+tbody td{padding:10px 13px;border-bottom:1px solid var(--bd);line-height:1.65;vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+/* Penalty table highlights */
+.kw-high{color:#B71C1C;font-weight:700}
+.kw-mid{color:#E65100;font-weight:600}
+.sev-high{background:#FFEBEE!important}
+.sev-mid{background:#FFF3E0!important}
+
+/* Accordion */
+.acc{border:1px solid var(--bd);border-radius:var(--rr);margin:12px 0;overflow:hidden}
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#fff;border:none;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--pr);font-family:'Noto Sans TC',sans-serif;text-align:left;transition:background .16s}
+.acc-btn:hover{background:var(--lt)}
+.acc-arr{font-size:.76rem;color:var(--ac);transition:transform .22s;flex-shrink:0;margin-left:10px}
+.acc-btn.open .acc-arr{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 18px 18px;background:#fff}
+.acc-body.open{display:block}
+
+/* Checklist */
+.cl{list-style:none;padding:0;margin:0 0 6px}
+.cl li{display:flex;align-items:flex-start;gap:11px;padding:9px 14px;border-bottom:1px solid var(--bd);cursor:pointer;transition:background .14s;border-radius:6px;margin-bottom:3px;user-select:none}
+.cl li:hover{background:var(--md)}
+.cl li.done{opacity:.5}
+.cl li.done .ct{text-decoration:line-through;color:var(--mu)}
+.cb{width:19px;height:19px;border-radius:5px;border:2px solid var(--ac);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .18s;background:transparent;font-size:.7rem}
+.cl li.done .cb{background:var(--ac);border-color:var(--ac);color:#fff}
+.ct{font-size:.88rem;line-height:1.65;font-weight:500}
+.cn{font-size:.77rem;color:var(--mu);margin-top:2px;font-weight:400}
+.ct-link{color:var(--pr);text-decoration:underline;cursor:pointer;font-weight:700}
+.ct-emph{color:#B71C1C;font-weight:700}
+.cl-prog-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cl-prog-txt{font-size:.76rem;color:var(--mu);white-space:nowrap}
+.cl-bar{flex:1;height:5px;background:var(--bd);border-radius:3px;overflow:hidden}
+.cl-bar-fill{height:100%;background:var(--ac);border-radius:3px;transition:width .3s}
+.cl-reset{font-size:.74rem;color:var(--mu);cursor:pointer;background:none;border:none;font-family:inherit;padding:2px 6px;border-radius:4px;transition:background .14s}
+.cl-reset:hover{background:var(--md);color:var(--sc)}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin:14px 0}
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--rr);padding:16px 18px;cursor:pointer;transition:all .2s;box-shadow:var(--sh)}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(123,63,30,.14);border-color:var(--ac)}
+.card-ch{font-size:.68rem;font-weight:700;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.card-tl{font-weight:700;color:var(--pr);font-size:.92rem;margin-bottom:5px}
+.card-ds{font-size:.78rem;color:var(--mu);line-height:1.6}
+.vbadge{display:inline-block;background:var(--pr);color:#fff;border-radius:5px;padding:1px 9px;font-size:.72rem;font-weight:700;margin-right:4px}
+
+/* Quiz */
+.quiz-wrap{background:var(--wh);border:2px solid var(--ac);border-radius:var(--rr);padding:20px;margin:16px 0}
+.quiz-wrap h4{color:var(--pr);font-size:.95rem;margin-bottom:14px}
+.q-item{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--bd)}
+.q-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.q-text{font-size:.88rem;font-weight:700;margin-bottom:8px;color:var(--tx)}
+.q-opts label{display:block;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:.85rem;transition:background .14s;margin-bottom:4px}
+.q-opts label:hover{background:var(--lt)}
+.q-opts input{margin-right:8px;accent-color:var(--pr)}
+.q-opts label.correct{background:#EEF7EE;color:#2D6A2D;font-weight:700}
+.q-opts label.wrong{background:#FFEBEE;color:#B71C1C}
+.quiz-score{margin-top:14px;padding:12px 16px;border-radius:var(--rr);font-weight:700;font-size:.9rem}
+.quiz-score.pass{background:var(--tb);color:#2D6A2D;border-left:4px solid var(--tl)}
+.quiz-score.fail{background:#FFEBEE;color:#B71C1C;border-left:4px solid #E53935}
+.quiz-btn{padding:8px 20px;border-radius:var(--rr);background:var(--pr);color:#fff;border:none;cursor:pointer;font-size:.88rem;font-family:'Noto Sans TC',sans-serif;font-weight:700;margin-top:12px;transition:background .18s}
+.quiz-btn:hover{background:var(--sc)}
+
+/* Self-check page */
+.sc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+.sc-card{background:#fff;border:1px solid var(--bd);border-radius:var(--rr);padding:14px 16px;cursor:pointer;transition:all .18s}
+.sc-card:hover{border-color:var(--ac);background:var(--lt)}
+.sc-card.read{border-color:var(--tl);background:var(--tb)}
+.sc-card .sc-ch{font-size:.68rem;color:var(--ac);font-weight:700;text-transform:uppercase;margin-bottom:3px}
+.sc-card .sc-tl{font-size:.88rem;font-weight:700;color:var(--pr)}
+.sc-card .sc-st{font-size:.76rem;margin-top:4px}
+.sc-card.read .sc-st{color:var(--tl)}
+.sc-card:not(.read) .sc-st{color:var(--mu)}
+.sc-overall{background:var(--pr);color:#fff;border-radius:var(--rr);padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:16px}
+.sc-overall .sc-pct{font-size:2rem;font-weight:700;font-family:'Noto Serif TC',serif}
+.sc-overall .sc-label{font-size:.88rem;opacity:.85}
+
+/* Closing */
+.closing-box{text-align:center;padding:36px 20px 20px}
+.closing-inner{display:inline-block;background:var(--md);border-radius:var(--rr);padding:22px 40px}
+.closing-tag{font-family:'Noto Serif TC',serif;color:var(--pr);font-weight:700;font-size:.96rem;letter-spacing:.1em}
+.closing-meta{color:var(--mu);font-size:.8rem;margin-top:9px;line-height:1.7}
+
+/* Back to top */
+.btt{position:fixed;bottom:28px;right:28px;width:42px;height:42px;border-radius:50%;background:var(--pr);color:#fff;border:none;cursor:pointer;font-size:1rem;box-shadow:0 4px 14px rgba(123,63,30,.28);display:none;align-items:center;justify-content:center;transition:all .18s;z-index:100}
+.btt.on{display:flex}
+.btt:hover{background:var(--sc);transform:translateY(-2px)}
+
+/* Sidebar collapse */
+:root { --sw:272px; }
+.sidebar-collapsed { --sw:0px; }
+.sidebar-collapsed .sb { transform:translateX(-100%); }
+.sidebar-collapsed .main { margin-left:0; }
+.sidebar-collapsed .hdr { padding-left:16px; }
+.sidebar-collapsed .gprog { left:0; }
+
+/* Smooth main/header transition */
+.main, .hdr, .gprog { transition:margin-left .28s cubic-bezier(.4,0,.2,1), padding-left .28s cubic-bezier(.4,0,.2,1), left .28s cubic-bezier(.4,0,.2,1); }
+
+/* Page transition animation */
+.content{transition:opacity .18s ease, transform .22s ease}
+.content.slide-out-left{opacity:0;transform:translateX(-32px);pointer-events:none}
+.content.slide-out-right{opacity:0;transform:translateX(32px);pointer-events:none}
+.content.slide-in-left{animation:slideInLeft .22s ease forwards}
+.content.slide-in-right{animation:slideInRight .22s ease forwards}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+
+/* Mobile touch */
+button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.sb-link { touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer; }
+
+/* Print */
+@media print{
+  .hdr,.sb,.gprog,.btt,.menu-btn,.ov,.nav-row,.read-btn,.sec-prog{display:none!important}
+  .main{margin-left:0;padding-top:0}
+  .content{padding:20px;max-width:100%}
+  .sec.hidden{display:block!important}
+  .acc-body{display:block!important}
+  .hero,.ch-hdr{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
-/* ── Top Header ────────────────────────────────────────────────────────── */
-.top-header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  height: var(--header-h);
-  background: var(--primary);
-  display: flex; align-items: center; gap: 16px;
-  padding: 0 20px 0 calc(var(--sidebar-w) + 20px);
-  box-shadow: 0 2px 12px rgba(0,0,0,.2);
-  transition: var(--trans);
+/* Responsive */
+@media(max-width:860px){.content{padding:32px 24px 60px}}
+@media(max-width:640px){
+  .sb{transform:translateX(-100%)}
+  .sb.on{transform:translateX(0)}
+  .main{margin-left:0}
+  .hdr{padding-left:12px}
+  /* menu-btn already visible on all sizes */
+  .hdr-brand{display:none}
+  .sdrop{left:10px;right:10px;width:auto}
+  .gprog{left:0}
+  .cards,.sc-grid{grid-template-columns:1fr}
+  .content{padding:24px 16px 60px}
+  .hero{padding:30px 22px 26px}
+  .hero h1{font-size:1.35rem}
 }
-.top-header .brand {
-  font-family: 'Noto Serif TC', serif;
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: 700;
-  white-space: nowrap;
-  opacity: .95;
-}
-.top-header .search-wrap {
-  flex: 1; max-width: 440px; position: relative;
-}
-.top-header .search-wrap input {
-  width: 100%;
-  padding: 8px 40px 8px 16px;
-  border-radius: 24px;
-  border: none;
-  background: rgba(255,255,255,.15);
-  color: #fff;
-  font-size: .9rem;
-  font-family: 'Noto Sans TC', sans-serif;
-  outline: none;
-  transition: var(--trans);
-}
-.top-header .search-wrap input::placeholder { color: rgba(255,255,255,.6); }
-.top-header .search-wrap input:focus { background: rgba(255,255,255,.25); }
-.top-header .search-wrap .search-icon {
-  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  color: rgba(255,255,255,.7); pointer-events: none; font-size: 1rem;
-}
-.top-header .ctrl-btns { display: flex; gap: 8px; margin-left: auto; }
-.top-header .ctrl-btns button {
-  background: rgba(255,255,255,.15);
-  border: none; border-radius: 8px;
-  color: #fff; padding: 6px 14px;
-  cursor: pointer; font-size: .82rem;
-  font-family: 'Noto Sans TC', sans-serif;
-  transition: var(--trans);
-  white-space: nowrap;
-}
-.top-header .ctrl-btns button:hover { background: rgba(255,255,255,.3); }
-.menu-toggle {
-  display: none;
-  background: none; border: none;
-  color: #fff; font-size: 1.4rem;
-  cursor: pointer; padding: 4px 8px;
-  margin-right: 4px;
-}
-
-/* ── Sidebar ───────────────────────────────────────────────────────────── */
-.sidebar {
-  position: fixed; top: var(--header-h); left: 0; bottom: 0;
-  width: var(--sidebar-w);
-  background: var(--white);
-  border-right: 1px solid var(--border);
-  overflow-y: auto;
-  z-index: 150;
-  transition: transform .3s cubic-bezier(.4,0,.2,1), background .3s;
-  padding-bottom: 40px;
-}
-.sidebar::-webkit-scrollbar { width: 4px; }
-.sidebar::-webkit-scrollbar-track { background: transparent; }
-.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-.sidebar-header {
-  padding: 20px 20px 12px;
-  border-bottom: 1px solid var(--border);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-.nav-section { padding: 8px 0; }
-.nav-section-title {
-  padding: 10px 20px 4px;
-  font-size: .72rem;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.nav-item {
-  display: block;
-  padding: 8px 20px 8px 24px;
-  color: var(--text);
-  text-decoration: none;
-  font-size: .88rem;
-  line-height: 1.5;
-  border-left: 3px solid transparent;
-  transition: var(--trans);
-  cursor: pointer;
-}
-.nav-item:hover {
-  background: var(--mid-bg);
-  border-left-color: var(--accent);
-  color: var(--primary);
-}
-.nav-item.active {
-  background: var(--light-bg);
-  border-left-color: var(--primary);
-  color: var(--primary);
-  font-weight: 700;
-}
-.nav-item.sub {
-  padding-left: 36px;
-  font-size: .82rem;
-  color: var(--muted);
-}
-.nav-item.sub:hover, .nav-item.sub.active { color: var(--secondary); }
-
-/* ── Main Content ──────────────────────────────────────────────────────── */
-.main {
-  margin-left: var(--sidebar-w);
-  padding-top: var(--header-h);
-  min-height: 100vh;
-}
-.content { max-width: 860px; padding: 48px 48px 80px; margin: 0 auto; }
-
-/* ── Sections ──────────────────────────────────────────────────────────── */
-.section { margin-bottom: 64px; }
-.section-hidden { display: none !important; }
-
-/* ── Chapter Header ────────────────────────────────────────────────────── */
-.chapter-header {
-  background: var(--primary);
-  color: #fff;
-  border-radius: var(--radius);
-  padding: 28px 32px;
-  margin-bottom: 0;
-  position: relative;
-  overflow: hidden;
-}
-.chapter-header::before {
-  content: '';
-  position: absolute; top: -30px; right: -30px;
-  width: 140px; height: 140px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.06);
-}
-.chapter-header .ch-label {
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  opacity: .75;
-  margin-bottom: 6px;
-}
-.chapter-header h1, .chapter-header h2 {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.4;
-}
-.chapter-intro {
-  background: var(--light-bg);
-  border-left: 4px solid var(--accent);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 16px 20px;
-  margin-top: 0;
-  font-size: .92rem;
-  color: var(--secondary);
-  font-style: italic;
-  line-height: 1.75;
-}
-.role-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--mid-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: .78rem;
-  color: var(--secondary);
-  font-weight: 500;
-  margin: 12px 0 0;
-}
-.role-badge::before { content: '👤'; font-size: .82rem; }
-
-/* ── H2 / H3 ───────────────────────────────────────────────────────────── */
-.h2 {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin: 36px 0 12px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--accent);
-}
-.h3 {
-  font-size: .96rem;
-  font-weight: 700;
-  color: var(--secondary);
-  margin: 24px 0 8px;
-}
-.label-tag {
-  display: inline-block;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 16px 0 6px;
-}
-
-/* ── Body text ──────────────────────────────────────────────────────────── */
-p { margin: 8px 0 12px; font-size: .93rem; line-height: 1.85; }
-
-/* ── Note & Tip boxes ──────────────────────────────────────────────────── */
-.note-box, .tip-box {
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 14px 18px;
-  margin: 16px 0;
-  font-size: .87rem;
-  font-weight: 500;
-  line-height: 1.75;
-}
-.note-box { background: var(--note-bg); border-left: 5px solid var(--note-left); color: #7B4800; }
-.tip-box  { background: var(--tip-bg);  border-left: 5px solid var(--tip-left);  color: #2D6A2D; }
-[data-theme="dark"] .note-box { color: #FFB74D; }
-[data-theme="dark"] .tip-box  { color: #81C784; }
-
-/* ── Summary box ───────────────────────────────────────────────────────── */
-.summary-box {
-  border-top: 2px solid var(--accent);
-  border-bottom: 2px solid var(--accent);
-  padding: 14px 20px;
-  margin: 32px 0 0;
-  font-size: .88rem;
-  color: var(--secondary);
-  font-style: italic;
-  background: var(--mid-bg);
-  border-radius: 0 0 var(--radius) var(--radius);
-}
-
-/* ── Bullet & Numbered lists ───────────────────────────────────────────── */
-ul.doc-list, ol.doc-list {
-  padding-left: 0; list-style: none;
-  margin: 8px 0 16px;
-}
-ul.doc-list li, ol.doc-list li {
-  position: relative;
-  padding: 5px 0 5px 24px;
-  font-size: .91rem;
-  line-height: 1.8;
-  border-bottom: 1px solid var(--border);
-}
-ul.doc-list li:last-child, ol.doc-list li:last-child { border-bottom: none; }
-ul.doc-list li::before {
-  content: '●';
-  position: absolute; left: 0;
-  color: var(--accent); font-size: .6rem;
-  top: 10px;
-}
-ol.doc-list { counter-reset: step; }
-ol.doc-list li::before {
-  counter-increment: step;
-  content: counter(step) ".";
-  position: absolute; left: 0;
-  color: var(--accent); font-size: .82rem;
-  font-weight: 700; top: 6px;
-}
-ul.doc-list.sub li { padding-left: 36px; font-size: .86rem; color: var(--muted); }
-ul.doc-list.sub li::before { left: 18px; }
-
-/* ── Tables ─────────────────────────────────────────────────────────────── */
-.table-wrap { overflow-x: auto; margin: 12px 0 20px; border-radius: var(--radius); box-shadow: var(--shadow); }
-table {
-  width: 100%; border-collapse: collapse;
-  font-size: .87rem; background: var(--white);
-  border-radius: var(--radius); overflow: hidden;
-}
-table thead tr { background: var(--secondary); }
-table thead th {
-  color: #fff; padding: 12px 14px;
-  text-align: left; font-weight: 700;
-  font-size: .83rem; white-space: nowrap;
-}
-table tbody tr { transition: background .15s; }
-table tbody tr:nth-child(even) { background: var(--row-alt); }
-table tbody tr:hover { background: var(--mid-bg); }
-table tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
-table tbody tr:last-child td { border-bottom: none; }
-
-/* ── Accordion ──────────────────────────────────────────────────────────── */
-.accordion { border: 1px solid var(--border); border-radius: var(--radius); margin: 16px 0; overflow: hidden; }
-.accordion-btn {
-  width: 100%; display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 20px;
-  background: var(--white);
-  border: none; cursor: pointer;
-  font-size: .95rem; font-weight: 700;
-  color: var(--primary);
-  font-family: 'Noto Sans TC', sans-serif;
-  text-align: left;
-  transition: background .2s;
-}
-.accordion-btn:hover { background: var(--light-bg); }
-.accordion-btn .arrow {
-  font-size: .8rem; transition: transform .25s;
-  color: var(--accent); flex-shrink: 0; margin-left: 12px;
-}
-.accordion-btn.open .arrow { transform: rotate(180deg); }
-.accordion-body { display: none; padding: 0 20px 20px; background: var(--white); }
-.accordion-body.open { display: block; }
-
-/* ── Checklist ──────────────────────────────────────────────────────────── */
-.checklist { list-style: none; padding: 0; margin: 8px 0; }
-.checklist li {
-  display: flex; align-items: flex-start; gap: 12px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer; transition: background .15s; border-radius: 6px;
-  margin-bottom: 4px;
-}
-.checklist li:hover { background: var(--mid-bg); }
-.checklist li.checked { opacity: .55; }
-.checklist li.checked .check-text { text-decoration: line-through; color: var(--muted); }
-.checklist .check-box {
-  width: 20px; height: 20px; border-radius: 5px;
-  border: 2px solid var(--accent); flex-shrink: 0; margin-top: 2px;
-  display: flex; align-items: center; justify-content: center;
-  transition: var(--trans); background: transparent;
-}
-.checklist li.checked .check-box {
-  background: var(--accent); border-color: var(--accent);
-  color: #fff;
-}
-.checklist .check-text { font-size: .9rem; line-height: 1.65; }
-.checklist .check-note { font-size: .78rem; color: var(--muted); margin-top: 2px; }
-
-/* ── Card grid (overview) ───────────────────────────────────────────────── */
-.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 16px 0; }
-.card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  cursor: pointer; transition: var(--trans);
-  box-shadow: var(--shadow);
-}
-.card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(123,63,30,.15); border-color: var(--accent); }
-.card .card-ch { font-size: .72rem; font-weight: 700; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
-.card .card-title { font-weight: 700; color: var(--primary); font-size: .95rem; margin-bottom: 6px; }
-.card .card-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; }
-
-/* ── Version table ──────────────────────────────────────────────────────── */
-.version-badge {
-  display: inline-block;
-  background: var(--primary); color: #fff;
-  border-radius: 6px; padding: 2px 10px;
-  font-size: .75rem; font-weight: 700;
-  margin-right: 6px;
-}
-
-/* ── Search highlight ───────────────────────────────────────────────────── */
-mark { background: #FFD54F; border-radius: 3px; padding: 0 2px; color: #2D1B0E; }
-
-/* ── Progress bar ───────────────────────────────────────────────────────── */
-.progress-bar {
-  position: fixed; top: var(--header-h); left: var(--sidebar-w); right: 0;
-  height: 3px; background: transparent; z-index: 190;
-}
-.progress-fill {
-  height: 100%; background: linear-gradient(90deg, var(--accent), var(--secondary));
-  width: 0%; transition: width .1s;
-}
-
-/* ── Search results overlay ─────────────────────────────────────────────── */
-.search-results {
-  position: fixed; top: calc(var(--header-h) + 8px);
-  left: calc(var(--sidebar-w) + 20px);
-  width: 400px; max-height: 380px;
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius); box-shadow: 0 8px 32px rgba(0,0,0,.15);
-  overflow-y: auto; z-index: 300; display: none;
-}
-.search-results.show { display: block; }
-.search-result-item {
-  padding: 12px 16px; border-bottom: 1px solid var(--border);
-  cursor: pointer; transition: background .15s;
-}
-.search-result-item:hover { background: var(--mid-bg); }
-.search-result-item:last-child { border-bottom: none; }
-.search-result-item .res-title { font-size: .88rem; font-weight: 700; color: var(--primary); }
-.search-result-item .res-context { font-size: .78rem; color: var(--muted); margin-top: 2px; line-height: 1.5; }
-.search-no-result { padding: 24px; text-align: center; color: var(--muted); font-size: .88rem; }
-
-/* ── Back to top ────────────────────────────────────────────────────────── */
-.back-top {
-  position: fixed; bottom: 32px; right: 32px;
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--primary); color: #fff;
-  border: none; cursor: pointer; font-size: 1.1rem;
-  box-shadow: 0 4px 14px rgba(123,63,30,.3);
-  display: none; align-items: center; justify-content: center;
-  transition: var(--trans); z-index: 100;
-}
-.back-top.show { display: flex; }
-.back-top:hover { background: var(--secondary); transform: translateY(-2px); }
-
-/* ── Cover / Hero ───────────────────────────────────────────────────────── */
-.hero {
-  background: linear-gradient(135deg, var(--primary) 0%, #4A1E0A 100%);
-  border-radius: var(--radius);
-  padding: 48px 40px 36px;
-  color: #fff;
-  margin-bottom: 48px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; top: -60px; right: -60px;
-  width: 220px; height: 220px; border-radius: 50%;
-  background: rgba(255,255,255,.05);
-}
-.hero::after {
-  content: '';
-  position: absolute; bottom: -40px; left: 40%;
-  width: 140px; height: 140px; border-radius: 50%;
-  background: rgba(255,255,255,.04);
-}
-.hero .hero-label {
-  font-size: .75rem; letter-spacing: .2em; opacity: .7;
-  text-transform: uppercase; margin-bottom: 12px; font-weight: 700;
-}
-.hero h1 {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 1.9rem; font-weight: 700;
-  line-height: 1.35; margin-bottom: 8px;
-  color: #fff;
-}
-.hero .hero-sub { font-size: 1rem; opacity: .8; margin-bottom: 20px; }
-.hero .hero-meta {
-  font-size: .78rem; opacity: .65;
-  display: flex; gap: 20px; flex-wrap: wrap;
-}
-.hero .tagline {
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,.2);
-  font-size: .88rem; opacity: .8; letter-spacing: .08em;
-}
-
-/* ── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 860px) {
-  :root { --sidebar-w: 260px; }
-  .content { padding: 32px 24px 60px; }
-}
-@media (max-width: 680px) {
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.open { transform: translateX(0); }
-  .main { margin-left: 0; }
-  .top-header { padding-left: 12px; }
-  .menu-toggle { display: block; }
-  .card-grid { grid-template-columns: 1fr; }
-  .top-header .brand { display: none; }
-  .search-results { left: 12px; right: 12px; width: auto; }
-  .progress-bar { left: 0; }
-}
-@media (max-width: 480px) {
-  .content { padding: 24px 16px 60px; }
-  .hero { padding: 32px 24px 28px; }
-  .hero h1 { font-size: 1.45rem; }
-}
-
-/* ── Overlay ────────────────────────────────────────────────────────────── */
-.overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,.4); z-index: 140;
-}
-.overlay.show { display: block; }
-
-/* ── Font size control ──────────────────────────────────────────────────── */
-body.font-lg { font-size: 18px; }
-body.font-xl { font-size: 20px; }
-
-/* ── Print ──────────────────────────────────────────────────────────────── */
-@media print {
-  .sidebar, .top-header, .progress-bar, .back-top { display: none !important; }
-  .main { margin-left: 0; padding-top: 0; }
-  .section-hidden { display: block !important; }
-  .accordion-body { display: block !important; }
-}
+html.fL{font-size:17px}
+html.fXL{font-size:19px}
 </style>
 </head>
 <body>
 
-<!-- Top Header -->
-<header class="top-header">
-  <button class="menu-toggle" onclick="toggleSidebar()" aria-label="選單">☰</button>
-  <div class="brand">墨旬《安南旬食堂》</div>
-  <div class="search-wrap">
-    <input type="text" id="searchInput" placeholder="搜尋規範內容…" autocomplete="off"
-      oninput="doSearch(this.value)" onkeydown="searchKeydown(event)">
-    <span class="search-icon">🔍</span>
+<header class="hdr">
+  <button class="menu-btn" onclick="toggleSb()" aria-label="目錄">☰</button>
+  <div class="hdr-brand">墨旬《安南旬食堂》</div>
+  <div class="hdr-search">
+    <input id="si" type="text" placeholder="搜尋規範內容…" autocomplete="off"
+      oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')clearSearch()">
+    <span class="si">🔍</span>
   </div>
-  <div class="ctrl-btns">
-    <button onclick="cycleFontSize()" id="fontBtn">文字 A</button>
-    <button onclick="toggleDark()" id="darkBtn">🌙 深色</button>
+  <div class="hdr-btns">
+    <span class="read-pill" id="readPill">已讀 0 / 9</span>
+    <button class="hdr-btn" id="fBtn" title="點擊調整字體大小（小→大→更大）">A　字級</button>
+    <button class="hdr-btn" id="darkBtn" title="切換深色／淺色模式">🌙 深色</button>
+
   </div>
 </header>
 
-<!-- Search Results -->
-<div class="search-results" id="searchResults"></div>
+<div class="sdrop" id="sd"></div>
+<div class="gprog"><div class="gprog-fill" id="gpf"></div></div>
+<div class="ov" id="ov" onclick="toggleSb()"></div>
 
-<!-- Progress bar -->
-<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
-<!-- Sidebar Overlay (mobile) -->
-<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-
-<!-- Sidebar -->
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">目錄</div>
-
-  <div class="nav-section">
-    <a class="nav-item" onclick="showSection('cover')">封面與版本資訊</a>
-    <a class="nav-item" onclick="showSection('quickstart')">🚀 新人入職清單</a>
-    <a class="nav-item" onclick="showSection('quickref')">📌 易變動資訊</a>
+<nav class="sb" id="sb">
+  <div class="sb-top">目錄</div>
+  <div class="sb-group">
+    <button class="sb-link" onclick="go('cover')"><span class="sb-read-dot" id="dot-cover"></span>封面與版本資訊</button>
+    <button class="sb-link" onclick="go('qs')"><span class="sb-read-dot" id="dot-qs"></span>🚀 新人入職清單</button>
+    <button class="sb-link" onclick="go('qr')"><span class="sb-read-dot" id="dot-qr"></span>📌 易變動資訊</button>
   </div>
-
-  <div class="nav-section">
-    <div class="nav-section-title">第一章　人事管理</div>
-    <a class="nav-item sub" onclick="showSection('ch1'); scrollTo('s-1-1')">1.1 入職流程</a>
-    <a class="nav-item sub" onclick="showSection('ch1'); scrollTo('s-1-2')">1.2 體檢與健康管理</a>
-    <a class="nav-item sub" onclick="showSection('ch1'); scrollTo('s-1-3')">1.3 學班訓練</a>
-    <a class="nav-item sub" onclick="showSection('ch1'); scrollTo('s-1-4')">1.4 離職規範</a>
+  <div class="sb-group">
+    <div class="sb-label">正式規範</div>
+    <button class="sb-link" onclick="go('ch1')"><span class="sb-read-dot" id="dot-ch1"></span>第一章　人事管理</button>
+    <button class="sb-link sub" onclick="go('ch1');jmp('s11')">入職流程</button>
+    <button class="sb-link sub" onclick="go('ch1');jmp('s12')">體檢與健康管理</button>
+    <button class="sb-link sub" onclick="go('ch1');jmp('s13')">學班訓練</button>
+    <button class="sb-link sub" onclick="go('ch1');jmp('s14')">離職規範</button>
+    <button class="sb-link" onclick="go('ch2')"><span class="sb-read-dot" id="dot-ch2"></span>第二章　排班、出勤與薪資</button>
+    <button class="sb-link sub" onclick="go('ch2');jmp('s21')">排班管理</button>
+    <button class="sb-link sub" onclick="go('ch2');jmp('s22')">出勤與請假</button>
+    <button class="sb-link sub" onclick="go('ch2');jmp('s23')">薪資與加班</button>
+    <button class="sb-link sub" onclick="go('ch2');jmp('s24')">請款辦法</button>
+    <button class="sb-link" onclick="go('ch3')"><span class="sb-read-dot" id="dot-ch3"></span>第三章　行為與衛生規範</button>
+    <button class="sb-link" onclick="go('ch4')"><span class="sb-read-dot" id="dot-ch4"></span>第四章　工作內容與職責</button>
   </div>
-
-  <div class="nav-section">
-    <div class="nav-section-title">第二章　排班、出勤與薪資</div>
-    <a class="nav-item sub" onclick="showSection('ch2'); scrollTo('s-2-1')">2.1 排班管理</a>
-    <a class="nav-item sub" onclick="showSection('ch2'); scrollTo('s-2-2')">2.2 出勤與請假</a>
-    <a class="nav-item sub" onclick="showSection('ch2'); scrollTo('s-2-3')">2.3 薪資與加班</a>
-    <a class="nav-item sub" onclick="showSection('ch2'); scrollTo('s-2-4')">2.4 請款辦法</a>
+  <div class="sb-group">
+    <div class="sb-label">附件</div>
+    <button class="sb-link" onclick="go('a1')"><span class="sb-read-dot" id="dot-a1"></span>附件一　緊急聯絡人</button>
+    <button class="sb-link" onclick="go('a2')"><span class="sb-read-dot" id="dot-a2"></span>附件二　制服管理辦法</button>
+    <button class="sb-link" onclick="go('a3')"><span class="sb-read-dot" id="dot-a3"></span>附件三　滯銷品管理辦法</button>
+    <button class="sb-link" onclick="go('pen')"><span class="sb-read-dot" id="dot-pen"></span>罰則附件　院方罰扣表</button>
   </div>
-
-  <div class="nav-section">
-    <div class="nav-section-title">第三章　行為與衛生規範</div>
-    <a class="nav-item sub" onclick="showSection('ch3'); scrollTo('s-3-1')">3.1 工作場所行為</a>
-    <a class="nav-item sub" onclick="showSection('ch3'); scrollTo('s-3-2')">3.2 衛生與服儀</a>
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-section-title">第四章　工作內容與職責</div>
-    <a class="nav-item sub" onclick="showSection('ch4'); scrollTo('s-4-1')">4.1 工作環境</a>
-    <a class="nav-item sub" onclick="showSection('ch4'); scrollTo('s-4-2')">4.2 各職位工作內容</a>
-    <a class="nav-item sub" onclick="showSection('ch4'); scrollTo('s-4-3')">4.3 工作規定</a>
-    <a class="nav-item sub" onclick="showSection('ch4'); scrollTo('s-4-4')">4.4 供餐福利</a>
-    <a class="nav-item sub" onclick="showSection('ch4'); scrollTo('s-4-5')">4.5 垃圾處理</a>
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-section-title">附件</div>
-    <a class="nav-item sub" onclick="showSection('app2')">附件二　制服管理辦法</a>
-    <a class="nav-item sub" onclick="showSection('app3')">附件三　滯銷品操作卡</a>
-    <a class="nav-item sub" onclick="showSection('penalty')">罰則附件　院方罰扣表</a>
-    <a class="nav-item sub" onclick="showSection('closing')">結語</a>
+  <div class="sb-group">
+    <div class="sb-label">完成確認</div>
+    <button class="sb-link" onclick="go('selfcheck')">📊 閱讀進度 Self Check</button>
+    <button class="sb-link" onclick="go('end')">✦ 結語</button>
   </div>
 </nav>
 
-<!-- Main -->
 <main class="main">
-<div class="content" id="mainContent">
+<div class="content" id="mc">
 
-<!-- ═══════════════════════════════════════════════════════ COVER ══ -->
-<section class="section" id="cover">
-  <div class="hero">
-    <div class="hero-label">第 4 版　|　115 年 1 月 27 日生效</div>
-    <h1>墨旬《安南旬食堂》<br>人員工作規範手冊</h1>
-    <div class="hero-sub">墨旬股份有限公司　|　旬食堂股份有限公司</div>
-    <div class="hero-meta">
-      <span>📋 適用對象：全體人員</span>
-      <span>🏥 適用場所：臺南市立安南醫院</span>
-    </div>
-    <div class="tagline">真誠溝通・經濟美學・人文環境・細心管理・共榮共享</div>
-  </div>
+<!-- ════════════ COVER ════════════ -->
+<section class="sec" id="cover">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-cover" style="width:0%"></div></div>
+<div class="hero">
+  <div class="hl">第 5 版　|　115 年 3 月 30 日生效</div>
+  <h1>墨旬《安南旬食堂》<br>人員工作規範手冊</h1>
+  <div class="hs">墨旬股份有限公司　|　旬食堂股份有限公司</div>
+  <div class="hm"><span>📋 適用對象：全體人員</span><span>🏥 適用場所：臺南市立安南醫院</span></div>
+  <div class="tl">真誠溝通・經濟美學・人文環境・細心管理・共榮共享</div>
+</div>
 
-  <div class="h2">手冊結構一覽</div>
-  <div class="card-grid" id="overviewCards">
-    <div class="card" onclick="showSection('ch1')">
-      <div class="card-ch">第一章</div>
-      <div class="card-title">人事管理</div>
-      <div class="card-desc">入職流程・體檢規定・學班訓練・離職規範</div>
-    </div>
-    <div class="card" onclick="showSection('ch2')">
-      <div class="card-ch">第二章</div>
-      <div class="card-title">排班、出勤與薪資</div>
-      <div class="card-desc">排班作業・請假流程・薪資加班・請款辦法</div>
-    </div>
-    <div class="card" onclick="showSection('ch3')">
-      <div class="card-ch">第三章</div>
-      <div class="card-title">工作環境、行為與衛生</div>
-      <div class="card-desc">禁止行為・通訊群組・制服儀容・手部衛生</div>
-    </div>
-    <div class="card" onclick="showSection('ch4')">
-      <div class="card-ch">第四章</div>
-      <div class="card-title">工作內容與職責</div>
-      <div class="card-desc">廚房區域・各職位職責・供餐福利・垃圾處理</div>
-    </div>
-    <div class="card" onclick="showSection('app2')">
-      <div class="card-ch">附件二</div>
-      <div class="card-title">制服與名牌管理辦法</div>
-      <div class="card-desc">配發標準・補發規定・報廢條件・回收規範</div>
-    </div>
-    <div class="card" onclick="showSection('app3')">
-      <div class="card-ch">附件三</div>
-      <div class="card-title">滯銷品管理操作卡</div>
-      <div class="card-desc">滯銷品領用・無法再出餐食材・登記流程</div>
-    </div>
-  </div>
+<div class="h2">手冊結構一覽</div>
+<p style="font-size:.85rem;color:var(--mu)">點擊任一章節卡片可直接跳轉閱讀。</p>
+<div class="cards">
+  <div class="card" onclick="go('ch1')"><div class="card-ch">第一章</div><div class="card-tl">人事管理</div><div class="card-ds">入職流程・體檢規定・學班訓練・入職觀察期・離職規範</div></div>
+  <div class="card" onclick="go('ch2')"><div class="card-ch">第二章</div><div class="card-tl">排班、出勤與薪資</div><div class="card-ds">排班作業・請假流程・國定假日辦法・薪資加班・颱風假</div></div>
+  <div class="card" onclick="go('ch3')"><div class="card-ch">第三章</div><div class="card-tl">工作環境、行為與衛生</div><div class="card-ds">禁止行為・通訊群組・制服儀容・手部衛生</div></div>
+  <div class="card" onclick="go('ch4')"><div class="card-ch">第四章</div><div class="card-tl">工作內容與職責</div><div class="card-ds">廚房區域・各職位職責・供餐福利（全體在職人員）・垃圾處理</div></div>
+  <div class="card" onclick="go('a1')"><div class="card-ch">附件一</div><div class="card-tl">緊急聯絡人資訊</div><div class="card-ds">營養科・品牌營運經理・營養師</div></div>
+  <div class="card" onclick="go('a2')"><div class="card-ch">附件二</div><div class="card-tl">制服與名牌管理辦法</div><div class="card-ds">配發標準・補發規定・報廢條件・回收規範</div></div>
+  <div class="card" onclick="go('a3')"><div class="card-ch">附件三</div><div class="card-tl">滯銷品管理辦法</div><div class="card-ds">滯銷品登記流程・領用規定・無法再出餐品項 SOP</div></div>
+  <div class="card" onclick="go('pen')"><div class="card-ch">罰則附件</div><div class="card-tl">院方罰扣表</div><div class="card-ds">人員管理類・商場管理類（共 57 條）</div></div>
+</div>
 
-  <div class="h2">版本修訂記錄</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>版次</th><th>生效日期</th><th>主要修訂內容</th></tr></thead>
-    <tbody>
-      <tr><td><span class="version-badge">v1</span></td><td>114.05.31</td><td>全規範新制定</td></tr>
-      <tr><td><span class="version-badge">v2</span></td><td>114.06.10</td><td>新增修訂記錄表；新增滯銷品管理辦法（4.3.5）；增修通訊群組管理規定（3.1.1）</td></tr>
-      <tr><td><span class="version-badge">v3</span></td><td>114.09.26</td><td>新增執勤區域門禁管理（4.1.4）</td></tr>
-      <tr><td><span class="version-badge">v4</span></td><td>115.01.27</td><td>修訂工作流程標準（4.3.1）；修訂滯銷品管理辦法（4.3.5）；新增滯銷品附件三；更新罰則附件</td></tr>
-    </tbody>
-  </table></div>
-  <div class="note-box">📌 制度審查負責人：墨旬副理　|　審查週期：每半年或制度重大變動時</div>
+<div class="h2">版本修訂記錄</div>
+<div class="tw"><table>
+  <thead><tr><th>版次</th><th>生效日期</th><th>主要修訂內容</th></tr></thead>
+  <tbody>
+    <tr><td><span class="vbadge">v1</span></td><td>114.05.31</td><td>全規範新制定</td></tr>
+    <tr><td><span class="vbadge">v2</span></td><td>114.06.10</td><td>新增修訂記錄表；新增滯銷品管理辦法；增修通訊群組管理規定</td></tr>
+    <tr><td><span class="vbadge">v3</span></td><td>114.09.26</td><td>新增執勤區域門禁管理</td></tr>
+    <tr><td><span class="vbadge">v4</span></td><td>115.01.27</td><td>修訂工作流程標準；修訂滯銷品管理辦法；新增滯銷品附件三；更新罰則附件</td></tr>
+    <tr><td><span class="vbadge" style="background:var(--sc)">v5</span></td><td>115.03.30</td><td>國定假日辦法補入第二章；供餐福利更正為全員適用；體檢費用更新；緊急聯絡人更新；版本全面數位化易讀版發布</td></tr>
+  </tbody>
+</table></div>
+<div class="note">📌 制度審查負責人：墨旬經理　|　審查週期：每半年或制度重大變動時</div>
+<div class="nav-row"><div></div><button class="nav-btn" onclick="go('qs',true)">下一單元：新人入職清單 →</button></div>
+<div class="read-row"><button class="read-btn" id="rb-cover" onclick="markRead('cover')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ══════════════════════════════════════════════ QUICKSTART ══ -->
-<section class="section section-hidden" id="quickstart">
-  <div class="chapter-header">
-    <div class="ch-label">快速入職指南</div>
-    <h1>新人入職清單</h1>
-  </div>
-  <div class="chapter-intro">以下為入職前後應依序完成之事項，請逐項確認，確保每一步驟均已辦理。完成後，記得告知主管。</div>
-  <div class="role-badge">所有新進人員</div>
+<!-- ════════════ QUICKSTART ════════════ -->
+<section class="sec hidden" id="qs">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-qs" style="width:0%"></div></div>
+<div class="ch-hdr ch-hdr--nav"><div class="cl">新人專區</div><h2>入職清單</h2></div>
+<div class="ch-intro">以下是入職前後要完成的事，一步一步來，完成一項打一個勾。有任何問題，第一步先找當班營養師（院內分機 #1481 或 #1482）。</div>
+<div class="role-tag">所有新進人員</div>
 
-  <div class="h3">第一階段：入職前（報到前完成）</div>
-  <ul class="checklist" id="cl1">
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">辦理供膳 C 體檢</div><div class="check-note">至安南醫院第三棟大樓 1 樓，或選擇外部檢驗所（詳見第 1.2 節）。保留費用收據。</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">取得合格體檢報告</div><div class="check-note">收到報告後一週內提交給副理</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">準備入職文件</div><div class="check-note">身分證影本、土地銀行存摺影本、2 吋大頭照、Google 帳號（詳見 1.1.1 節）</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">開立土地銀行薪轉帳戶</div><div class="check-note">開戶時告知銀行：07-2351536 人資部</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">自備白色雨鞋及口罩</div><div class="check-note">入職第一天需穿著</div></div></li>
-  </ul>
+<div class="h3">第一階段：報到前完成</div>
+<div class="cl-prog-row"><span class="cl-prog-txt" id="p1txt">0 / 5</span><div class="cl-bar"><div class="cl-bar-fill" id="p1bar" style="width:0%"></div></div></div>
+<ul class="cl" id="cl1">
+  <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">辦理供膳體檢（<span class="ct-link" onclick="event.stopPropagation();go('ch1');setTimeout(()=>jmp('s12'),100)">詳見第 1.2 節</span>）</div><div class="cn">安南醫院第三棟大樓 1 樓（供膳 C，無需預約），或外部檢驗所。記得保留費用收據。</div></div></li>
+  <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">取得合格體檢報告後，第一時間通知主管</div><div class="cn">以約定繳交日期、辦理入職手續並確定入職日——確定入職日後，才會進到下一個項目</div></div></li>
+  <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">準備所有入職文件</div><div class="cn">身分證影本、土地銀行存摺影本、Google 帳號、<span class="ct-emph">2 吋大頭照（請提前準備，容易忘記！）</span></div></div></li>
+  <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">開立土地銀行薪轉帳戶</div><div class="cn">開戶時告訴銀行人員：07-2351536 人資部</div></div></li>
+  <li onclick="ck(this,1)"><div class="cb"></div><div><div class="ct">準備白色雨鞋及口罩</div><div class="cn">第一天上班就需要穿著</div></div></li>
+</ul>
 
-  <div class="h3">第二階段：入職第一天</div>
-  <ul class="checklist" id="cl2">
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">填寫新人入職檢核表</div><div class="check-note">向副理領取並提交所有入職文件</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">領取置物櫃鑰匙</div><div class="check-note"></div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">領取制服、名牌、網帽、圍裙</div><div class="check-note">並填寫領用表</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">領取營養科鑰匙／磁扣</div><div class="check-note">適用：營養師、廚師、事務員</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">加入 LINE 工作群組</div><div class="check-note">確認已加入業務群組及休閒交流群組</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">下載並加入 BAND 群組</div><div class="check-note">官方連結：www.band.us</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">辦理安南醫院識別證</div><div class="check-note">需提交 2 吋大頭照</div></div></li>
-  </ul>
+<div class="h3">第二階段：入職第一天</div>
+<div class="cl-prog-row"><span class="cl-prog-txt" id="p2txt">0 / 6</span><div class="cl-bar"><div class="cl-bar-fill" id="p2bar" style="width:0%"></div></div></div>
+<ul class="cl" id="cl2">
+  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">填寫新人入職檢核表，並提交所有入職文件給主管</div><div class="cn"></div></div></li>
+  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">領取置物櫃鑰匙、制服、名牌、網帽、圍裙，並填寫領用表</div><div class="cn">制服三件；圍裙為消耗品</div></div></li>
+  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">領取營養科鑰匙／磁扣（適用：營養師、廚師、事務員）</div><div class="cn"></div></div></li>
+  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">加入 LINE 工作群組</div><div class="cn">業務群組＋休閒交流群組都要加入</div></div></li>
+  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">辦理安南醫院識別證</div><div class="cn"><span class="ct-emph">需提交 2 吋大頭照（入職前請先備好，避免當天無法辦理）</span></div></div></li>
+  <li onclick="ck(this,2)"><div class="cb"></div><div><div class="ct">確認緊急聯絡人資訊</div><div class="cn">詳見「附件一：緊急聯絡人」</div></div></li>
+</ul>
 
-  <div class="h3">第三階段：試用期前三個月</div>
-  <ul class="checklist" id="cl3">
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">完成 2–3 天學班訓練</div><div class="check-note">依公司安排，目標為能獨立完成一日工作流程</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">通過各班別考核</div><div class="check-note">考核人：營養師＋帶班導師</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">完成 BLS 基本救命術課程</div><div class="check-note">由營養師安排，入職三個月內須完成</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">通過三次月度考核</div><div class="check-note">每月底進行，三次皆通過後轉為正職</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="check-box">✓</div><div><div class="check-text">申請體檢費請款</div><div class="check-note">任職滿三個月後，附收據向副理申請</div></div></li>
-  </ul>
+<div class="h3">第三階段：入職觀察期</div>
+<div class="cl-prog-row"><span class="cl-prog-txt" id="p3txt">0 / 4</span><div class="cl-bar"><div class="cl-bar-fill" id="p3bar" style="width:0%"></div></div></div>
+<ul class="cl" id="cl3">
+  <li onclick="ck(this,3)"><div class="cb"></div><div><div class="ct">完成學班訓練（標準 2–3 天，依實際狀況調整）</div><div class="cn">目標是能獨立完成一整天的工作流程</div></div></li>
+  <li onclick="ck(this,3)"><div class="cb"></div><div><div class="ct">通過各班別考核</div><div class="cn">考核人：營養師＋帶班導師</div></div></li>
+  <li onclick="ck(this,3)"><div class="cb"></div><div><div class="ct">完成 BLS 基本救命術課程</div><div class="cn">由主管安排，入職後盡早完成</div></div></li>
+  <li onclick="ck(this,3)"><div class="cb"></div><div><div class="ct">能獨立值班所屬班別、出勤狀況穩定後，轉為正職</div><div class="cn">轉正職後保證排班與入職保障；實際轉正時機由主管綜合評估，觀察期以三個月為基準</div></div></li>
+</ul>
 
-  <div class="tip-box">✅ 如有任何疑問，請優先聯繫當班營養師（院內分機 #1481 或 #1482）；非緊急事項請洽墨旬副理。</div>
-  <div class="summary-box">✦ 完成以上所有事項後，即正式成為墨旬團隊的一員。</div>
+<div style="text-align:right;margin-top:6px"><button class="cl-reset" onclick="resetAll()">↺ 重置所有勾選</button></div>
+<div class="tip">✅ 有任何疑問，請優先聯繫當班營養師（院內分機 #1481 或 #1482）；非緊急事項請洽墨旬經理。</div>
+<div class="sum">✦ 完成以上所有事項後，即正式成為墨旬團隊的一員。</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('cover',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('qr',true)">下一單元：易變動資訊 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-qs" onclick="markRead('qs')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ════════════════════════════════════════════════ QUICK REF ══ -->
-<section class="section section-hidden" id="quickref">
-  <div class="chapter-header">
-    <div class="ch-label">管理者優先確認</div>
-    <h1>易變動資訊彙整</h1>
-  </div>
-  <div class="chapter-intro">以下為最易隨時間變動之項目，管理者每次修訂時應優先核對此頁內容。</div>
+<!-- ════════════ QUICK REF ════════════ -->
+<section class="sec hidden" id="qr">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-qr" style="width:0%"></div></div>
+<div class="ch-hdr ch-hdr--nav"><div class="cl">管理者優先確認</div><h2>易變動資訊彙整</h2></div>
+<div class="ch-intro">以下資訊最容易隨時間更新——費用、聯絡人、表單。管理者每次修訂時，請優先核對這一頁。</div>
 
-  <div class="h2">重要費用</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>項目</th><th>金額</th><th>備註</th></tr></thead>
-    <tbody>
-      <tr><td>供膳 C 體檢（安南醫院）</td><td>1,050 元</td><td>任職滿三個月後可申請全額請款；如請款核准落於發薪日後，補貼於次月發放</td></tr>
-      <tr><td>制服補發（人為毀損／遺失）</td><td>370 元／件</td><td>非人為老舊可免費補發</td></tr>
-      <tr><td>名牌補發（人為毀損／遺失）</td><td>70 元／個</td><td>非人為老舊可免費補發</td></tr>
-      <tr><td>識別證補發（遺失）</td><td>100 元</td><td>向副理申請</td></tr>
-    </tbody>
-  </table></div>
+<div class="h2">重要費用</div>
+<div class="tw"><table>
+  <thead><tr><th>項目</th><th>金額</th><th>備註</th></tr></thead>
+  <tbody>
+    <tr><td>供膳 C 體檢（安南醫院）</td><td>1,050 元（115/3 最新，實支實付，上限跟隨安南醫院公告定價）</td><td>任職滿三個月後可申請全額請款；如請款核准落於發薪日後，補貼於次月發放</td></tr>
+    <tr><td>供膳體檢（外部檢驗所）</td><td>850 元（115 年 3 月更新）</td><td>實支實付，憑收據請款</td></tr>
+    <tr><td>制服補發（人為毀損／遺失）</td><td>370 元／件</td><td>非人為老舊可免費補發</td></tr>
+    <tr><td>名牌補發（人為毀損／遺失）</td><td>70 元／個</td><td>非人為老舊可免費補發</td></tr>
+    <tr><td>識別證補發（遺失）</td><td>100 元</td><td>向經理申請</td></tr>
+  </tbody>
+</table></div>
 
-  <div class="h2">緊急聯絡人</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>職稱</th><th>姓名</th><th>聯絡電話</th><th>備註</th></tr></thead>
-    <tbody>
-      <tr><td>安南醫院營養科</td><td>—</td><td>(06)355-3111 分機 #1481 或 #1482</td><td>緊急優先聯絡</td></tr>
-      <tr><td>墨旬副理</td><td>王昱翔</td><td>0917-357-628</td><td>排班、行政、請款</td></tr>
-      <tr><td>墨旬營養師</td><td>林熙蕊</td><td>0989-700-299</td><td>現場管理</td></tr>
-      <tr><td>墨旬營養師</td><td>齊國崴</td><td>0980-155-011</td><td>現場管理</td></tr>
-    </tbody>
-  </table></div>
+<div class="h2">緊急聯絡人</div>
+<div class="tw"><table>
+  <thead><tr><th>職稱</th><th>姓名</th><th>聯絡電話</th><th>備註</th></tr></thead>
+  <tbody>
+    <tr><td>安南醫院營養科</td><td>—</td><td>(06)355-3111 分機 #1481 或 #1482</td><td>緊急優先聯絡</td></tr>
+    <tr><td>墨旬營養師</td><td>齊國崴</td><td>0980-155-011</td><td>現場管理</td></tr>
+    <tr><td>品牌營運經理</td><td>王映婷</td><td>0902-302-150</td><td>制度、高階決策</td></tr>
+  </tbody>
+</table></div>
 
-  <div class="h2">常用表單一覽</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>表單名稱</th><th>使用時機</th><th>向誰索取</th></tr></thead>
-    <tbody>
-      <tr><td>新人入職檢核表</td><td>入職當週</td><td>墨旬副理</td></tr>
-      <tr><td>請假／換班申請單</td><td>請假、調班時</td><td>墨旬副理</td></tr>
-      <tr><td>加班申請表</td><td>需延後下班或加班前</td><td>所屬主管（見第二章）</td></tr>
-      <tr><td>公司請款單</td><td>費用請款時</td><td>墨旬副理或營養師</td></tr>
-      <tr><td>公司離職申請單</td><td>確認離職後</td><td>墨旬副理</td></tr>
-      <tr><td>離職交接申請單</td><td>完成業務交接時</td><td>墨旬副理</td></tr>
-      <tr><td>墨旬每週滯銷品登記表</td><td>每餐期關帳時</td><td>現場營養師</td></tr>
-      <tr><td>墨旬人員業務檢討改善單</td><td>發生疏失案件時</td><td>督管或主管</td></tr>
-    </tbody>
-  </table></div>
-  <div class="note-box">📌 以上費用與人員資訊如有變動，由墨旬副理負責更新並公告全體人員。</div>
+<div class="h2">常用表單一覽</div>
+<div class="tw"><table>
+  <thead><tr><th>表單名稱</th><th>使用時機</th><th>向誰索取</th></tr></thead>
+  <tbody>
+    <tr><td>新人入職檢核表</td><td>入職當週</td><td>墨旬經理</td></tr>
+    <tr><td>請假／換班申請單</td><td>請假、調班時</td><td>營養師</td></tr>
+    <tr><td>加班申請表</td><td>需延後下班或加班前</td><td>營養師（營養師對經理）</td></tr>
+    <tr><td>公司請款單</td><td>費用請款時</td><td>營養師</td></tr>
+    <tr><td>公司離職申請單</td><td>確認離職後</td><td>經理</td></tr>
+    <tr><td>離職交接申請單</td><td>完成業務交接時</td><td>經理</td></tr>
+    <tr><td>墨旬每週滯銷品登記表</td><td>每餐期關帳時</td><td>事務員</td></tr>
+    <tr><td>墨旬人員業務檢討改善單</td><td>發生疏失案件時</td><td>營養師</td></tr>
+  </tbody>
+</table></div>
+<div class="note">📌 以上費用與人員資訊如有變動，由墨旬經理負責更新並公告全體人員。</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('qs',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('ch1',true)">下一單元：第一章 人事管理 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-qr" onclick="markRead('qr')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ CHAPTER 1 ══ -->
-<section class="section section-hidden" id="ch1">
-  <div class="chapter-header">
-    <div class="ch-label">第一章</div>
-    <h1>人事管理</h1>
+<!-- ════════════ CH1 ════════════ -->
+<section class="sec hidden" id="ch1">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-ch1" style="width:0%"></div></div>
+<div class="ch-hdr"><div class="cl">第一章</div><h2>人事管理</h2></div>
+<div class="ch-intro">本章為人事管理之完整制度說明，涵蓋入職至離職各項流程。入職清單中的每個步驟，均可在此查閱詳細依據。</div>
+<div class="role-tag">所有人員</div>
+
+<div id="s11" class="h2">入職流程</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">提交入職資料 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <p>新進員工需於入職前完成體檢，收到合格體檢報告後，應第一時間通知主管以約定繳交日期、辦理入職手續並確定入職日，再依約定日向業務主管（墨旬經理）提交下列文件，完成新人入職檢核表：</p>
+    <ul class="dl"><li>體檢資料正本或副本 1 份</li><li>身分證正反影本 1 份</li><li>薪轉帳戶（土地銀行）存摺影本 1 份——開戶時請告知銀行：總部聯繫電話 07-2351536 人資部</li><li>Google 帳號 1 組</li><li><strong>2 吋大頭照 1 張（辦理安南醫院識別證用，請提前備妥，勿臨時遺忘）</strong></li><li>其他依需求之相關文件（如證照、電腦等）</li></ul>
+    <div class="note">📌 所有人事資料應如實填寫，若經查證不符事實，將以偽造文書懲處。</div>
   </div>
-  <div class="chapter-intro">本章為人事管理之完整制度說明，涵蓋入職至離職各項流程，新人入職清單中的每個步驟均可在此查閱詳細依據。</div>
-  <div class="role-badge">所有人員</div>
+</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">入職後辦理事項 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <div class="lbl">通訊設定</div>
+    <ul class="dl"><li>加入 LINE 工作業務群組及休閒交流群組</li></ul>
+    <div class="lbl">公司發放物品</div>
+    <ul class="dl"><li>置物櫃鑰匙</li><li>營養科鑰匙和／或磁扣（適用：營養師、廚師、事務員）</li><li>制服三件（詳見附件二）</li><li>名牌、網帽各一件</li><li>安南醫院識別證一枚</li><li>消耗品：圍裙</li></ul>
+    <div class="lbl">員工自備</div>
+    <ul class="dl"><li>白色雨鞋一雙</li><li>口罩</li></ul>
+  </div>
+</div>
 
-  <div id="s-1-1" class="h2">1.1　入職流程</div>
+<div id="s12" class="h2">體檢與健康管理</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">體檢項目 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <p>新進人員須完成「餐飲業供膳體檢」，以下項目<strong>缺一不可</strong>：</p>
+    <div class="tw"><table>
+      <thead><tr><th>檢查項目</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>理學檢查</td><td>身高、體重等一般身體評估</td></tr>
+        <tr><td>X 光</td><td>結核病篩查</td></tr>
+        <tr><td>血液檢查</td><td>A 型肝炎抗體（IgG、IgM）</td></tr>
+        <tr><td>糞便傷寒</td><td>傷寒菌篩查</td></tr>
+      </tbody>
+    </table></div>
+    <div class="warn">⚠ 以上四項缺一不可，如僅完成部分項目，體檢報告將不被接受，無法辦理入職。</div>
+  </div>
+</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">體檢地點與費用 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <p>費用資訊請參閱「易變動資訊彙整」頁。費用憑收據向公司申請實報實銷（無需打統編）。</p>
+    <div class="lbl">選擇一：安南醫院體檢科</div>
+    <p style="font-size:.84rem;margin:4px 0 8px"><span style="color:#B71C1C;font-weight:700">⚠ 如有入職急迫性，不建議優先選擇此處</span>——報告約需 <strong>1.5–2 週</strong>取得，請預留足夠時間。</p>
+    <div class="tw"><table>
+      <thead><tr><th>項目</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>地點</td><td>第三棟醫療大樓 1 樓</td></tr>
+        <tr><td>方式</td><td>無需預約，直接告知要做「供膳 C」體檢</td></tr>
+        <tr><td>費用</td><td>1,050 元（115/3 最新）；實支實付，上限跟隨安南醫院公告定價（公司依流程審核實報實銷）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="lbl">選擇二：外部檢驗所（費用 850 元，115/3 更新）</div>
+    <p>如選擇在有 X 光服務時間前往，可同一天完成全部項目，約 2–3 個工作天後可取報告。</p>
+    <div class="tw"><table>
+      <thead><tr><th>檢驗所</th><th>地址</th><th>距離</th><th>X 光服務時段</th></tr></thead>
+      <tbody>
+        <tr><td>南海檢驗所</td><td>臺南市公園南路 336 號</td><td>約 20 分鐘</td><td>9–12時：週一二三五六<br>14–17時：週一四五<br>17–20時：週二三四</td></tr>
+        <tr><td>新南海檢驗所</td><td>臺南市北區小東路 235 號</td><td>約 25 分鐘</td><td>9–12時：週一至六<br>14–17時：致電詢問<br>17–20時：致電詢問</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">📌 請務必保留體檢費用收據以便辦理請款。如申請之項目、費用或檢查月份超出公司規定範圍，屬個人行為，公司不予補貼。如請款申請核准日落於發薪日後，體檢補貼費用將於次月發薪時一併發放。</div>
+  </div>
+</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">體檢時程規定 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <div class="tw"><table>
+      <thead><tr><th>規定事項</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>辦理時間</td><td>應於入職前至少兩週辦理，以預留等待報告所需時間</td></tr>
+        <tr><td>未取得報告</td><td>不得入職或執勤</td></tr>
+        <tr><td>通知義務</td><td>體檢日排定後，應即時通知主管或營養師</td></tr>
+        <tr><td>拒絕體檢</td><td>員工不得以任何理由拒絕或延遲院方規定之例行體檢</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">📌 因個人疏失延誤體檢而影響排班或供餐，公司得依實際損失進行懲處或索償。</div>
+  </div>
+</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">工傷處理 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <div class="tw"><table>
+      <thead><tr><th>屬工傷</th><th>不屬工傷</th></tr></thead>
+      <tbody>
+        <tr><td>執行指定工作任務中受傷</td><td>因個人疏忽、打鬧或使用手機導致的意外</td></tr>
+        <tr><td>合理洽公行為中發生意外</td><td>與工作無關之私人行為中發生</td></tr>
+        <tr><td>工作相關清潔、搬運中受傷</td><td>因自身健康因素（非工作導致）之發作或跌倒</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top:12px">工傷發生時，依以下步驟處理：</p>
+    <ol class="dl">
+      <li>立即通報營養師，並依情節前往醫院急診室就診</li>
+      <li>請醫師開立診斷證明書，保留所有看診與檢查相關單據正本</li>
+      <li>同步回報墨旬經理</li>
+      <li>如屬工傷情節，將開立勞保就診單以利後續保險作業</li>
+    </ol>
+    <p>如對工傷認定有爭議，將依事實調查、勞工保險條例與勞動基準法辦理，必要時由主管機關認定為準。</p>
+  </div>
+</div>
 
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.1.1　提交入職資料 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <p>新進員工需於入職前完成體檢，並於收到合格體檢報告後一週內，向業務主管（墨旬副理）提交下列文件，完成新人入職檢核表：</p>
-      <ul class="doc-list">
-        <li>體檢資料正本或副本 1 份</li>
-        <li>身分證正反影本 1 份</li>
-        <li>薪轉帳戶（土地銀行）存摺影本 1 份——開戶時請告知銀行：總部聯繫電話 07-2351536 人資部</li>
-        <li>Google 帳號 1 組</li>
-        <li>2 吋大頭照 1 張（辦理安南醫院識別證用）</li>
-        <li>其他依需求之相關文件（如證照、電腦等）</li>
-      </ul>
-      <div class="note-box">📌 所有人事資料應如實填寫，若經查證不符事實，將以偽造文書懲處。</div>
+<div id="s13" class="h2">學班訓練</div>
+<div class="role-tag">廚務員（其他職位依此概念參考）</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">學班規定、考核與入職觀察期 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <div class="h3">基本規定</div>
+    <ul class="dl">
+      <li>新進人員入職後，須參加學班訓練（標準 2–3 天，依實際狀況調整），依公司計畫依序接受各班別實務訓練，目標為具備獨立完成一日工作流程的能力。</li>
+      <li>學班期間由帶班人員／導師指導；如有疑問，應主動且禮貌請教，不得擅自決定辦法或變更流程內容及執行標準，違者依內部管理規範處理。</li>
+      <li>緊急或突發狀況時，可使用院內分機聯繫支援：#1481 或 #1482。</li>
+    </ul>
+    <div class="h3">考核標準</div>
+    <div class="tw"><table>
+      <thead><tr><th>考核項目</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>合格標準</td><td>能獨立作業，速度與執行皆正確無誤</td></tr>
+        <tr><td>考核時機</td><td>各班別訓練完成後一週內</td></tr>
+        <tr><td>考核人員</td><td>營養師、帶班導師</td></tr>
+        <tr><td>未通過處理</td><td>安排補充學班，重點針對工作流程再訓練</td></tr>
+      </tbody>
+    </table></div>
+    <div class="h3">轉正職條件</div>
+    <p>所有新進廚務員初期皆以<strong>部分工時（PT）</strong>身份排班訓練，通過完整學班計畫考核後，得轉為正職人員，並享有排班保障。原則上能獨立值班所屬班別、出勤狀況穩定後即可轉正，實際時機由主管綜合評估。轉正職後，須依公司安排陸續接受其他班別之輪值訓練與進階學習。</p>
+    <div class="h3">入職觀察期</div>
+    <ul class="dl">
+      <li>入職起三個月為觀察階段，期間公司將持續評估工作能力與適任狀況；如最多三個月仍無法獨立值班，則評估無法通過觀察期，必須重新評估職務適任度。</li>
+      <li>觀察期間，相關津貼與獎金暫不核發；通過觀察期後，方得依公司規定開始核發。</li>
+    </ul>
+  </div>
+</div>
+
+<div id="s14" class="h2">離職規範</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">離職申請流程與物品歸還 <span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <p>有計劃離職者請於預定離職日 30 天前向主管（墨旬經理）提出，達成共識後依以下流程辦理：</p>
+    <ol class="dl">
+      <li>向墨旬經理領取並填寫「公司離職申請單」</li>
+      <li>依業務交接與雙方合議，簽訂正式離職日並進行人事流程</li>
+      <li>完成業務交接與物品歸還後，提交「離職交接申請單」及相關文件</li>
+    </ol>
+    <p>離職者須於正式離職日起（含）7 個工作天內完成歸還以下物品，完成後方可領取當月薪資：</p>
+    <div class="tw"><table>
+      <thead><tr><th>歸還物品</th><th>備註</th></tr></thead>
+      <tbody>
+        <tr><td>置物櫃鑰匙</td><td></td></tr>
+        <tr><td>營養科鑰匙和／或磁扣</td><td>適用：營養師、廚師、事務員</td></tr>
+        <tr><td>制服三件</td><td>清洗整理後歸還；如有遺失，補發費用 370 元／件</td></tr>
+        <tr><td>名牌、網帽各一件</td><td>名牌遺失補發費用：70 元／個</td></tr>
+        <tr><td>安南醫院識別證一枚</td><td>遺失補發費用：100 元</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="sum">✦ 完成以上手續，方為正式完成離職程序。</div>
+
+<!-- Chapter 1 Quiz -->
+<div class="h2">章末小考：第一章</div>
+<div class="quiz-wrap" id="quiz-ch1">
+  <h4>📝 完成閱讀了嗎？來確認幾個重點</h4>
+  <div class="q-item">
+    <div class="q-text">1. 供膳體檢的項目中，以下哪一項<strong>不屬於</strong>必要項目？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q1ch1" value="a"> 糞便傷寒</label>
+      <label><input type="radio" name="q1ch1" value="b"> 血壓量測</label>
+      <label><input type="radio" name="q1ch1" value="c"> X 光（結核病）</label>
+      <label><input type="radio" name="q1ch1" value="d"> A 型肝炎抗體</label>
     </div>
   </div>
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.1.2　入職後辦理事項 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <div class="label-tag">通訊設定</div>
-      <ul class="doc-list">
-        <li>加入 LINE 工作業務群組及休閒交流群組</li>
-        <li>下載並加入「BAND」應用程式中的墨旬群組（官方連結：www.band.us）</li>
-      </ul>
-      <div class="label-tag">公司發放物品</div>
-      <ul class="doc-list">
-        <li>置物櫃鑰匙</li>
-        <li>營養科鑰匙和／或磁扣（適用：營養師、廚師、事務員）</li>
-        <li>制服三件（詳見附件二）</li>
-        <li>名牌、網帽各一件</li>
-        <li>安南醫院識別證一枚</li>
-        <li>消耗品：圍裙</li>
-      </ul>
-      <div class="label-tag">員工自備</div>
-      <ul class="doc-list"><li>白色雨鞋一雙</li><li>口罩</li></ul>
+  <div class="q-item">
+    <div class="q-text">2. 收到合格體檢報告後，第一步應做什麼？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q2ch1" value="a"> 直接報到上班</label>
+      <label><input type="radio" name="q2ch1" value="b"> 第一時間通知主管，以約定繳交日期和確定入職日</label>
+      <label><input type="radio" name="q2ch1" value="c"> 等候公司通知</label>
+      <label><input type="radio" name="q2ch1" value="d"> 填寫入職檢核表</label>
     </div>
   </div>
-
-  <div id="s-1-2" class="h2">1.2　體檢與健康管理</div>
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.2.1　體檢項目 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <p>新進人員須完成「餐飲業供膳體檢」，應包含以下所有項目：</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>檢查項目</th><th>說明</th></tr></thead>
-        <tbody>
-          <tr><td>理學檢查</td><td>身高、體重等一般身體評估</td></tr>
-          <tr><td>X 光</td><td>結核病篩查</td></tr>
-          <tr><td>血液檢查</td><td>A 型肝炎抗體（IgG、IgM）</td></tr>
-          <tr><td>糞便傷寒</td><td>傷寒菌篩查</td></tr>
-        </tbody>
-      </table></div>
+  <div class="q-item">
+    <div class="q-text">3. 入職觀察期最長為幾個月？超過仍無法獨立時會如何？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q3ch1" value="a"> 一個月；自動轉正職</label>
+      <label><input type="radio" name="q3ch1" value="b"> 三個月；重新評估職務適任度</label>
+      <label><input type="radio" name="q3ch1" value="c"> 六個月；延長試用</label>
+      <label><input type="radio" name="q3ch1" value="d"> 無上限；等到通過為止</label>
     </div>
   </div>
+  <button class="quiz-btn" onclick="gradeQuiz('ch1',{'q1ch1':'b','q2ch1':'b','q3ch1':'b'})">提交答案</button>
+  <div class="quiz-score" id="qs-ch1" style="display:none"></div>
+</div>
 
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.2.2　體檢地點與費用 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <p>費用資訊請參閱「易變動資訊彙整」頁。員工可選擇以下任一地點進行體檢，費用憑收據向公司申請實報實銷（無需打統編）。</p>
-      <div class="label-tag">選擇一：安南醫院體檢科（建議優先）</div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>項目</th><th>說明</th></tr></thead>
-        <tbody>
-          <tr><td>地點</td><td>第三棟醫療大樓 1 樓</td></tr>
-          <tr><td>方式</td><td>無需預約，直接告知要做「供膳 C」體檢</td></tr>
-          <tr><td>費用</td><td>1,050 元（公司依流程審核實報實銷）</td></tr>
-        </tbody>
-      </table></div>
-      <div class="label-tag">選擇二：外部檢驗所</div>
-      <p>如選擇在有 X 光服務時間前往，可同一天完成全部項目，約 2–3 個工作天後可取報告。</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>檢驗所</th><th>地址</th><th>距離</th><th>X 光服務時段</th></tr></thead>
-        <tbody>
-          <tr><td>南海檢驗所</td><td>臺南市公園南路 336 號</td><td>約 20 分鐘</td><td>9–12時：週一二三五六<br>14–17時：週一四五<br>17–20時：週二三四</td></tr>
-          <tr><td>新南海檢驗所</td><td>臺南市北區小東路 235 號</td><td>約 25 分鐘</td><td>9–12時：週一至六<br>14–17時：致電詢問<br>17–20時：致電詢問</td></tr>
-        </tbody>
-      </table></div>
-      <div class="note-box">📌 請務必保留體檢費用收據以便辦理請款。如申請之項目、費用或檢查月份超出公司規定範圍，屬個人行為，公司不予補貼。如請款申請核准日落於發薪日後，體檢補貼費用將於次月發薪時一併發放。</div>
-    </div>
-  </div>
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.2.3　體檢時程規定 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <div class="table-wrap"><table>
-        <thead><tr><th>規定事項</th><th>說明</th></tr></thead>
-        <tbody>
-          <tr><td>辦理時間</td><td>應於入職前至少兩週辦理，以預留等待報告所需時間</td></tr>
-          <tr><td>未取得報告</td><td>不得入職或執勤</td></tr>
-          <tr><td>通知義務</td><td>體檢日排定後，應即時通知主管或營養師</td></tr>
-          <tr><td>拒絕體檢</td><td>員工不得以任何理由拒絕或延遲院方規定之例行體檢</td></tr>
-        </tbody>
-      </table></div>
-      <div class="note-box">📌 因個人疏失延誤體檢而影響排班或供餐，公司得依實際損失進行懲處或索償。</div>
-    </div>
-  </div>
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.2.4　工傷處理 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <div class="table-wrap"><table>
-        <thead><tr><th>屬工傷</th><th>不屬工傷</th></tr></thead>
-        <tbody>
-          <tr><td>執行指定工作任務中受傷</td><td>因個人疏忽、打鬧或使用手機導致的意外</td></tr>
-          <tr><td>合理洽公行為中發生意外</td><td>與工作無關之私人行為中發生</td></tr>
-          <tr><td>工作相關清潔、搬運中受傷</td><td>因自身健康因素（非工作導致）之發作或跌倒</td></tr>
-        </tbody>
-      </table></div>
-      <p style="margin-top:16px">工傷發生時，依以下步驟處理：</p>
-      <ol class="doc-list">
-        <li>立即通報營養師，並依情節前往醫院急診室就診</li>
-        <li>請醫師開立診斷證明書，保留所有看診與檢查相關單據正本</li>
-        <li>同步回報墨旬副理</li>
-        <li>如屬工傷情節，將開立勞保就診單以利後續保險作業</li>
-      </ol>
-      <p>如對工傷認定有爭議，將依事實調查、勞工保險條例與勞動基準法辦理，必要時由主管機關認定為準。</p>
-    </div>
-  </div>
-
-  <div id="s-1-3" class="h2">1.3　學班訓練</div>
-  <div class="role-badge">廚務員（其他職位依此概念參考）</div>
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.3.1–1.3.3　學班規定、考核與試用期 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <div class="h3">基本規定</div>
-      <ul class="doc-list">
-        <li>新進人員入職後，須參加為期 2–3 天的首次學班訓練，依公司計畫依序接受各班別實務訓練，目標為具備獨立完成一日工作流程的能力。</li>
-        <li>學班期間由帶班人員／導師指導；如有疑問，應主動且禮貌請教，不得擅自決定辦法或變更流程內容及執行標準，違者依內部管理規範處理。</li>
-        <li>緊急或突發狀況時，可使用院內分機聯繫支援：#1481 或 #1482。</li>
-      </ul>
-      <div class="h3">考核標準</div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>考核項目</th><th>說明</th></tr></thead>
-        <tbody>
-          <tr><td>合格標準</td><td>能獨立作業，速度與執行皆正確無誤</td></tr>
-          <tr><td>考核時機</td><td>各班別訓練完成後一週內</td></tr>
-          <tr><td>考核人員</td><td>營養師、帶班導師</td></tr>
-          <tr><td>未通過處理</td><td>安排補充學班，重點針對工作流程再訓練</td></tr>
-          <tr><td>升等條件</td><td>整體學班計畫所有班別通過後，晉升為正職人員</td></tr>
-        </tbody>
-      </table></div>
-      <div class="h3">試用期規定</div>
-      <ul class="doc-list">
-        <li>所有新進廚務員初期以部分工時（PT）身份排班，通過完整學班考核後轉為正職，享有排班保障。</li>
-        <li>入職前三個月為試用觀察階段，每月底進行一次月度考核（共三次）；考核通過前，相關津貼與獎金暫不核發。三次皆通過後，視為通過觀察期，方得依公司規定開始核發相關津貼與獎金。</li>
-        <li>轉任正職後，須依公司安排陸續接受其他班別之輪值訓練與進階學習。</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="s-1-4" class="h2">1.4　離職規範</div>
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">1.4.1–1.4.2　離職申請與物品歸還 <span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <p>有計劃離職者請於預定離職日 30 天前向主管（墨旬經理）提出，達成共識後依以下流程辦理：</p>
-      <ol class="doc-list">
-        <li>向墨旬副理領取並填寫「公司離職申請單」</li>
-        <li>依業務交接與雙方合議，簽訂正式離職日並進行人事流程</li>
-        <li>完成業務交接與物品歸還後，提交「離職交接申請單」及相關文件</li>
-      </ol>
-      <p>離職者須於正式離職日起（含）7 個工作天內完成歸還以下物品，完成後方可領取當月薪資：</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>歸還物品</th><th>備註</th></tr></thead>
-        <tbody>
-          <tr><td>置物櫃鑰匙</td><td></td></tr>
-          <tr><td>營養科鑰匙和／或磁扣</td><td>適用：營養師、廚師、事務員</td></tr>
-          <tr><td>制服三件</td><td>清洗整理後歸還</td></tr>
-          <tr><td>名牌、網帽各一件</td><td></td></tr>
-          <tr><td>安南醫院識別證一枚</td><td>遺失補發費用：100 元</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-  </div>
-  <div class="summary-box">✦ 完成以上手續，方為正式完成離職程序。</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('qr',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('ch2',true)">下一單元：第二章 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-ch1" onclick="markRead('ch1')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ CHAPTER 2 ══ -->
-<section class="section section-hidden" id="ch2">
-  <div class="chapter-header">
-    <div class="ch-label">第二章</div>
-    <h1>排班、出勤與薪資</h1>
+<!-- ════════════ CH2 ════════════ -->
+<section class="sec hidden" id="ch2">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-ch2" style="width:0%"></div></div>
+<div class="ch-hdr"><div class="cl">第二章</div><h2>排班、出勤與薪資</h2></div>
+<div class="ch-intro">穩定的排班與準時的薪資，是公司與員工相互信任的基礎。本章說明排班、出勤、請假及薪資等各項制度。</div>
+<div class="role-tag">所有人員</div>
+
+<div id="s21" class="h2">排班管理</div>
+<p>排班作業由專任負責人（營養師）統籌，擁有最終修改與更新權，全體員工需配合執行。</p>
+<div class="tw"><table>
+  <thead><tr><th>事項</th><th>說明</th></tr></thead>
+  <tbody>
+    <tr><td>次月排班公告</td><td>原則上每月第三週週一前公告；如有臨時變動另行公告</td></tr>
+    <tr><td>次月預假表發放</td><td>每月第二週週一發放，當週週五前填寫完畢，逾期或未依規定填寫視同棄權，將優先給遵守規定的人</td></tr>
+    <tr><td>預假注意</td><td>預假為「希望休假」申請，最終排班以整體安排為主，不得因此擅自休假或曠職</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">調班與代班</div>
+<ul class="dl">
+  <li>事先告知並獲排班負責人同意後，方可與他人協調調班</li>
+  <li>調班結果需於值班日前至少一天回報，並填寫<strong>調班代班申請單</strong>提交排班負責人</li>
+  <li>調班最終須經排班負責人核定，未經核定者視為無效</li>
+</ul>
+<div class="note">📌 未經同意私自換班或延誤通報者，無論是否實際執勤，皆視為違規，依內部管理規範處理，情節嚴重者列入考核。</div>
+
+<div id="s22" class="h2">出勤與請假</div>
+<div class="tw"><table>
+  <thead><tr><th>規定</th><th>說明</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>親自打卡</td><td>上下班須本人親自打卡，嚴禁代打卡或偽造紀錄</td><td>視同偽造文書，依法辦理</td></tr>
+    <tr><td>遲到認定</td><td>超過排定出勤時間 5 分鐘以上為遲到</td><td>單月累計 3 次（含），扣發全勤獎金；<strong>單次遲到超過 15 分鐘者</strong>，除不予發放全勤獎金，亦扣除對應分鐘數薪資，並依主管評估發生頻率與人員狀況進行約談評核</td></tr>
+    <tr><td>打卡異常</td><td>重複打卡、未打卡未補簽、代打卡、異常未釐清</td><td>單月累計超過 1 次，不予發放全勤獎金</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">請假流程</div>
+<div class="tw"><table>
+  <thead><tr><th>假別</th><th>申請方式</th><th>注意事項</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>事假</td><td>至少提前 1 天完成代班協調，回報排班負責人，填寫請假申請單</td><td>未提前申請且未獲核准者視為曠職</td><td>依曠職懲處標準處理</td></tr>
+    <tr><td>病假</td><td>當日以電話主動聯繫排班負責人（訊息不可取代通報）</td><td>復工時須補交診斷證明；無證明者依事假或特休辦理。如事後查證並非病痛事由，或長期重複申請而無正當證明，公司得視情節依規懲處</td><td>偽報病因者依違規處理</td></tr>
+    <tr><td>特休</td><td>至少提前 1 天申請，填寫請假申請單</td><td>依公司排班整體安排為主</td><td>—</td></tr>
+  </tbody>
+</table></div>
+<div class="note">📌 若因特殊原因無法調班且未獲准請假，仍應出勤；擅自缺勤者視為重大違規，依曠職處理。</div>
+
+<div class="h3">應急調度</div>
+<p>若班別出現臨時缺口，所有人員應配合排班負責人或營養師之調度安排。調度困難時，由排班負責人主導、營養師協助決策，員工應全力配合執行，不得以個人排班為由拒絕合理調度。</p>
+
+<div class="h3">曠職懲處標準</div>
+<div class="tw"><table>
+  <thead><tr><th>懲處項目</th><th>說明</th></tr></thead>
+  <tbody>
+    <tr><td>獎金福利</td><td>取消 2 個月的獎金與相關福利</td></tr>
+    <tr><td>薪資扣除</td><td>扣除當天曠職時數對應的時薪</td></tr>
+    <tr><td>免職條件</td><td>連續 3 日曠職，或一個月內曠職累計達 6 日，將面臨免職（依勞基法）</td></tr>
+    <tr><td>損失賠償</td><td>如因曠職造成公司損失，將依法處理</td></tr>
+  </tbody>
+</table></div>
+
+<div id="s23" class="h2">薪資與加班</div>
+<div class="tw"><table>
+  <thead><tr><th>發放項目</th><th>時間說明</th></tr></thead>
+  <tbody>
+    <tr><td>薪資、津貼</td><td>每月 10 日（例：3/10 發放 2 月薪資）</td></tr>
+    <tr><td>績效獎金</td><td>每月 10 日發放上上月績效（例：3/10 發放 1 月績效）</td></tr>
+    <tr><td>遇假日或天災</td><td>順延至下一個工作日</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">加班申請</div>
+<div class="tw"><table>
+  <thead><tr><th>職別</th><th>回報對象</th></tr></thead>
+  <tbody>
+    <tr><td>廚工</td><td>營養師</td></tr>
+    <tr><td>事務員、廚師、營養師</td><td>墨旬經理</td></tr>
+  </tbody>
+</table></div>
+<div class="note">📌 加班須事前獲主管明確口頭與書面核准，並於加班申請單上標註，最終須經主管簽名確認後方能列入延長時數。未經核准擅自加班或延誤打卡者，公司有權不予計算加班費。</div>
+
+<div class="h3">加班費計算</div>
+<div class="tw"><table>
+  <thead><tr><th>類別</th><th>時段</th><th>費率</th></tr></thead>
+  <tbody>
+    <tr><td>一般工作日</td><td>第 9–10 小時</td><td>平均時薪 × 4/3</td></tr>
+    <tr><td>一般工作日</td><td>第 11 小時起</td><td>平均時薪 × 5/3</td></tr>
+    <tr><td>休假日加班</td><td>前 2 小時</td><td>平均時薪 × 4/3</td></tr>
+    <tr><td>休假日加班</td><td>第 3–6 小時</td><td>平均時薪 × 5/3</td></tr>
+  </tbody>
+</table></div>
+<p>加班最小計算單位為 15 分鐘。</p>
+
+<div id="s23b" class="h2">國定假日出勤辦法</div>
+<p>本單位屬全年無休性質，國定假日之出勤與補休依下列原則辦理，兼顧營運安排與員工休假權益：</p>
+<div class="tw"><table>
+  <thead><tr><th style="width:6rem">情況</th><th>處理方式</th><th>注意事項</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>調移（排班共識）</strong></td>
+      <td>排班負責人得視營運需要，於月排班前與員工確認，將國定假日調移至其他工作日補休。調移安排以排定並公告之班表為依據，雙方均應遵守。調移後，該國定假日當日即視為正常工作日，不另加發加班費；對應補休日納入正式排班，與法定休假同等處理。</td>
+      <td>排班公告即為雙方知悉之依據，員工有疑義請於排班確認前提出</td>
+    </tr>
+    <tr>
+      <td><strong>未調移且出勤</strong></td>
+      <td>若國定假日未事先於排班中調移，且員工當日有出勤，該日將依勞動基準法規範之比例給付，並依加班計算標準給付加班費。</td>
+      <td>依勞基法辦理，不得低於法定標準</td>
+    </tr>
+    <tr>
+      <td><strong>補休日管理</strong></td>
+      <td>所有補休日均納入正式排班日程，員工不得任意更動或主張額外加班費用。如需調整補休日，請依請假程序提前提出。</td>
+      <td>補休日視同一般休假日，不另計加班費</td>
+    </tr>
+  </tbody>
+</table></div>
+<div class="note">📌 未依排班準時出勤或擅自缺勤者，將依曠職處理；如需調整補休日，請依請假程序辦理。</div>
+
+<div class="h2">颱風假出勤與補助</div>
+<p>颱風假的出勤薪資，<strong>勞基法並無統一強制規定</strong>，實際上依縣市政府公告的停班停課辦法、以及當天實際風雨情況而有所不同。本單位的處理原則如下：</p>
+<ul class="dl">
+  <li><strong>是否需要出勤</strong>：以主管公告為準，員工不得無故缺勤，以免影響現場運作</li>
+  <li><strong>出勤薪資與補貼</strong>：依實際風災情況，由主管於當日或事前公告；員工不應自行預設為雙倍薪或固定補貼標準</li>
+  <li><strong>計程車費補助</strong>：如因颱風無大眾運輸而需搭乘計程車，公司視情況提供補助，員工需檢附車資收據並填寫請款申請單</li>
+</ul>
+<div class="note">📌 颱風出勤相關細節以當次主管公告為準，有疑問請事先向主管確認，不要等到颱風天才臨時詢問。</div>
+
+<div id="s24" class="h2">請款辦法</div>
+<p>向營養師索取公司請款單，並檢附相關收據。</p>
+<div class="tw"><table>
+  <thead><tr><th>注意事項</th><th>說明</th></tr></thead>
+  <tbody>
+    <tr><td>事前核准</td><td>所有購買需於事前獲主管核准，未經同意擅自購買之費用，公司有權不予核銷</td></tr>
+    <tr><td>收據保管</td><td>請妥善保管單據，並開立公司指定抬頭及統編</td></tr>
+    <tr><td>不符規定</td><td>不符規定者，恕無法核准</td></tr>
+  </tbody>
+</table></div>
+<div class="sum">✦ 薪資計算與請假流程均有明確規範，員工依規辦理，權益自有保障。</div>
+
+<!-- Chapter 2 Quiz -->
+<div class="h2">章末小考：第二章</div>
+<div class="quiz-wrap" id="quiz-ch2">
+  <h4>📝 完成閱讀了嗎？來確認幾個重點</h4>
+  <div class="q-item">
+    <div class="q-text">1. 預假表逾期未填寫，會有什麼後果？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q1ch2" value="a"> 由排班負責人代為填寫</label>
+      <label><input type="radio" name="q1ch2" value="b"> 視同棄權，優先保障遵守規定的人</label>
+      <label><input type="radio" name="q1ch2" value="c"> 可在下個月補填</label>
+      <label><input type="radio" name="q1ch2" value="d"> 全月強制上班</label>
+    </div>
   </div>
-  <div class="chapter-intro">穩定的排班與準時的薪資，是公司與員工相互信任的基礎。本章說明排班、出勤、請假及薪資等各項制度。</div>
-  <div class="role-badge">所有人員</div>
+  <div class="q-item">
+    <div class="q-text">2. 廚工需要加班時，應先回報給誰？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q2ch2" value="a"> 墨旬經理</label>
+      <label><input type="radio" name="q2ch2" value="b"> 直接記錄加班時數</label>
+      <label><input type="radio" name="q2ch2" value="c"> 所屬營養師</label>
+      <label><input type="radio" name="q2ch2" value="d"> 任一主管即可</label>
+    </div>
+  </div>
+  <div class="q-item">
+    <div class="q-text">3. 單次遲到超過幾分鐘，除扣全勤獎金外，還會扣對應薪資並約談？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q3ch2" value="a"> 5 分鐘</label>
+      <label><input type="radio" name="q3ch2" value="b"> 10 分鐘</label>
+      <label><input type="radio" name="q3ch2" value="c"> 15 分鐘</label>
+      <label><input type="radio" name="q3ch2" value="d"> 30 分鐘</label>
+    </div>
+  </div>
+  <div class="q-item">
+    <div class="q-text">4. 颱風天主管通知需要出勤，以下哪個想法是正確的？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q4ch2" value="a"> 颱風天出勤一定是雙倍薪，所以很划算</label>
+      <label><input type="radio" name="q4ch2" value="b"> 颱風假薪資沒有法定標準，出勤補貼以主管公告為準，不能無故缺勤</label>
+      <label><input type="radio" name="q4ch2" value="c"> 颱風假可以自己決定要不要來，不算曠職</label>
+      <label><input type="radio" name="q4ch2" value="d"> 等颱風天再問主管要多少薪資</label>
+    </div>
+  </div>
+  <button class="quiz-btn" onclick="gradeQuiz('ch2',{'q1ch2':'b','q2ch2':'c','q3ch2':'c','q4ch2':'b'})">提交答案</button>
+  <div class="quiz-score" id="qs-ch2" style="display:none"></div>
+</div>
 
-  <div id="s-2-1" class="h2">2.1　排班管理</div>
-  <p>排班作業由專任負責人（墨旬副理）統籌，排班負責人擁有最終修改與更新權，全體員工需配合執行。</p>
-  <div class="table-wrap"><table>
-    <thead><tr><th>事項</th><th>說明</th></tr></thead>
-    <tbody>
-      <tr><td>次月排班公告</td><td>原則上每月第三週週一前公告；如有臨時變動另行公告</td></tr>
-      <tr><td>次月預假表發放</td><td>每月第二週週一發放，當週週五前填寫完畢，逾期視同棄權</td></tr>
-      <tr><td>預假注意</td><td>預假為「希望休假」申請，最終排班以整體安排為主，不得因此擅自休假或曠職</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h3">調班與代班</div>
-  <ul class="doc-list">
-    <li>事先告知並獲排班負責人同意後，方可與他人協調調班</li>
-    <li>調班結果需於值班日前至少一天回報，並提交請假/換班申請單</li>
-    <li>調班最終須經排班負責人核定，未經核定者視為無效</li>
-  </ul>
-  <div class="note-box">📌 未經同意私自換班或延誤通報者，無論是否實際執勤，皆視為違規，依內部管理規範處理，情節嚴重者列入考核。</div>
-
-  <div id="s-2-2" class="h2">2.2　出勤與請假</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>規定</th><th>說明</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>親自打卡</td><td>上下班須本人親自打卡，嚴禁代打卡或偽造紀錄</td><td>視同偽造文書，依法辦理</td></tr>
-      <tr><td>遲到認定</td><td>超過排定出勤時間 5 分鐘以上為遲到</td><td>單月累計 3 次（含），扣發全勤獎金</td></tr>
-      <tr><td>打卡異常</td><td>重複打卡、未打卡未補簽、代打卡、異常未釐清</td><td>單月累計超過 1 次，不予發放全勤獎金</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h3">請假流程</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>假別</th><th>申請方式</th><th>注意事項</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>事假</td><td>至少提前 1 天完成代班協調，回報排班負責人，填寫請假申請單</td><td>未提前申請且未獲核准者視為曠職</td><td>依曠職懲處標準處理</td></tr>
-      <tr><td>病假</td><td>當日以電話主動聯繫排班負責人（訊息不可取代通報）</td><td>復工時須補交診斷證明；無證明者依事假或特休辦理。如事後查證並非病痛事由，或長期重複申請而無正當證明，公司得視情節依規懲處</td><td>偽報病因者依違規處理</td></tr>
-      <tr><td>特休</td><td>至少提前 1 天申請，填寫請假申請單</td><td>依公司排班整體安排為主</td><td>—</td></tr>
-    </tbody>
-  </table></div>
-  <div class="note-box">📌 若因特殊原因無法調班且未獲准請假，仍應出勤；擅自缺勤者視為重大違規，依曠職處理。</div>
-
-  <div class="h3">應急調度</div>
-  <p>若班別出現臨時缺口，所有人員應配合排班負責人或營養師之調度安排。調度困難時，由排班負責人主導、營養師協助決策，員工應全力配合執行，不得以個人排班為由拒絕合理調度。</p>
-
-  <div class="h3">曠職懲處標準</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>懲處項目</th><th>說明</th></tr></thead>
-    <tbody>
-      <tr><td>獎金福利</td><td>取消 2 個月的獎金與相關福利</td></tr>
-      <tr><td>薪資扣除</td><td>扣除當天曠職時數對應的時薪</td></tr>
-      <tr><td>免職條件</td><td>連續 3 日曠職，或一個月內曠職累計達 6 日，將面臨免職（依勞基法）</td></tr>
-      <tr><td>損失賠償</td><td>如因曠職造成公司損失，將依法處理</td></tr>
-    </tbody>
-  </table></div>
-
-  <div id="s-2-3" class="h2">2.3　薪資與加班</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>發放項目</th><th>時間說明</th></tr></thead>
-    <tbody>
-      <tr><td>薪資、津貼</td><td>每月 10 日（例：3/10 發放 2 月薪資）</td></tr>
-      <tr><td>績效獎金</td><td>每月 10 日發放上上月績效（例：3/10 發放 1 月績效）</td></tr>
-      <tr><td>遇假日或天災</td><td>順延至下一個工作日</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h3">加班申請</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>職別</th><th>回報對象</th></tr></thead>
-    <tbody>
-      <tr><td>廚工</td><td>所屬營養師</td></tr>
-      <tr><td>事務員、廚師</td><td>墨旬副理</td></tr>
-      <tr><td>營養師</td><td>墨旬經理</td></tr>
-    </tbody>
-  </table></div>
-  <div class="note-box">📌 加班須事前獲主管明確口頭與書面核准，並於加班申請單上標註，最終須經主管簽名確認後方能列入延長時數。未經核准擅自加班或延誤打卡者，公司有權不予計算加班費。</div>
-
-  <div class="h3">加班費計算</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>類別</th><th>時段</th><th>費率</th></tr></thead>
-    <tbody>
-      <tr><td>一般工作日</td><td>第 9–10 小時</td><td>平均時薪 × 4/3</td></tr>
-      <tr><td>一般工作日</td><td>第 11 小時起</td><td>平均時薪 × 5/3</td></tr>
-      <tr><td>休假日加班</td><td>前 2 小時</td><td>平均時薪 × 4/3</td></tr>
-      <tr><td>休假日加班</td><td>第 3–6 小時</td><td>平均時薪 × 5/3</td></tr>
-    </tbody>
-  </table></div>
-  <p>加班最小計算單位為 15 分鐘。國定假日可依勞雇雙方書面協議調移至其他工作日補休。調移後視為正常工作日，不另加發加班費；若未調移而出勤，依勞基法比例給付。所有補休日均納入正式排班日程，員工不得任意更動或主張額外加班費用。</p>
-
-  <div id="s-2-4" class="h2">2.4　請款辦法</div>
-  <p>向墨旬副理或營養師索取公司請款單，並檢附相關收據。</p>
-  <div class="table-wrap"><table>
-    <thead><tr><th>注意事項</th><th>說明</th></tr></thead>
-    <tbody>
-      <tr><td>事前核准</td><td>所有購買需於事前獲主管核准，未經同意擅自購買之費用，公司有權不予核銷</td></tr>
-      <tr><td>收據保管</td><td>請妥善保管單據，並開立公司指定抬頭及統編</td></tr>
-      <tr><td>不符規定</td><td>不符規定者，恕無法核准</td></tr>
-    </tbody>
-  </table></div>
-  <div class="summary-box">✦ 薪資計算與請假流程均有明確規範，員工依規辦理，權益自有保障。</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('ch1',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('ch3',true)">下一單元：第三章 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-ch2" onclick="markRead('ch2')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ CHAPTER 3 ══ -->
-<section class="section section-hidden" id="ch3">
-  <div class="chapter-header">
-    <div class="ch-label">第三章</div>
-    <h1>工作環境、行為與衛生規範</h1>
+<!-- ════════════ CH3 ════════════ -->
+<section class="sec hidden" id="ch3">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-ch3" style="width:0%"></div></div>
+<div class="ch-hdr"><div class="cl">第三章</div><h2>工作環境、行為與衛生規範</h2></div>
+<div class="ch-intro">良好的工作環境有賴全體人員共同維護。本章說明工作場所內的行為準則、衛生規範及服儀要求。</div>
+<div class="role-tag">所有人員</div>
+
+<div class="h2">工作場所行為規範</div>
+<div class="h3">嚴格禁止行為</div>
+<div class="tw"><table>
+  <thead><tr><th>禁止行為</th><th>說明</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>吸菸、嚼檳榔、飲酒、賭博</td><td>院區內任何地點均不得為之</td><td>院方罰扣 500–10,000 元；內部依規懲處</td></tr>
+    <tr><td>任何形式偷竊</td><td>含未經允許擅自取用食材、餐點及滯銷品、欲丟棄食材等</td><td>視同重大違規，情節嚴重者依法辦理</td></tr>
+    <tr><td>上班使用手機或長時間閒聊</td><td>凡與工作無關之行為均不得為之</td><td>依內部管理規範處理</td></tr>
+    <tr><td>帶入或飼養寵物</td><td>工作場域嚴格禁止</td><td>依內部管理規範處理</td></tr>
+    <tr><td>職場霸凌與人身攻擊</td><td>貶低、排擠、羞辱、威脅、辱罵等任何形式</td><td>依內規處理，情節重大者依法辦理</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">通訊群組管理</div>
+<div class="tw"><table>
+  <thead><tr><th>責任項目</th><th>說明</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>閱讀與回覆</td><td>每日應擇時瀏覽群組訊息，不得以「未讀、未看到」規避責任</td><td>影響工作執行者列入考核</td></tr>
+    <tr><td>群組管理</td><td>不得任意退出、擅自異動或封鎖工作通訊群組</td><td>依內部管理規範處理</td></tr>
+    <tr><td>異常通報</td><td>手機故障、換機或通訊異常時，應主動通報主管</td><td>未通報造成訊息漏接，責任自負</td></tr>
+  </tbody>
+</table></div>
+<div class="note">📌 重要訊息標註義務：若有重大公告或即時通知，發布人應主動標註相關人員或群組對象，並確認訊息已讀與接收狀況，避免疏漏。</div>
+
+<div class="h3">飲食與物品管理</div>
+<div class="tw"><table>
+  <thead><tr><th>項目</th><th>規定</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>用餐地點</td><td>如需進食或飲水，需至美食廣場或員工休息室，禁止邊工作邊進食</td><td>依內部管理規範處理</td></tr>
+    <tr><td>員工餐存放</td><td>需事前告知所屬營養師，並需當天自行帶回；如未依規定，公司得逕行清除並依內部管理規範懲處</td><td>逕行清除且依規懲處</td></tr>
+    <tr><td>個人物品保管</td><td>須存放於休息室置物櫃並自行上鎖；禁止將貴重物品留置於休息室內，遺失或被竊公司概不負責</td><td>—</td></tr>
+    <tr><td>置物櫃使用</td><td>櫃頂不得堆放雜物（安全帽可暫放，應於當日攜回）；工作場所內不得存放與工作無關的個人物品（如電子用品、零食等），有特定需求應事先與營養師溝通</td><td>依內部管理規範處理</td></tr>
+    <tr><td>公司物品使用</td><td>不得隨意取用公司或院方提供的任何物品，包括餐具、食材、清潔用品、文具等</td><td>依內部管理規範處理</td></tr>
+    <tr><td>食材帶回</td><td>未經主管許可，嚴禁擅自將剩餘食材或物品帶回（含滯銷品、欲丟棄食材等）</td><td>視同偷竊，情節嚴重者依法辦理</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">訪客規範</div>
+<ul class="dl">
+  <li>非工作人員不得進入廚房區域。</li>
+  <li>若有緊急訪客（如親友），需提前告知當班營養師，以不影響工作為優先安排，並請訪客在餐廳區等候。</li>
+</ul>
+
+<div class="h2">衛生與服儀規範</div>
+<div class="h3">制服管理</div>
+<div class="tw"><table>
+  <thead><tr><th>制服項目</th><th>清洗頻率</th><th>備註</th></tr></thead>
+  <tbody>
+    <tr><td>工作服</td><td>每日</td><td>不得有污垢或發黴；如因個人清潔失誤或不當導致服裝有污垢或發霉，經提醒未改善者依內部管理規範處理</td></tr>
+    <tr><td>防水圍裙</td><td>每日下班前</td><td></td></tr>
+    <tr><td>圍裙、髮帽</td><td>每週</td><td></td></tr>
+  </tbody>
+</table></div>
+<p>通勤途中不得穿戴制服及其他工作配件（帽子、圍裙、袖套等），需於工作場所更衣室換裝；請自行預留更衣時間，確保準時進入工作崗位。</p>
+<div class="note">📌 違反制服規定，除自行承擔相關後果，如造成公司形象損害，企業得視情節追究責任並依法求償。</div>
+
+<div class="h3">儀容規定</div>
+<p>以下規範若經提醒後仍未改善，將依違規處理：</p>
+<div class="tw"><table>
+  <thead><tr><th>項目</th><th>規定</th><th>備註</th></tr></thead>
+  <tbody>
+    <tr><td>上身</td><td>公司配發制服</td><td></td></tr>
+    <tr><td>下身</td><td>簡約素色（黑或深色）得體長褲</td><td>禁止牛仔褲；聚酯纖維或阻燃材質為佳</td></tr>
+    <tr><td>鞋子</td><td>白色雨鞋（限內場）</td><td>鞋面保持清潔</td></tr>
+    <tr><td>口罩</td><td>全程佩戴</td><td></td></tr>
+    <tr><td>頭髮</td><td>網帽須完整覆蓋耳朵及所有頭髮（含瀏海、鬢角）</td><td></td></tr>
+    <tr><td>指甲</td><td>不得留長指甲、塗指甲油</td><td></td></tr>
+    <tr><td>飾品</td><td>不得佩戴戒指、手錶等飾品</td><td></td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">手部衛生</div>
+<div class="tw"><table>
+  <thead><tr><th>換手套時機</th><th>特殊說明</th></tr></thead>
+  <tbody>
+    <tr><td>進入食品作業場所前</td><td></td></tr>
+    <tr><td>如廁後</td><td></td></tr>
+    <tr><td>手部遭污染時</td><td></td></tr>
+    <tr><td>手部有傷口時</td><td>需妥善包紮，佩戴雙層手套（第一層貼身手套，第二層 PE 手套）</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">其他衛生規定</div>
+<ul class="dl">
+  <li>食品、食材及清潔後的餐具，不得與地面接觸。</li>
+  <li>離開工作區域（休息、如廁、送餐）時，不得穿著內場白色雨鞋；進出工作場所必須經過消毒池。</li>
+  <li>不得自行攜帶、使用或存放未經核准的工作用品（如鋼刷、清潔劑）。</li>
+  <li>確認保溫餐車整潔，避免漏液。</li>
+</ul>
+<div class="sum">✦ 整潔的環境與穩定的衛生習慣，是對病患、顧客及同仁最基本的職業尊重。</div>
+
+<!-- Chapter 3 Quiz -->
+<div class="h2">章末小考：第三章</div>
+<div class="quiz-wrap" id="quiz-ch3">
+  <h4>📝 完成閱讀了嗎？來確認幾個重點</h4>
+  <div class="q-item">
+    <div class="q-text">1. 以下哪一個行為在院區內是被允許的？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q1ch3" value="a"> 在員工休息室飲食</label>
+      <label><input type="radio" name="q1ch3" value="b"> 在工作區域邊工作邊吃東西</label>
+      <label><input type="radio" name="q1ch3" value="c"> 在廚房抽菸</label>
+      <label><input type="radio" name="q1ch3" value="d"> 穿著制服通勤回家</label>
+    </div>
   </div>
-  <div class="chapter-intro">良好的工作環境有賴全體人員共同維護。本章說明工作場所內的行為準則、衛生規範及服儀要求。</div>
-  <div class="role-badge">所有人員</div>
+  <div class="q-item">
+    <div class="q-text">2. 手部有傷口時應如何處理才能繼續工作？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q2ch3" value="a"> 包紮後直接工作，不需戴手套</label>
+      <label><input type="radio" name="q2ch3" value="b"> 妥善包紮後佩戴雙層手套（貼身手套＋PE 手套）</label>
+      <label><input type="radio" name="q2ch3" value="c"> 只需戴一層 PE 手套即可</label>
+      <label><input type="radio" name="q2ch3" value="d"> 必須請假，不得工作</label>
+    </div>
+  </div>
+  <button class="quiz-btn" onclick="gradeQuiz('ch3',{'q1ch3':'a','q2ch3':'b'})">提交答案</button>
+  <div class="quiz-score" id="qs-ch3" style="display:none"></div>
+</div>
 
-  <div id="s-3-1" class="h2">3.1　工作場所行為規範</div>
-
-  <div class="h3">嚴格禁止行為</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>禁止行為</th><th>說明</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>吸菸、嚼檳榔、飲酒、賭博</td><td>院區內任何地點均不得為之</td><td>院方罰扣 500–10,000 元；內部依規懲處</td></tr>
-      <tr><td>任何形式偷竊</td><td>含未經允許擅自取用食材、餐點及滯銷品、欲丟棄食材等</td><td>視同重大違規，情節嚴重者依法辦理</td></tr>
-      <tr><td>上班使用手機或長時間閒聊</td><td>凡與工作無關之行為均不得為之</td><td>依內部管理規範處理</td></tr>
-      <tr><td>帶入或飼養寵物</td><td>工作場域嚴格禁止</td><td>依內部管理規範處理</td></tr>
-      <tr><td>職場霸凌與人身攻擊</td><td>包括貶低、排擠、羞辱、威脅、辱罵等任何形式</td><td>依內規處理，情節重大者依法辦理</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h3">通訊群組管理</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>責任項目</th><th>說明</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>閱讀與回覆</td><td>每日應擇時瀏覽群組訊息，不得以「未讀、未看到」規避責任</td><td>影響工作執行者列入考核</td></tr>
-      <tr><td>群組管理</td><td>不得任意退出、擅自異動或封鎖工作通訊群組</td><td>依內部管理規範處理</td></tr>
-      <tr><td>異常通報</td><td>手機故障、換機或通訊異常時，應主動通報主管</td><td>未通報造成訊息漏接，責任自負</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h3">飲食與物品管理</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>項目</th><th>規定</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>用餐地點</td><td>如需進食或飲水，需至美食廣場或員工休息室，禁止邊工作邊進食</td><td>依內部管理規範處理</td></tr>
-      <tr><td>員工餐存放</td><td>需事前告知所屬營養師，並需當天自行帶回；如未依規定存放並於當日攜回，公司得逕行清除該物品，並對違規者依內部管理規範懲處</td><td>逕行清除且依規懲處</td></tr>
-      <tr><td>個人物品</td><td>須存放於休息室置物櫃；貴重物品自行保管，遺失公司概不負責</td><td>—</td></tr>
-      <tr><td>食材帶回</td><td>未經主管許可，嚴禁擅自將剩餘食材或物品帶回（含滯銷品、欲丟棄食材等）</td><td>視同偷竊，情節嚴重者依法辦理</td></tr>
-    </tbody>
-  </table></div>
-
-  <div id="s-3-2" class="h2">3.2　衛生與服儀規範</div>
-
-  <div class="h3">制服管理</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>制服項目</th><th>清洗頻率</th><th>備註</th></tr></thead>
-    <tbody>
-      <tr><td>工作服</td><td>每日</td><td>不得有污垢或發黴，如無法使用應申請替換</td></tr>
-      <tr><td>防水圍裙</td><td>每日下班前</td><td></td></tr>
-      <tr><td>圍裙、髮帽</td><td>每週</td><td></td></tr>
-    </tbody>
-  </table></div>
-  <p>通勤途中不得穿戴制服及其他工作配件（帽子、圍裙、袖套等），需於工作場所更衣室換裝；請自行預留更衣時間，確保準時進入工作崗位。</p>
-  <div class="note-box">📌 違反制服規定，除自行承擔相關後果，如造成公司形象損害，企業得視情節追究責任並依法求償。</div>
-
-  <div class="h3">儀容規定</div>
-  <p>以下規範若經提醒後仍未改善，將依違規處理：</p>
-  <div class="table-wrap"><table>
-    <thead><tr><th>項目</th><th>規定</th><th>備註</th></tr></thead>
-    <tbody>
-      <tr><td>上身</td><td>公司配發制服</td><td></td></tr>
-      <tr><td>下身</td><td>簡約素色（黑或深色）得體長褲</td><td>禁止牛仔褲；聚酯纖維或阻燃材質為佳</td></tr>
-      <tr><td>鞋子</td><td>白色雨鞋（限內場）</td><td>鞋面保持清潔</td></tr>
-      <tr><td>口罩</td><td>全程佩戴</td><td></td></tr>
-      <tr><td>頭髮</td><td>網帽須完整覆蓋耳朵及所有頭髮</td><td>含瀏海、鬢角</td></tr>
-      <tr><td>指甲</td><td>不得留長指甲、塗指甲油</td><td></td></tr>
-      <tr><td>飾品</td><td>不得佩戴戒指、手錶等飾品</td><td></td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h3">手部衛生</div>
-  <p>接觸餐點時，須全程配戴一次性拋棄式 PE 手套，以下情況須清潔消毒雙手並立即更換新手套：</p>
-  <div class="table-wrap"><table>
-    <thead><tr><th>換手套時機</th><th>特殊說明</th></tr></thead>
-    <tbody>
-      <tr><td>進入食品作業場所前</td><td></td></tr>
-      <tr><td>如廁後</td><td></td></tr>
-      <tr><td>手部遭污染時</td><td></td></tr>
-      <tr><td>手部有傷口時</td><td>需妥善包紮，佩戴雙層手套（第一層貼身手套，第二層 PE 手套）</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h3">其他衛生規定</div>
-  <ul class="doc-list">
-    <li>食品、食材及清潔後的餐具，不得與地面接觸。</li>
-    <li>離開工作區域（休息、如廁、送餐）時，不得穿著內場白色雨鞋；進出工作場所必須經過消毒池。</li>
-    <li>不得自行攜帶、使用或存放未經核准的工作用品（如鋼刷、清潔劑）。</li>
-    <li>確認保溫餐車整潔，避免漏液。</li>
-  </ul>
-  <div class="summary-box">✦ 整潔的環境與穩定的衛生習慣，是對病患、顧客及同仁最基本的職業尊重。</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('ch2',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('ch4',true)">下一單元：第四章 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-ch3" onclick="markRead('ch3')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ CHAPTER 4 ══ -->
-<section class="section section-hidden" id="ch4">
-  <div class="chapter-header">
-    <div class="ch-label">第四章</div>
-    <h1>工作內容與職責</h1>
+<!-- ════════════ CH4 ════════════ -->
+<section class="sec hidden" id="ch4">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-ch4" style="width:0%"></div></div>
+<div class="ch-hdr"><div class="cl">第四章</div><h2>工作內容與職責</h2></div>
+<div class="ch-intro">清楚自身的工作職責，並了解各職位的分工，有助於團隊更有效率地相互支援。</div>
+<div class="role-tag">所有人員（各小節另有標注適用職位）</div>
+
+<div class="h2">工作環境介紹</div>
+<div class="h3">廚房區域劃分</div>
+<div class="tw"><table>
+  <thead><tr><th>區域</th><th>功能說明</th><th>清潔等級</th><th>專用抹布色</th></tr></thead>
+  <tbody>
+    <tr><td>食材前處理區</td><td>食材整理、清洗、切菜、備料</td><td>★★★☆☆ 一般</td><td>白底粉色邊</td></tr>
+    <tr><td>洗碗區</td><td>餐具與廚房用具清洗、消毒</td><td>★★★☆☆ 一般</td><td>—</td></tr>
+    <tr><td>廢棄物處理區</td><td>垃圾分類與廚餘處理</td><td>★★★☆☆ 一般</td><td>—</td></tr>
+    <tr><td>烹調區（大廚區）</td><td>餐點製作</td><td>★★★★☆ 準清潔</td><td>全白</td></tr>
+    <tr><td>病人餐配膳區</td><td>病房餐點準備與包裝</td><td>★★★★★ 清潔</td><td>白底紅邊</td></tr>
+    <tr><td>外場區</td><td>食堂餐點販售與收銀</td><td>★★★★★ 清潔</td><td>白底藍邊</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">餐廳與送餐區域</div>
+<div class="tw"><table>
+  <thead><tr><th>區域</th><th>說明</th></tr></thead>
+  <tbody>
+    <tr><td>B1 旬食堂</td><td>自助餐檯面、小吃麵食區、保溫熱櫃區（精緻飯盒/惜福餐盒）、結帳櫃檯</td></tr>
+    <tr><td>1F 餐車</td><td>銷售限定精緻餐盒與結帳作業</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">執勤區域門禁管理</div>
+<div class="tw"><table>
+  <thead><tr><th>規定</th><th>說明</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>密碼使用</td><td>僅限在職人員本人於值班時段內使用</td><td>違規導致安全風險，依重大違規處理</td></tr>
+    <tr><td>密碼保密</td><td>禁止洩漏或提供予他人，亦不得由非當班人員代為進出</td><td>必要時依醫院方規定辦理</td></tr>
+    <tr><td>密碼更新</td><td>定期更新並公告於工作群組，請妥善記憶保管</td><td></td></tr>
+    <tr><td>非排班時間</td><td>禁止於非排班時間擅自出入</td><td></td></tr>
+  </tbody>
+</table></div>
+
+<div class="h2">各職位工作內容</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">廚務人員（內場）<span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <div class="role-tag">廚務員（內場）</div>
+    <div class="tw"><table>
+      <thead><tr><th>工作項目</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>食材前處理</td><td>食材整理、清洗、切菜、備料</td></tr>
+        <tr><td>病房餐點配膳</td><td>依病患需求準備病人餐、進行分送回收、確保餐車整潔</td></tr>
+        <tr><td>餐具與環境清潔</td><td>洗滌餐具與廚房用具，維持作業區域整潔</td></tr>
+        <tr><td>其他</td><td>出席相關教育訓練、會議等；配合其他臨時交辦工作內容</td></tr>
+      </tbody>
+    </table></div>
   </div>
-  <div class="chapter-intro">清楚自身的工作職責，並了解各職位的分工，有助於團隊更有效率地相互支援。</div>
-  <div class="role-badge">所有人員（各小節另有標注適用職位）</div>
+</div>
+<div class="acc">
+  <button class="acc-btn" onclick="ta(this)">廚務人員（外場）<span class="acc-arr">▼</span></button>
+  <div class="acc-body">
+    <div class="role-tag">廚務員（外場）</div>
+    <div class="tw"><table>
+      <thead><tr><th>工作項目</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>備餐與服務</td><td>協助打餐、補菜，確保份量一致</td></tr>
+        <tr><td>收銀與顧客服務</td><td>點餐引導、收銀結帳</td></tr>
+        <tr><td>環境維護</td><td>清理外場環境，確保舒適整潔</td></tr>
+        <tr><td>其他</td><td>出席相關教育訓練、會議等；配合其他臨時交辦工作內容</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
 
-  <div id="s-4-1" class="h2">4.1　工作環境介紹</div>
+<div class="h3">各職位主要職責與聯繫窗口</div>
+<div class="tw"><table>
+  <thead><tr><th>職稱</th><th>主要職責</th><th>適合聯繫事項</th></tr></thead>
+  <tbody>
+    <tr><td>品牌營運經理</td><td>整體品牌/團隊管理、人事制度、營運決策</td><td>人事、制度等重大問題或決策</td></tr>
+    <tr><td>營養管理師</td><td>排班管理、現場管理（含設備）、食安衛生、病房菜單、教育訓練</td><td>排班調班、現場緊急狀況、客訴、食材異常、工作流程；重大營運事項向經理回報</td></tr>
+    <tr><td>廚師長（廚師）</td><td>廚房烹調、餐食品質、食材處理、出餐流程、料理業務</td><td>餐食品質與出餐內容（並同步回報營養師）</td></tr>
+    <tr><td>行政事務員</td><td>材料訂購、庫房管理、文件處理、現場收銀</td><td>物品補充、訂貨文件、收銀狀況</td></tr>
+  </tbody>
+</table></div>
 
-  <div class="h3">廚房區域劃分</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>區域</th><th>功能說明</th><th>清潔等級</th><th>專用抹布色</th></tr></thead>
-    <tbody>
-      <tr><td>食材前處理區</td><td>食材整理、清洗、切菜、備料</td><td>★★★☆☆ 一般</td><td>白底粉色邊</td></tr>
-      <tr><td>洗碗區</td><td>餐具與廚房用具清洗、消毒</td><td>★★★☆☆ 一般</td><td>—</td></tr>
-      <tr><td>廢棄物處理區</td><td>垃圾分類與廚餘處理</td><td>★★★☆☆ 一般</td><td>—</td></tr>
-      <tr><td>烹調區（大廚區）</td><td>餐點製作</td><td>★★★★☆ 準清潔</td><td>全白</td></tr>
-      <tr><td>病人餐配膳區</td><td>病房餐點準備與包裝</td><td>★★★★★ 清潔</td><td>白底紅邊</td></tr>
-      <tr><td>外場區</td><td>食堂餐點販售與收銀</td><td>★★★★★ 清潔</td><td>白底藍邊</td></tr>
-    </tbody>
-  </table></div>
+<div class="h2">工作規定</div>
+<div class="tw"><table>
+  <thead><tr><th>規定</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>嚴格遵守院方衛生管理與工作安全規定（含醫療評鑑、演習、檢體留樣等）</td><td>院方罰扣；依內部規範懲處</td></tr>
+    <tr><td>執行指定任務遇困難時，應即時向上級報告，不得擅自變更工作內容或流程</td><td>依違規情節處理</td></tr>
+    <tr><td>應接受管理者工作指導並完成指定工作</td><td>如無正當理由拒絕，經提醒仍未改善，主管得要求提前下班</td></tr>
+  </tbody>
+</table></div>
+<p>員工需參與院方與公司安排的工作相關課程及消防演習。與病患、同事、主管互動時，保持禮貌、耐心、清楚表達；不得與病患或客人發生衝突，如遇特殊情況，應立即向主管回報（院方罰扣：1,000 元）。</p>
 
-  <div class="h3">餐廳與送餐區域</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>區域</th><th>說明</th></tr></thead>
-    <tbody>
-      <tr><td>B1 旬食堂</td><td>自助餐檯面、小吃麵食區、保溫熱櫃區（精緻飯盒/惜福餐盒）、結帳櫃檯</td></tr>
-      <tr><td>1F 餐車</td><td>銷售限定精緻餐盒與結帳作業</td></tr>
-      <tr><td>環境維護</td><td>每日清潔各區、收納櫃與地面，保持環境整潔</td></tr>
-    </tbody>
-  </table></div>
+<div class="h2">員工供餐福利</div>
+<div class="role-tag">全體在職人員</div>
+<div class="tw"><table>
+  <thead><tr><th>規定</th><th>說明</th><th>違規後果</th></tr></thead>
+  <tbody>
+    <tr><td>享用資格</td><td>當日實際出勤之全體在職人員，每日免費供餐一份（早、中、晚擇一）</td><td></td></tr>
+    <tr><td>內容限制</td><td>不限自助餐或小吃區一般品項，主菜限領一項（正常份量）</td><td></td></tr>
+    <tr><td>領餐憑證</td><td>須出示當月領餐卡，由現場人員簽章後領取</td><td>濫用、偽造、冒用者取消當月福利並依內規懲處</td></tr>
+    <tr><td>違規累計</td><td>每月違規達 2 次（含）</td><td>停用次月福利一次</td></tr>
+    <tr><td>卡片遺失</td><td>應立即回報所屬營養師</td><td>補辦前暫停領餐</td></tr>
+  </tbody>
+</table></div>
 
-  <div class="h3">執勤區域門禁管理</div>
-  <div class="role-badge">所有在職人員</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>規定</th><th>說明</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>密碼使用</td><td>僅限在職人員本人於值班時段內使用</td><td>違規導致安全風險，依重大違規處理</td></tr>
-      <tr><td>密碼保密</td><td>禁止洩漏或提供予他人，亦不得由非當班人員代為進出</td><td>必要時依醫院方規定辦理</td></tr>
-      <tr><td>密碼更新</td><td>定期更新並公告於工作群組，請妥善記憶保管</td><td></td></tr>
-      <tr><td>非排班時間</td><td>禁止於非排班時間擅自出入</td><td></td></tr>
-    </tbody>
-  </table></div>
+<div class="h2">滯銷品管理</div>
+<p>滯銷品管理辦法詳見 <a style="color:var(--pr);text-decoration:underline;cursor:pointer;font-weight:700" onclick="go('a3')">附件三：滯銷品管理辦法</a>。</p>
 
-  <div id="s-4-2" class="h2">4.2　各職位工作內容</div>
+<div class="h2">垃圾處理規範</div>
+<div class="tw"><table>
+  <thead><tr><th>類別</th><th>規定</th><th>注意事項</th></tr></thead>
+  <tbody>
+    <tr><td>垃圾分類</td><td>一般垃圾、回收物、廚餘應正確分開處理</td><td>打包前確認分類無誤</td></tr>
+    <tr><td>垃圾打包</td><td>垃圾袋需綁緊，避免湯汁外漏或袋口破損</td><td>廚餘適量分裝、瀝乾</td></tr>
+    <tr><td>保麗龍</td><td>需處理成小碎塊後以垃圾袋完整包裝丟棄</td><td></td></tr>
+    <tr><td>垃圾存放</td><td>放置於第一棟醫療大樓 B2 垃圾子母車內，蓋子需蓋好</td><td>廚餘放入廚餘桶，不得丟入一般垃圾桶</td></tr>
+    <tr><td>垃圾區清潔</td><td>每日中午及下午班下班前清洗，使用 200ppm 漂白水消毒</td><td></td></tr>
+  </tbody>
+</table></div>
+<div class="sum">✦ 充分了解職責與工作環境，是成為穩定可信賴的工作夥伴的根本基礎。</div>
 
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">廚務人員（內場）<span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <div class="role-badge">廚務員（內場）</div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>工作項目</th><th>說明</th></tr></thead>
-        <tbody>
-          <tr><td>食材前處理</td><td>食材整理、清洗、切菜、備料</td></tr>
-          <tr><td>病房餐點配膳</td><td>依病患需求準備病人餐、進行分送回收、確保餐車整潔</td></tr>
-          <tr><td>餐具與環境清潔</td><td>洗滌餐具與廚房用具，維持作業區域整潔</td></tr>
-          <tr><td>主管交辦</td><td>配合其他臨時交辦工作內容</td></tr>
-        </tbody>
-      </table></div>
+<!-- Chapter 4 Quiz -->
+<div class="h2">章末小考：第四章</div>
+<div class="quiz-wrap" id="quiz-ch4">
+  <h4>📝 完成閱讀了嗎？來確認幾個重點</h4>
+  <div class="q-item">
+    <div class="q-text">1. 病人餐配膳區的清潔等級為？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q1ch4" value="a"> ★★★☆☆ 一般作業</label>
+      <label><input type="radio" name="q1ch4" value="b"> ★★★★☆ 準清潔</label>
+      <label><input type="radio" name="q1ch4" value="c"> ★★★★★ 清潔</label>
+      <label><input type="radio" name="q1ch4" value="d"> 無等級區分</label>
     </div>
   </div>
-
-  <div class="accordion">
-    <button class="accordion-btn" onclick="toggleAcc(this)">廚務人員（外場）<span class="arrow">▼</span></button>
-    <div class="accordion-body">
-      <div class="role-badge">廚務員（外場）</div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>工作項目</th><th>說明</th></tr></thead>
-        <tbody>
-          <tr><td>備餐與服務</td><td>協助打餐、補菜，確保份量一致</td></tr>
-          <tr><td>收銀與顧客服務</td><td>點餐引導、收銀結帳</td></tr>
-          <tr><td>環境維護</td><td>清理外場環境，確保舒適整潔</td></tr>
-          <tr><td>主管交辦</td><td>配合其他臨時交辦工作內容</td></tr>
-        </tbody>
-      </table></div>
+  <div class="q-item">
+    <div class="q-text">2. 有關排班問題，應優先聯繫誰？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q2ch4" value="a"> 品牌營運經理</label>
+      <label><input type="radio" name="q2ch4" value="b"> 廚師長</label>
+      <label><input type="radio" name="q2ch4" value="c"> 營養管理師</label>
+      <label><input type="radio" name="q2ch4" value="d"> 行政事務員</label>
     </div>
   </div>
+  <button class="quiz-btn" onclick="gradeQuiz('ch4',{'q1ch4':'c','q2ch4':'c'})">提交答案</button>
+  <div class="quiz-score" id="qs-ch4" style="display:none"></div>
+</div>
 
-  <div class="h3">各職位主要職責與聯繫窗口</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>職稱</th><th>主要職責</th><th>適合聯繫事項</th></tr></thead>
-    <tbody>
-      <tr><td>品牌經理</td><td>整體品牌/團隊管理、人事制度、營運決策</td><td>人事、制度等重大問題或決策</td></tr>
-      <tr><td>營運副理</td><td>排班管理、營運管理、行政作業、料理業務</td><td>排班調班、帳款請款、營運狀況、菜單</td></tr>
-      <tr><td>營養管理師</td><td>現場管理（含設備）、食安衛生、病房菜單、教育訓練</td><td>現場緊急狀況、客訴、食材異常、工作流程</td></tr>
-      <tr><td>廚師長（廚師）</td><td>廚房烹調、餐食品質、食材處理、出餐流程</td><td>餐食品質與出餐內容（並同步回報營養師）</td></tr>
-      <tr><td>行政事務員</td><td>材料訂購、庫房管理、文件處理、現場收銀</td><td>物品補充、訂貨文件、收銀狀況</td></tr>
-    </tbody>
-  </table></div>
-
-  <div id="s-4-3" class="h2">4.3　工作規定</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>規定</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>嚴格遵守院方衛生管理與工作安全規定（含醫療評鑑、演習、檢體留樣等）</td><td>院方罰扣；依內部規範懲處</td></tr>
-      <tr><td>執行指定任務遇困難時，應即時向上級報告，不得擅自變更工作內容或流程</td><td>依違規情節處理</td></tr>
-      <tr><td>應接受管理者工作指導並完成指定工作</td><td>如無正當理由拒絕，經提醒仍未改善，主管得要求提前下班</td></tr>
-    </tbody>
-  </table></div>
-  <p>員工需參與院方與公司安排的工作相關課程及消防演習。與病患、同事、主管互動時，保持禮貌、耐心、清楚表達；不得與病患或客人發生衝突，如遇特殊情況，應立即向主管回報（院方罰扣：1,000 元）。</p>
-
-  <div id="s-4-4" class="h2">4.4　員工供餐福利</div>
-  <div class="role-badge">廚務員、事務員、廚師</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>規定</th><th>說明</th><th>違規後果</th></tr></thead>
-    <tbody>
-      <tr><td>享用資格</td><td>當日實際出勤人員，每日免費供餐一份（早、中、晚擇一）</td><td></td></tr>
-      <tr><td>內容限制</td><td>不限自助餐或小吃區一般品項，主菜限領一項（正常份量）</td><td></td></tr>
-      <tr><td>領餐憑證</td><td>須出示當月領餐卡，由現場人員簽章後領取</td><td>濫用、偽造、冒用者取消當月福利並依內規懲處</td></tr>
-      <tr><td>次數限制</td><td>每人每日限領乙次，不得重複領取、累計或冒用他人卡片</td><td></td></tr>
-      <tr><td>違規累計</td><td>每月違規達 2 次（含）</td><td>停用次月福利一次</td></tr>
-      <tr><td>卡片遺失</td><td>應立即回報所屬營養師</td><td>補辦前暫停領餐</td></tr>
-    </tbody>
-  </table></div>
-
-  <div id="s-4-5" class="h2">4.5 &amp; 4.6　滯銷品與垃圾處理</div>
-  <p>滯銷品管理辦法詳見附件三（操作卡）。</p>
-  <div class="h3">垃圾處理規範</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>類別</th><th>規定</th><th>注意事項</th></tr></thead>
-    <tbody>
-      <tr><td>垃圾分類</td><td>一般垃圾、回收物、廚餘應正確分開處理</td><td>打包前確認分類無誤</td></tr>
-      <tr><td>垃圾打包</td><td>垃圾袋需綁緊，避免湯汁外漏或袋口破損</td><td>廚餘適量分裝、瀝乾</td></tr>
-      <tr><td>保麗龍</td><td>需處理成小碎塊後以垃圾袋完整包裝丟棄</td><td></td></tr>
-      <tr><td>垃圾存放</td><td>放置於第一棟醫療大樓 B2 垃圾子母車內，蓋子需蓋好</td><td>廚餘放入廚餘桶，不得丟入一般垃圾桶</td></tr>
-      <tr><td>垃圾區清潔</td><td>每日中午及下午班下班前清洗，使用 200ppm 漂白水消毒</td><td></td></tr>
-    </tbody>
-  </table></div>
-  <div class="summary-box">✦ 充分了解職責與工作環境，是成為穩定可信賴的工作夥伴的根本基礎。</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('ch3',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('a1',true)">下一單元：附件一 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-ch4" onclick="markRead('ch4')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ════════════════════════════════════════════ APPENDIX 2 ══ -->
-<section class="section section-hidden" id="app2">
-  <div class="chapter-header">
-    <div class="ch-label">附件二</div>
-    <h1>制服與名牌發放管理辦法</h1>
-  </div>
-  <div class="chapter-intro">本辦法說明制服與名牌之配發、補發、回收及報廢標準。相關費用請參閱「易變動資訊彙整」頁。</div>
+<!-- ════════════ APPENDIX 1 ════════════ -->
+<section class="sec hidden" id="a1">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-a1" style="width:0%"></div></div>
+<div class="ch-hdr ch-hdr--appendix"><div class="cl">附件一</div><h2>緊急聯絡人資訊</h2></div>
+<div class="ch-intro">如遇緊急事件，應於第一時間主動聯繫、通報以下人員。請記住院內分機，手機不在時也能聯繫。</div>
 
-  <div class="h2">A. 配發標準</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>情況</th><th>發放內容</th></tr></thead>
-    <tbody>
-      <tr><td>試用期首月（臨時）</td><td>臨時制服兩件、實習新人名牌一個（屆滿後須歸還）</td></tr>
-      <tr><td>確認晉升正職時</td><td>正式制服兩件（新品）＋名牌一個</td></tr>
-      <tr><td>試用期滿三個月正式錄用後</td><td>追加制服一件，共計三件</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h2">B. 補發規定</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>情況</th><th>處理方式</th></tr></thead>
-    <tbody>
-      <tr><td>人為因素毀損或遺失</td><td>需申請補發並支付費用（詳見「易變動資訊彙整」頁）</td></tr>
-      <tr><td>非人為因素提前老舊</td><td>可申請免費補發，須主管核實</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h2">C. 報廢／更換標準</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>對象</th><th>報廢條件</th></tr></thead>
-    <tbody>
-      <tr><td>制服</td><td>嚴重褪色泛黃 / 布料破損或變形 / 厚度顯著減損 / 難以清洗的污漬或異味</td></tr>
-      <tr><td>名牌</td><td>嚴重褪色泛黃 / 破損或變形 / 磁力失效無法正常配戴</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="h2">D. 回收與庫存管理</div>
-  <ul class="doc-list">
-    <li>離職人員須於離職後 7 天內完整歸還所領制服與名牌（需清洗乾淨），歸還後方可領取當月薪資。</li>
-    <li>備品庫存安全量：制服與名牌各至少 5 件；每年第四季進行定期盤點，評估是否補發或更新。</li>
-  </ul>
-  <div class="note-box">📌 制服管理負責人：墨旬副理　|　盤點週期：每年第四季</div>
+<div class="tw"><table>
+  <thead><tr><th>職稱</th><th>姓名</th><th>聯絡電話</th><th>聯繫事項</th></tr></thead>
+  <tbody>
+    <tr><td>安南醫院營養科</td><td>—</td><td>(06)355-3111 分機 #1481 或 #1482</td><td>緊急優先聯絡</td></tr>
+    <tr><td>墨旬營養師</td><td>齊國崴</td><td>0980-155-011</td><td>現場管理</td></tr>
+    <tr><td>品牌營運經理</td><td>王映婷</td><td>0902-302-150</td><td>制度、高階決策</td></tr>
+  </tbody>
+</table></div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('ch4',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('a2',true)">下一單元：附件二 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-a1" onclick="markRead('a1')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ════════════════════════════════════════════ APPENDIX 3 ══ -->
-<section class="section section-hidden" id="app3">
-  <div class="chapter-header">
-    <div class="ch-label">附件三</div>
-    <h1>滯銷品管理操作卡</h1>
-  </div>
-  <div class="chapter-intro">本辦法以操作卡形式呈現，供現場人員快速查閱，無需逐頁閱讀。</div>
+<!-- ════════════ APPENDIX 2 ════════════ -->
+<section class="sec hidden" id="a2">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-a2" style="width:0%"></div></div>
+<div class="ch-hdr ch-hdr--appendix"><div class="cl">附件二</div><h2>制服與名牌發放管理辦法</h2></div>
+<div class="ch-intro">本辦法說明制服與名牌之配發、補發、回收及報廢標準。相關費用請參閱「易變動資訊彙整」頁。</div>
 
-  <div class="accordion">
-    <button class="accordion-btn open" onclick="toggleAcc(this)">卡 A　兩種管理類別 <span class="arrow" style="transform:rotate(180deg)">▼</span></button>
-    <div class="accordion-body open">
-      <div class="table-wrap"><table>
-        <thead><tr><th>類別</th><th>定義</th><th>登記方式</th></tr></thead>
-        <tbody>
-          <tr><td>滯銷品（已打餐）</td><td>完成製作、包裝並進入販售後，最終未售出的產品</td><td>填入「每週滯銷品登記表」</td></tr>
-          <tr><td>無法再出餐品項</td><td>經廚師判定，因品質、時效或完整性，已不適合再販售的餐點或食材</td><td>不納入滯銷品登記表，獨立管理（見卡 E）</td></tr>
-        </tbody>
-      </table></div>
+<div class="h2">配發標準</div>
+<div class="tw"><table>
+  <thead><tr><th>情況</th><th>發放內容</th></tr></thead>
+  <tbody>
+    <tr><td>入職觀察期（臨時）</td><td>臨時制服兩件、實習新人名牌一個（離職或觀察期結束後須歸還）</td></tr>
+    <tr><td>確認晉升正職時</td><td>正式制服兩件（新品）＋名牌一個</td></tr>
+    <tr><td>正職錄用後追加</td><td>追加制服一件，共計三件</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h2">補發規定</div>
+<div class="tw"><table>
+  <thead><tr><th>情況</th><th>處理方式</th></tr></thead>
+  <tbody>
+    <tr><td>人為因素毀損或遺失</td><td>需申請補發並支付費用（詳見「易變動資訊彙整」頁）</td></tr>
+    <tr><td>非人為因素提前老舊</td><td>可申請免費補發，須主管核實</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h2">報廢／更換標準</div>
+<div class="tw"><table>
+  <thead><tr><th>對象</th><th>報廢條件</th></tr></thead>
+  <tbody>
+    <tr><td>制服</td><td>嚴重褪色泛黃 / 布料破損或變形 / 厚度顯著減損 / 難以清洗的污漬或異味</td></tr>
+    <tr><td>名牌</td><td>嚴重褪色泛黃 / 破損或變形 / 磁力失效無法正常配戴</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h2">回收與庫存管理</div>
+<ul class="dl">
+  <li>離職人員須於離職後 7 天內完整歸還所領制服與名牌（需清洗乾淨），歸還後方可領取當月薪資。</li>
+  <li>備品庫存安全量：制服與名牌各至少 5 件；每年第四季進行定期盤點，評估是否補發或更新。</li>
+</ul>
+<div class="note">📌 制服管理負責人：墨旬經理　|　盤點週期：每年第四季</div>
+<div class="h2">附件二小考</div>
+<div class="quiz-wrap" id="quiz-a2">
+  <h4>📝 制服管理重點確認</h4>
+  <div class="q-item">
+    <div class="q-text">1. 以下哪一種情況，制服補發費用由員工自行負擔？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q1a2" value="a"> 布料因長期使用自然磨損</label>
+      <label><input type="radio" name="q1a2" value="b"> 因個人疏失遺失制服</label>
+      <label><input type="radio" name="q1a2" value="c"> 顏色褪色影響形象</label>
+      <label><input type="radio" name="q1a2" value="d"> 廠商材質問題導致損壞</label>
     </div>
   </div>
-
-  <div class="accordion">
-    <button class="accordion-btn open" onclick="toggleAcc(this)">卡 B　滯銷品適用範圍 <span class="arrow" style="transform:rotate(180deg)">▼</span></button>
-    <div class="accordion-body open">
-      <div class="table-wrap"><table>
-        <thead><tr><th>餐別</th><th>適用品項</th></tr></thead>
-        <tbody>
-          <tr><td>早餐</td><td>所有已包裝品項</td></tr>
-          <tr><td>午餐（自助）</td><td>熱櫃/餐車雙主餐餐盒、小吃區產品、碗裝湯品/飯品</td></tr>
-          <tr><td>病房午餐</td><td>病房退餐後製成之惜福餐盒</td></tr>
-          <tr><td>病房晚餐</td><td>病房退餐餐盒</td></tr>
-        </tbody>
-      </table></div>
+  <div class="q-item">
+    <div class="q-text">2. 離職後幾個工作天內須完成制服歸還，才能領當月薪資？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q2a2" value="a"> 3 天</label>
+      <label><input type="radio" name="q2a2" value="b"> 5 天</label>
+      <label><input type="radio" name="q2a2" value="c"> 7 天</label>
+      <label><input type="radio" name="q2a2" value="d"> 14 天</label>
     </div>
   </div>
-
-  <div class="accordion">
-    <button class="accordion-btn open" onclick="toggleAcc(this)">卡 C　登記時間表 <span class="arrow" style="transform:rotate(180deg)">▼</span></button>
-    <div class="accordion-body open">
-      <div class="table-wrap"><table>
-        <thead><tr><th>登記項目</th><th>負責人</th><th>截止時間</th></tr></thead>
-        <tbody>
-          <tr><td>預售數量（除病房餐與小吃區外）</td><td>菜單負責人</td><td>開賣前一日完成</td></tr>
-          <tr><td>滯銷數量（早餐）</td><td>當餐關帳人員</td><td>08:30</td></tr>
-          <tr><td>滯銷數量（午餐）</td><td>當餐關帳人員</td><td>13:30</td></tr>
-          <tr><td>滯銷數量（晚餐）</td><td>當餐關帳人員</td><td>18:00</td></tr>
-        </tbody>
-      </table></div>
-      <p>登記完成後，由關帳人員會同墨旬營養師核對實際剩餘數量，確認後由營養師統一集中至「惜福品集中處」（內場廊上銀色貨架）。</p>
-    </div>
-  </div>
-
-  <div class="accordion">
-    <button class="accordion-btn open" onclick="toggleAcc(this)">卡 D　領用規定（重要） <span class="arrow" style="transform:rotate(180deg)">▼</span></button>
-    <div class="accordion-body open">
-      <div class="note-box">📌 須經墨旬營養師登記後方可領取，不得私自取用。僅得於該餐期結束後領取，不得於販售期間預訂或保留。</div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>領用類別</th><th>適用品項</th><th>費用</th><th>操作方式</th></tr></thead>
-        <tbody>
-          <tr><td>免費領取（需登記）</td><td>病房退餐/惜福餐盒、碗裝湯品/飯品</td><td>免費</td><td>向營養師登記（無當班營養師時得從簡）</td></tr>
-          <tr><td>惜福優惠</td><td>早餐已包裝品、熱櫃/餐車雙主餐餐盒、小吃區產品</td><td>原價半價，無條件捨去至尾數 5 或 0（例：75 元→35 元）</td><td>向營養師登記後依金額投幣至「墨旬零錢基金箱」；恕不找零、不開發票</td></tr>
-          <tr><td>內部公關</td><td>部分滯銷品</td><td>主管核定</td><td>主管或營養師核定並完成登記</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-  </div>
-
-  <div class="accordion">
-    <button class="accordion-btn open" onclick="toggleAcc(this)">卡 E　無法再出餐品項（廚師適用） <span class="arrow" style="transform:rotate(180deg)">▼</span></button>
-    <div class="accordion-body open">
-      <div class="table-wrap"><table>
-        <thead><tr><th>步驟</th><th>說明</th></tr></thead>
-        <tbody>
-          <tr><td>認定</td><td>由當班廚師專業判定，不納入滯銷品登記表</td></tr>
-          <tr><td>放置</td><td>早班廚師於 08:00 前，統一放置於大廚區指定儲運箱</td></tr>
-          <tr><td>取用時段</td><td>有意取用者，於 07:50–08:10 間，自備容器取用（不得使用內部容器資材）</td></tr>
-          <tr><td>逾時處理</td><td>逾時未取用，由負責班別人員統一清理</td></tr>
-          <tr><td>公平分配</td><td>多人欲取用相同品項，依價格與重量均分</td></tr>
-        </tbody>
-      </table></div>
-      <div class="note-box">📌 如有私自濫取、偷竊或影響營運秩序之行為，公司得取消本制度之適用。若有虛報「無法再出餐」之情形，由負責廚師依情節處理。</div>
-      <p>本制度係基於信任與自律原則設立，若無法確保公平性與管理目的，公司保留隨時修訂、暫停或取消之權利。</p>
-    </div>
-  </div>
-  <div class="note-box">📌 滯銷品辦法管理負責人：墨旬副理　|　審查週期：每次版本更新時</div>
+  <button class="quiz-btn" onclick="gradeQuiz('a2',{'q1a2':'b','q2a2':'c'})">提交答案</button>
+  <div class="quiz-score" id="qs-a2" style="display:none"></div>
+</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('a1',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('a3',true)">下一單元：附件三 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-a2" onclick="markRead('a2')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ PENALTY ══ -->
-<section class="section section-hidden" id="penalty">
-  <div class="chapter-header">
-    <div class="ch-label">罰則附件</div>
-    <h1>臺南市立安南醫院商場違規事項罰扣表</h1>
-  </div>
-  <div class="chapter-intro">本表內容依院方規定原封不動呈現。114.05.19 版　|　商場管理辦法 114 年 05 月 15 日修訂</div>
-  <p>自 2026 年 2 月起，凡屬人員可避免、可自我檢核之疏失案件，將依本人員工作規範與其罰則進行列管與處理。每一筆疏失案件，皆須填寫「墨旬人員業務檢討改善單（自檢表）」，並由督管與主管共同判定責任歸屬與處理方式。若經院方開罰，但由內部評估屬可給予寬限者，公司願吸收罰則並給予人員改善機會；其餘經判定屬個人責任者，將依規範執行個人罰則。</p>
+<!-- ════════════ APPENDIX 3 ════════════ -->
+<section class="sec hidden" id="a3">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-a3" style="width:0%"></div></div>
+<div class="ch-hdr ch-hdr--appendix"><div class="cl">附件三</div><h2>滯銷品管理辦法</h2></div>
+<div class="ch-intro">本辦法旨在明確控管食品數量與流向，降低浪費，確保流程透明，並避免私自取用或爭議行為。本辦法涵蓋兩大類品項，管理方式不同，請先確認品項類別再依相應流程執行。</div>
 
-  <div class="h3">人員管理類</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>#</th><th>違規事項</th><th>罰扣規定</th></tr></thead>
-    <tbody>
-      <tr><td>1</td><td>未依規定營業時間開店或打烊。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>2</td><td>承攬商員工未穿著整齊制服或未配戴院方發放識別證、工作人員指甲骯髒、儀容不整、擦指甲油或於院區內抽煙、嚼檳榔等違規行為。</td><td>罰扣 500 元。</td></tr>
-      <tr><td>3</td><td>在營業場所範圍內有賭博、酗酒、吸毒、鬥毆、收留不法人員、存放違禁物品或進行其他不法之情事。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>4</td><td>商場內未將清掃用具及私人物品擺放整齊。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>5</td><td>非承攬商員工進入櫃台及作業區。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>6</td><td>承攬商員工在進入本商場工作前，未取得醫療院所之合格體檢報告。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>7</td><td>聘僱承攬商員工，未先嚴格考核，並繕造名冊、個人資料、身分證影本、合格醫院之體檢證明各乙份。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>8</td><td>承攬商員工未嚴格管制爐火，防範火災。不愛護使用公共設備節約使用能源，製造公害。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>9</td><td>承攬商員工無故擅離職位，店面無人看守。</td><td>罰扣 2,000 元。</td></tr>
-      <tr><td>10</td><td>工作人員有竊取消費者財物之行為。</td><td>罰扣 2,000 元（外包廠商須配合本院要求更換工作人員）</td></tr>
-      <tr><td>11</td><td>工作人員服務態度不佳，影響本院聲譽。</td><td>罰扣 1,000 元（外包廠商須配合本院要求更換工作人員）</td></tr>
-    </tbody>
-  </table></div>
+<!-- ── 分類說明 ── -->
+<div class="h2">一、兩種管理類別——先判斷你面對的是哪一種</div>
+<div class="tw"><table>
+  <thead><tr><th style="width:7rem">類別</th><th>定義</th><th style="width:7rem">適用流程</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>滯銷品</strong><br><span style="font-size:.78rem;color:var(--mu)">已打餐品項</span></td>
+      <td>完成製作、包裝並進入販售後，於當餐期結束時仍未售出的產品。</td>
+      <td>→ 見第二至四節</td>
+    </tr>
+    <tr>
+      <td><strong>無法再出餐品項</strong><br><span style="font-size:.78rem;color:var(--mu)">非販售成品</span></td>
+      <td>經廚師專業判定，因品質、時效或完整性因素，已不適合再次作為商品販售的餐點或食材。</td>
+      <td>→ 見第五節</td>
+    </tr>
+  </tbody>
+</table></div>
 
-  <div class="h3">商場管理類</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>#</th><th>違規事項</th><th>罰扣規定</th></tr></thead>
-    <tbody>
-      <tr><td>12</td><td>在商場存放危險性油料、易爆物或易燃物品。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>13</td><td>本院例行性查核商場時，無正當理由故意規避、妨礙或拒絕檢查。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>14</td><td>拒絕本院管理上之合理要求及會議。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>15</td><td>對於本院所提供之設施設備，未妥善維護保管，並擅自變更原設計。</td><td>外包廠商除將原設計恢復，另須罰扣 10,000 元。</td></tr>
-      <tr><td>16</td><td>資源回收未依規定分類處理，且垃圾桶超過八分滿。</td><td>罰扣 500 元。</td></tr>
-      <tr><td>17</td><td>陳列或出售變質、欺騙消費者或法令禁止之商品。</td><td>除停止販售外，另需罰扣 3,000 元。</td></tr>
-      <tr><td>18</td><td>冷凍冷藏設備溫度不符合規定，未保持冷藏 7℃以下，冷凍 -18℃以下，每日未記錄溫度備查。</td><td>罰扣 500 元。</td></tr>
-      <tr><td>19</td><td>未於本院指定卸貨區卸貨。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>20</td><td>未遵守用電安全插座及延長線超載。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>21</td><td>廣告物、宣傳單未經總務室允許即張貼或發放。</td><td>罰扣 500 元。</td></tr>
-      <tr><td>22</td><td>在租賃標的物區域以外之院方公共區域設置店招、商店標幟、促銷活動看板及張貼製作廣告等。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>23</td><td>未遵守營業場所設置、裝潢及施工規定。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>24</td><td>施工時影響院方員工及病患家屬安全、衛生及觀瞻。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>25</td><td>未遵守建築水電公共安全及其他相關法令規定。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>26</td><td>營業場所之使用面積未依圖說標示，踰越使用。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>27</td><td>貨物之堆積、存放、進出及營業服務方式妨礙本院作業動線、安全、衛生或觀瞻。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>28</td><td>承攬商未每年舉辦消防演練，或不配合院方舉辦之各類演練（如消防、大量傷患、停電等）。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>29</td><td>租賃標的物之營業及服務人員不熟知本標的物之逃生路線、安全設施之操作及緊急狀況處理程序。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>30</td><td>承攬商於承租之租賃標的物範圍內住宿。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>31</td><td>承攬商業務播放之音響，影響院區安寧。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>32</td><td>公共空間堆放物品或佔為私有。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>33</td><td>破壞排水孔及其排水設備。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>34</td><td>承攬商將本標的物私自轉讓他人經營，或冒用他人名義登記公司行號。</td><td>除罰扣 10,000 元外，本院得終止契約，且履約保證金不予發還。</td></tr>
-      <tr><td>35</td><td>承攬商變更公司代表人等事項時未於 10 日前通知本院，或變更後之組織未概括承受本契約之所有權利及義務。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>36</td><td>積欠租金總額已達二個月以上租額。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>37</td><td>承攬商有嚴重違約情事，本院連續三次書面通知改善而未改善者。</td><td>除罰扣 10,000 元外，本院得終止契約，且履約保證金不予發還。</td></tr>
-      <tr><td>38</td><td>承攬商收費時未提供發票或發票上未載明商場商名、收費日期、金額及承攬廠商公司全銜。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>39</td><td>營業期間與消費者發生損壞賠償事件。</td><td>概由承攬商負責處理，與本院無關。</td></tr>
-      <tr><td>40</td><td>擅自變更經雙方協議之合約事項。</td><td>需經本院同意；若未經同意，將視情節輕重，處以重罰。</td></tr>
-      <tr><td>41</td><td>遲未辦理院方合理的改善要求。</td><td>將視情節輕重，處以罰款，至少 1,000 元。</td></tr>
-      <tr><td>42</td><td>人員個人及環境衛生各項查檢未符合 GHP 食品良好衛生規範準則，經院方要求期限改善而一個月複查 2 次均未改善者。</td><td>罰扣 1,000 元。</td></tr>
-      <tr><td>43</td><td>餐盤、鍋具及廚房器具未清潔乾淨藏汙納垢情形，經院方要求期限改善而一個月複查 2 次均未改善者。</td><td>罰扣 1,000 元。</td></tr>
-      <tr><td>44</td><td>每日供膳留樣不確實者，經院方發現勸告仍再犯者。</td><td>罰扣 500 元。</td></tr>
-      <tr><td>45</td><td>人員未依規定執行定期健檢作業，或有法訂定應避免之餐飲相關傷口及疾病者從事供餐工作。</td><td>罰扣 3,000 元。</td></tr>
-      <tr><td>46</td><td>未依規定時間執行各區清潔保養工作及油煙水洗機等（排除不可抗原因）。</td><td>罰扣 2,000 元。</td></tr>
-      <tr><td>47</td><td>因管理疏失而影響病房正常供餐，造成投訴者（包括餐點漏送、送錯床、送錯內容等）。</td><td>每次罰扣 200 元。</td></tr>
-      <tr><td>48</td><td>發生火災經消防專業鑑定原因為承包工作人員疏失造成者。</td><td>罰扣 20,000 元，由承攬商負責處理，與本院無關。</td></tr>
-      <tr><td>49</td><td>廚師持證比率未達 75% 者或廚師每年衛生講習未達 8 小時者達 1/3 者。</td><td>罰扣 1,000 元。</td></tr>
-      <tr><td>50</td><td>食材經查發現有不新鮮或不合格之原物料如過期、發霉或腐敗之情事者。</td><td>罰扣 2,000 元。</td></tr>
-      <tr><td>51</td><td>餐食因管理疏失而造成異物出現。</td><td>每次罰扣 200 元。</td></tr>
-      <tr><td>52</td><td>餐食食物酸敗、烹調不熟、焦黑等（如經員工及病患投訴，加重處罰）。</td><td>罰扣 500 元，經投訴並查明屬實罰扣 1,000 元。</td></tr>
-      <tr><td>53</td><td>發生疑似食物中毒且留樣檢體檢出相關中毒者（若確實可歸責於承包商之管理疏失者）。</td><td>罰扣 20,000 元，由承攬商負責處理，與本院無關。</td></tr>
-      <tr><td>54</td><td>病房出餐未依出餐時間規定出餐（延誤超過 20 分），當月延遲 3 次以上者。</td><td>罰扣 2,000 元。</td></tr>
-      <tr><td>55</td><td>未依規定辦理廚勤人員之衛生教育訓練課程者。</td><td>罰扣 1,000 元。</td></tr>
-      <tr><td>56</td><td>因管理不善導致院方遭主管機關處罰者。</td><td>罰扣 10,000 元。</td></tr>
-      <tr><td>57</td><td>其他：違反合約相關之事項。</td><td>將視情節輕重，處以罰款，至少 1,000 元。</td></tr>
-    </tbody>
-  </table></div>
-</section>
+<!-- ── 滯銷品適用範圍 ── -->
+<div class="h2">二、滯銷品適用範圍</div>
+<p>以下品項納入本辦法管理，須依規定登記：</p>
+<div class="tw"><table>
+  <thead><tr><th>餐別</th><th>納管品項</th></tr></thead>
+  <tbody>
+    <tr><td>早餐</td><td>所有已包裝品項</td></tr>
+    <tr><td>午餐（自助）</td><td>熱櫃/餐車雙主餐餐盒、小吃區產品、碗裝湯品/飯品</td></tr>
+    <tr><td>病房午餐</td><td>病房退餐後製成之惜福餐盒</td></tr>
+    <tr><td>病房晚餐</td><td>病房退餐餐盒</td></tr>
+  </tbody>
+</table></div>
 
-<!-- ════════════════════════════════════════════════ CLOSING ══ -->
-<section class="section section-hidden" id="closing">
-  <div class="chapter-header">
-    <div class="ch-label">結語</div>
-    <h1>職場尊重與申訴機制</h1>
-  </div>
-  <div class="chapter-intro">本手冊不僅是一份工作規範，更是墨旬對每一位同仁的制度承諾。</div>
+<!-- ── 登記流程 ── -->
+<div class="h2">三、登記流程（SOP）</div>
+<p>每餐期結束前，<strong>關帳人員</strong>須依以下時間完成滯銷數量登記，並填入「墨旬每週滯銷品處理登記表」：</p>
 
-  <p>本公司重視每一位同仁的價值與發展，強調團隊文化應建立於紀律、尊重、誠信與專業之上。本規範所列各項制度，旨在確保營運秩序、明確責任分工，並建構一個穩定、值得信賴的職場環境。</p>
-  <p>全體人員應恪守職責分際，秉持成熟理性、自律之態度溝通協作，避免以情緒性語言、攻擊性態度或未經查證之言行破壞團隊信任。公司明確禁止一切歧視、羞辱、霸凌、誹謗、排擠及侮辱性言語，違者將依內規處理，情節重大者依法辦理。</p>
+<div style="margin:16px 0">
+  <!-- Step flow -->
+  <div style="display:flex;flex-direction:column;gap:0">
 
-  <div class="h2">申訴流程</div>
-  <ol class="doc-list">
-    <li>向直屬幹部、主管（如營養師、副理）初步溝通</li>
-    <li>未獲妥善處理時，得具名或匿名向經理提出申訴</li>
-    <li>公司將依情節啟動處理程序，並回覆結論</li>
-  </ol>
-  <p>公司嚴禁任何形式之報復性行為，並致力保障全體人員之合理權益。</p>
-
-  <div style="text-align:center; padding: 40px 0 20px;">
-    <div style="display:inline-block; background:var(--mid-bg); border-radius:var(--radius); padding:20px 40px;">
-      <div style="font-family:'Noto Serif TC',serif; color:var(--primary); font-weight:700; font-size:1rem; letter-spacing:.1em;">
-        真誠溝通・經濟美學・人文環境・細心管理・共榮共享
+    <div style="display:flex;align-items:stretch;gap:0;margin-bottom:2px">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--pr);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">1</div>
+        <div style="width:2px;flex:1;background:var(--bd);margin-top:4px"></div>
       </div>
-      <div style="color:var(--muted); font-size:.82rem; margin-top:10px;">
-        墨旬股份有限公司　|　旬食堂股份有限公司<br>
-        本規範版本：第 4 版　|　115 年 1 月 27 日
+      <div style="flex:1;padding-bottom:18px">
+        <div style="font-weight:700;font-size:.9rem;color:var(--pr);margin-bottom:4px">預售數量登記（開賣前一日）</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">負責人：<strong>菜單負責人</strong><br>時間：開賣前一日完成<br>適用：除病房餐與小吃區以外的品項</div>
       </div>
     </div>
+
+    <div style="display:flex;align-items:stretch;gap:0;margin-bottom:2px">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--pr);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">2</div>
+        <div style="width:2px;flex:1;background:var(--bd);margin-top:4px"></div>
+      </div>
+      <div style="flex:1;padding-bottom:18px">
+        <div style="font-weight:700;font-size:.9rem;color:var(--pr);margin-bottom:4px">滯銷數量登記（各餐期關帳）</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">負責人：<strong>當餐關帳人員</strong><br>
+          早餐截止：<strong>08:30</strong>　|　午餐截止：<strong>13:30</strong>　|　晚餐截止：<strong>18:00</strong></div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:stretch;gap:0;margin-bottom:2px">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--pr);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">3</div>
+        <div style="width:2px;flex:1;background:var(--bd);margin-top:4px"></div>
+      </div>
+      <div style="flex:1;padding-bottom:18px">
+        <div style="font-weight:700;font-size:.9rem;color:var(--pr);margin-bottom:4px">核對與集中</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">關帳人員與墨旬營養師核對實際剩餘數量，確認無誤後，由<strong>營養師</strong>統一集中至「惜福品集中處」（內場廊上銀色貨架）。</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">4</div>
+      </div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:.9rem;color:var(--sc);margin-bottom:4px">領用或清消</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">依領用規定辦理（見第四節）；未領用完畢之品項，由當日清消班別人員於下班前完成廚餘清消。</div>
+      </div>
+    </div>
+
   </div>
+</div>
+
+<!-- ── 領用規定 ── -->
+<div class="h2">四、領用規定</div>
+<div class="warn">⚠ 須經墨旬營養師登記後方可領取，不得私自取用。僅得於該餐期結束後領取，不得於販售期間預訂或保留。</div>
+
+<div class="h3">4-1　免費領取品項（仍需登記）</div>
+<p>適用品項：病房退餐/惜福餐盒、碗裝湯品/飯品</p>
+<ul class="dl">
+  <li>向當班墨旬營養師登記後領取</li>
+  <li>無當班營養師時，得從簡處理</li>
+</ul>
+
+<div class="h3">4-2　惜福優惠品項（員工優惠價）</div>
+<p>適用品項：早餐已包裝品、熱櫃/餐車雙主餐餐盒、小吃區產品</p>
+<ul class="dl">
+  <li>計價方式：原價半價，無條件捨去至尾數 5 或 0<br><span style="color:var(--mu);font-size:.83rem">例：原價 75 元 → 半價 37.5 → 實收 35 元</span></li>
+  <li>操作方式：<br>① 向墨旬營養師登記 → ② 依金額投幣至「墨旬零錢基金箱」<br>恕不找零、不開立發票</li>
+  <li>零錢基金所得作為公益基金或團隊同樂基金使用</li>
+</ul>
+
+<div class="h3">4-3　內部公關用途</div>
+<ul class="dl">
+  <li>由主管或營養師視業務需要核定，並完成登記後方可使用</li>
+</ul>
+
+<!-- ── 無法再出餐 ── -->
+<div class="h2">五、無法再出餐品項管理</div>
+<div class="role-tag">廚師適用</div>
+<p>此類品項不納入滯銷品登記表，由廚師獨立管理，依以下 SOP 執行：</p>
+
+<div style="margin:16px 0">
+  <div style="display:flex;flex-direction:column;gap:0">
+
+    <div style="display:flex;align-items:stretch;gap:0;margin-bottom:2px">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">1</div>
+        <div style="width:2px;flex:1;background:var(--bd);margin-top:4px"></div>
+      </div>
+      <div style="flex:1;padding-bottom:18px">
+        <div style="font-weight:700;font-size:.9rem;color:var(--sc);margin-bottom:4px">廚師認定</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">由<strong>當班廚師</strong>就品質、時效、完整性進行專業判定。如有虛報情形，由負責廚師承擔相應責任。</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:stretch;gap:0;margin-bottom:2px">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">2</div>
+        <div style="width:2px;flex:1;background:var(--bd);margin-top:4px"></div>
+      </div>
+      <div style="flex:1;padding-bottom:18px">
+        <div style="font-weight:700;font-size:.9rem;color:var(--sc);margin-bottom:4px">早班廚師放置（08:00 前）</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">統一放置於<strong>大廚區指定儲運箱</strong>，限 08:00 前完成。</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:stretch;gap:0;margin-bottom:2px">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">3</div>
+        <div style="width:2px;flex:1;background:var(--bd);margin-top:4px"></div>
+      </div>
+      <div style="flex:1;padding-bottom:18px">
+        <div style="font-weight:700;font-size:.9rem;color:var(--sc);margin-bottom:4px">取用時段：07:50–08:10</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">有意取用之夥伴，請於 <strong>07:50–08:10</strong> 間自備容器取用。<br>⚠ 不得使用內部容器資材；多人欲取用相同品項時，依該品項之價格與重量均分。</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:14px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0">4</div>
+      </div>
+      <div style="flex:1">
+        <div style="font-weight:700;font-size:.9rem;color:var(--sc);margin-bottom:4px">逾時統一清理</div>
+        <div style="font-size:.85rem;color:var(--tx);line-height:1.7">逾 08:10 未取用之品項，由<strong>負責班別人員</strong>統一清理。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="note">📌 如有私自濫取、偷竊或影響營運秩序之行為，公司得取消本制度之適用。</div>
+<p style="font-size:.84rem;color:var(--mu)">本制度係基於信任與自律原則設立，若無法確保公平性與管理目的，公司保留隨時修訂、暫停或取消之權利。</p>
+<div class="note">📌 滯銷品辦法管理負責人：墨旬經理　|　審查週期：每次版本更新時</div>
+
+<div class="h2">附件三小考</div>
+<div class="quiz-wrap" id="quiz-a3">
+  <h4>📝 滯銷品管理重點確認</h4>
+  <div class="q-item">
+    <div class="q-text">1. 沒有向營養師登記，可以自己拿滯銷品嗎？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q1a3" value="a"> 可以，只要是下班後就行</label>
+      <label><input type="radio" name="q1a3" value="b"> 不行，一定要經過營養師登記才能領取</label>
+      <label><input type="radio" name="q1a3" value="c"> 可以，只要數量少就沒關係</label>
+    </div>
+  </div>
+  <div class="q-item">
+    <div class="q-text">2. 「無法再出餐品項」的取用時段是？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q2a3" value="a"> 下班後隨時可取</label>
+      <label><input type="radio" name="q2a3" value="b"> 07:50–08:10 之間，自備容器</label>
+      <label><input type="radio" name="q2a3" value="c"> 餐期結束後，向營養師登記</label>
+    </div>
+  </div>
+  <div class="q-item">
+    <div class="q-text">3. 私自濫取滯銷品，最嚴重可能導致什麼後果？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q3a3" value="a"> 口頭警告</label>
+      <label><input type="radio" name="q3a3" value="b"> 公司得取消本制度的適用（全體同仁的福利也可能受影響）</label>
+      <label><input type="radio" name="q3a3" value="c"> 只需補繳費用</label>
+    </div>
+  </div>
+  <button class="quiz-btn" onclick="gradeQuiz('a3',{'q1a3':'b','q2a3':'b','q3a3':'b'})">提交答案</button>
+  <div class="quiz-score" id="qs-a3" style="display:none"></div>
+</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('a2',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('pen',true)">下一單元：罰則附件 →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-a3" onclick="markRead('a3')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
+</section>
+
+<!-- ════════════ PENALTY ════════════ -->
+<section class="sec hidden" id="pen">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-pen" style="width:0%"></div></div>
+<div class="ch-hdr ch-hdr--appendix"><div class="cl">罰則附件</div><h2>臺南市立安南醫院商場違規事項罰扣表</h2></div>
+<div class="ch-intro">本表內容依院方規定原封不動呈現。表格中<span style="color:#B71C1C;font-weight:700">紅色粗體</span>為高風險違規關鍵字，<span style="color:#E65100;font-weight:600">橘色</span>為中風險關鍵字。</div>
+<p style="font-size:.82rem;color:var(--mu)">114.05.19 版　|　商場管理辦法 114 年 05 月 15 日修訂</p>
+<p>自 2026 年 2 月起，凡屬人員可避免、可自我檢核之疏失案件，將依本人員工作規範與其罰則進行列管與處理。每一筆疏失案件，皆須填寫「墨旬人員業務檢討改善單（自檢表）」，並由督管與主管共同判定責任歸屬與處理方式。若經院方開罰，但由內部評估屬可給予寬限者，公司願吸收罰則並給予人員改善機會；其餘經判定屬個人責任者，將依規範執行個人罰則。</p>
+
+<div class="h3">人員管理類</div>
+<div class="tw"><table>
+  <thead><tr><th style="width:3rem">#</th><th>違規事項</th><th style="width:8rem">罰扣規定</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>未依規定<span class="kw-mid">營業時間</span>開店或打烊。</td><td>3,000 元</td></tr>
+    <tr class="sev-mid"><td>2</td><td>員工<span class="kw-mid">未穿整齊制服</span>或未配戴識別證、<span class="kw-mid">指甲骯髒</span>、儀容不整、<span class="kw-mid">擦指甲油</span>或於院區內<span class="kw-high">抽煙、嚼檳榔</span>。</td><td>500 元</td></tr>
+    <tr class="sev-high"><td>3</td><td>在營業場所範圍內有<span class="kw-high">賭博、酗酒、吸毒、鬥毆</span>、收留不法人員、存放違禁物品或進行其他不法之情事。</td><td>10,000 元</td></tr>
+    <tr><td>4</td><td>商場內未將<span class="kw-mid">清掃用具及私人物品擺放整齊</span>。</td><td>10,000 元</td></tr>
+    <tr class="sev-high"><td>5</td><td><span class="kw-high">非承攬商員工進入櫃台及作業區</span>。</td><td>10,000 元</td></tr>
+    <tr class="sev-high"><td>6</td><td>員工進入商場工作前，<span class="kw-high">未取得合格體檢報告</span>。</td><td>10,000 元</td></tr>
+    <tr><td>7</td><td>聘僱員工，未先嚴格考核，並繕造名冊、個人資料、身分證影本、合格體檢證明各乙份。</td><td>10,000 元</td></tr>
+    <tr class="sev-high"><td>8</td><td>員工未嚴格<span class="kw-high">管制爐火</span>，防範火災。</td><td>10,000 元</td></tr>
+    <tr><td>9</td><td>員工<span class="kw-mid">無故擅離職位</span>，店面無人看守。</td><td>2,000 元</td></tr>
+    <tr class="sev-high"><td>10</td><td>工作人員有<span class="kw-high">竊取消費者財物</span>之行為。</td><td>2,000 元＋更換人員</td></tr>
+    <tr><td>11</td><td>工作人員<span class="kw-mid">服務態度不佳</span>，影響本院聲譽。</td><td>1,000 元＋更換人員</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h3">商場管理類</div>
+<div class="tw"><table>
+  <thead><tr><th style="width:3rem">#</th><th>違規事項</th><th style="width:8rem">罰扣規定</th></tr></thead>
+  <tbody>
+    <tr class="sev-high"><td>12</td><td>在商場存放<span class="kw-high">危險性油料、易爆物或易燃物品</span>。</td><td>3,000 元</td></tr>
+    <tr><td>13</td><td>院方例行查核時，<span class="kw-mid">無正當理由規避、妨礙或拒絕檢查</span>。</td><td>3,000 元</td></tr>
+    <tr><td>14</td><td>拒絕本院管理上之合理要求及會議。</td><td>3,000 元</td></tr>
+    <tr><td>15</td><td>對院方提供之設施設備，未妥善維護，並<span class="kw-mid">擅自變更原設計</span>。</td><td>10,000 元＋恢復原設計</td></tr>
+    <tr><td>16</td><td><span class="kw-mid">資源回收未依規定分類</span>，且垃圾桶超過八分滿。</td><td>500 元</td></tr>
+    <tr class="sev-high"><td>17</td><td>陳列或出售<span class="kw-high">變質</span>、欺騙消費者或法令禁止之商品。</td><td>3,000 元＋停止販售</td></tr>
+    <tr class="sev-mid"><td>18</td><td><span class="kw-mid">冷藏溫度未達 7℃以下，冷凍未達 -18℃以下</span>，每日未記錄溫度備查。</td><td>500 元</td></tr>
+    <tr><td>19</td><td>未於本院指定<span class="kw-mid">卸貨區</span>卸貨。</td><td>3,000 元</td></tr>
+    <tr class="sev-mid"><td>20</td><td>未遵守用電安全，<span class="kw-mid">插座及延長線超載</span>。</td><td>3,000 元</td></tr>
+    <tr><td>21</td><td>廣告物、宣傳單<span class="kw-mid">未經總務室允許</span>即張貼或發放。</td><td>500 元</td></tr>
+    <tr><td>22</td><td>在院方公共區域<span class="kw-mid">設置店招、促銷看板</span>等。</td><td>3,000 元</td></tr>
+    <tr><td>23–27</td><td>未遵守營業場所設置、建築水電、施工規定；踰越使用面積；妨礙院方動線。</td><td>3,000–10,000 元</td></tr>
+    <tr class="sev-high"><td>28</td><td>未每年舉辦<span class="kw-high">消防演練</span>，或不配合院方各類演練（消防、大量傷患、停電等）。</td><td>10,000 元</td></tr>
+    <tr class="sev-high"><td>29</td><td>人員不熟知<span class="kw-high">逃生路線</span>、安全設施操作及緊急狀況處理程序。</td><td>10,000 元</td></tr>
+    <tr><td>30–37</td><td>住宿、音響擾院、佔用公共空間、破壞設備、轉讓、積欠租金、嚴重違約等。</td><td>10,000 元起，情節嚴重者終止契約</td></tr>
+    <tr><td>38–41</td><td>未依規定提供發票；損壞賠償；擅自變更合約；遲未辦理改善要求。</td><td>1,000–3,000 元</td></tr>
+    <tr class="sev-mid"><td>42–43</td><td>個人及環境<span class="kw-mid">衛生未符合 GHP 規範</span>；餐具器具<span class="kw-mid">未清潔乾淨</span>，複查仍未改善。</td><td>1,000 元</td></tr>
+    <tr><td>44</td><td><span class="kw-mid">供膳留樣不確實</span>，勸告仍再犯。</td><td>500 元</td></tr>
+    <tr class="sev-high"><td>45</td><td>人員<span class="kw-high">未依規定執行定期健檢</span>，或有應避免之傷口及疾病者從事供餐工作。</td><td>3,000 元</td></tr>
+    <tr><td>46</td><td>未依規定時間執行<span class="kw-mid">各區清潔保養</span>及油煙水洗機等。</td><td>2,000 元</td></tr>
+    <tr class="sev-mid"><td>47</td><td>因管理疏失影響病房正常供餐，造成投訴（<span class="kw-mid">漏送、送錯床、送錯內容</span>等）。</td><td>200 元／次</td></tr>
+    <tr class="sev-high"><td>48</td><td>發生<span class="kw-high">火災</span>經鑑定為承包工作人員疏失。</td><td>20,000 元</td></tr>
+    <tr><td>49</td><td><span class="kw-mid">廚師持證比率未達 75%</span>或衛生講習未達 8 小時者達 1/3。</td><td>1,000 元</td></tr>
+    <tr class="sev-high"><td>50</td><td>食材查出<span class="kw-high">過期、發霉或腐敗</span>。</td><td>2,000 元</td></tr>
+    <tr class="sev-high"><td>51</td><td>餐食因管理疏失造成<span class="kw-high">異物</span>出現。</td><td>200 元／次</td></tr>
+    <tr class="sev-high"><td>52</td><td>餐食<span class="kw-high">酸敗、烹調不熟、焦黑</span>等（如經投訴，加重處罰）。</td><td>500–1,000 元</td></tr>
+    <tr class="sev-high"><td>53</td><td>發生<span class="kw-high">疑似食物中毒</span>且確實可歸責於承包商管理疏失。</td><td>20,000 元</td></tr>
+    <tr class="sev-mid"><td>54</td><td>病房出餐<span class="kw-mid">延誤超過 20 分鐘</span>，當月延遲 3 次以上。</td><td>2,000 元</td></tr>
+    <tr><td>55</td><td>未依規定辦理廚勤人員<span class="kw-mid">衛生教育訓練</span>課程。</td><td>1,000 元</td></tr>
+    <tr class="sev-high"><td>56</td><td>因<span class="kw-high">管理不善導致院方遭主管機關處罰</span>。</td><td>10,000 元</td></tr>
+    <tr><td>57</td><td>其他：違反合約相關之事項。</td><td>至少 1,000 元</td></tr>
+  </tbody>
+</table></div>
+
+<div class="h2">罰則附件小考</div>
+<div class="quiz-wrap" id="quiz-pen">
+  <h4>📝 了解違規的嚴重度——不是要背金額，而是要知道底線在哪裡</h4>
+  <div class="q-item">
+    <div class="q-text">1. 以下哪個行為，院方罰扣金額最高，且可能導致契約終止？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q1pen" value="a"> 垃圾桶超過八分滿</label>
+      <label><input type="radio" name="q1pen" value="b"> 服務態度不佳</label>
+      <label><input type="radio" name="q1pen" value="c"> 承攬商嚴重違約且連續三次書面通知未改善</label>
+      <label><input type="radio" name="q1pen" value="d"> 廣告物未經允許張貼</label>
+    </div>
+  </div>
+  <div class="q-item">
+    <div class="q-text">2. 員工進入工作場所前，未取得合格體檢報告，屬於哪種嚴重程度的違規？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q2pen" value="a"> 輕微，口頭提醒即可</label>
+      <label><input type="radio" name="q2pen" value="b"> 高風險，院方直接罰扣 10,000 元</label>
+      <label><input type="radio" name="q2pen" value="c"> 中度，罰扣 500 元</label>
+    </div>
+  </div>
+  <div class="q-item">
+    <div class="q-text">3. 以下哪項行為的違規後果，會要求「更換工作人員」？</div>
+    <div class="q-opts">
+      <label><input type="radio" name="q3pen" value="a"> 遲到</label>
+      <label><input type="radio" name="q3pen" value="b"> 未按時間執行清潔保養</label>
+      <label><input type="radio" name="q3pen" value="c"> 竊取消費者財物，或服務態度不佳影響院譽</label>
+      <label><input type="radio" name="q3pen" value="d"> 垃圾分類不正確</label>
+    </div>
+  </div>
+  <button class="quiz-btn" onclick="gradeQuiz('pen',{'q1pen':'c','q2pen':'b','q3pen':'c'})">提交答案</button>
+  <div class="quiz-score" id="qs-pen" style="display:none"></div>
+</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('a3',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('selfcheck',true)">下一單元：閱讀進度 Self Check →</button>
+</div>
+<div class="read-row"><button class="read-btn" id="rb-pen" onclick="markRead('pen')"><span class="rb-icon">○</span> 標記本章已讀</button></div>
+</section>
+
+<!-- ════════════ SELF CHECK ════════════ -->
+<section class="sec hidden" id="selfcheck">
+<div class="ch-hdr ch-hdr--closing"><div class="cl">閱讀進度</div><h2>Self Check</h2></div>
+<div class="ch-intro">以下是手冊各章節的閱讀狀況總覽。點擊任一章節可直接跳轉閱讀；每章讀完後點「標記本章已讀」，這裡的狀態就會更新。</div>
+
+<div class="sc-overall" id="scOverall">
+  <div class="sc-pct" id="scPct">0%</div>
+  <div>
+    <div class="sc-label" id="scLabel">尚未開始閱讀</div>
+    <div style="font-size:.78rem;opacity:.75;margin-top:3px">讀完所有章節並通過章末小考，才算完成入職培訓喔！</div>
+  </div>
+</div>
+
+<div class="sc-grid" id="scGrid">
+  <!-- filled by JS -->
+</div>
+
+<div class="h2">章末小考總覽</div>
+<div id="quizSummary"></div>
+
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('pen',true)">← 上一頁</button>
+  <button class="nav-btn" onclick="go('end',true)">下一單元：結語 →</button>
+</div>
+</section>
+
+<!-- ════════════ CLOSING ════════════ -->
+<section class="sec hidden" id="end">
+<div class="sec-prog"><div class="sec-prog-fill" id="spf-end" style="width:0%"></div></div>
+<div class="ch-hdr ch-hdr--closing"><div class="cl">結語</div><h2>職場尊重與申訴機制</h2></div>
+<div class="ch-intro">本手冊不僅是一份工作規範，更是墨旬對每一位同仁的制度承諾。</div>
+
+<p>本公司重視每一位同仁的價值與發展，強調團隊文化應建立於紀律、尊重、誠信與專業之上。本規範所列各項制度，旨在確保營運秩序、明確責任分工，並建構一個穩定、值得信賴的職場環境。</p>
+<p>全體人員應恪守職責分際，秉持成熟理性、自律之態度溝通協作，避免以情緒性語言、攻擊性態度或未經查證之言行破壞團隊信任。公司明確禁止一切歧視、羞辱、霸凌、誹謗、排擠及侮辱性言語，違者將依內規處理，情節重大者依法辦理。</p>
+
+<div class="h2">申訴流程</div>
+<ol class="dl">
+  <li>向直屬幹部、主管（如營養師）初步溝通</li>
+  <li>未獲妥善處理時，得具名或匿名向經理提出申訴</li>
+  <li>公司將依情節啟動處理程序，並回覆結論</li>
+</ol>
+<p>公司嚴禁任何形式之報復性行為，並致力保障全體人員之合理權益。</p>
+
+<div class="closing-box">
+  <div class="closing-inner">
+    <div class="closing-tag">真誠溝通・經濟美學・人文環境・細心管理・共榮共享</div>
+    <div class="closing-meta">墨旬股份有限公司　|　旬食堂股份有限公司<br>本規範版本：第 5 版　|　115 年 3 月 30 日</div>
+  </div>
+</div>
+<div class="nav-row">
+  <button class="nav-btn ghost" onclick="go('selfcheck',true)">← 閱讀進度 Self Check</button>
+  <div></div>
+</div>
 </section>
 
 </div><!-- /content -->
 </main>
 
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
+<div class="unread-reminder" id="unreadReminder">👆 別忘了標記本章已讀！再按一次可直接跳過。</div>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
 
 <script>
-// ── State ──────────────────────────────────────────────────────────────────
-let currentSection = 'cover';
-let fontStep = 0;
-const fontClasses = ['', 'font-lg', 'font-xl'];
+// ── Config ────────────────────────────────────────────────────────────────────
+const SECTIONS = ['cover','qs','qr','ch1','ch2','ch3','ch4','a1','a2','a3','pen'];
+const SECTION_NAMES = {
+  cover:'封面與版本資訊', qs:'新人入職清單', qr:'易變動資訊彙整',
+  ch1:'第一章 人事管理', ch2:'第二章 排班、出勤與薪資',
+  ch3:'第三章 行為與衛生', ch4:'第四章 工作內容與職責',
+  a1:'附件一 緊急聯絡人', a2:'附件二 制服管理', a3:'附件三 滯銷品管理辦法',
+  pen:'罰則附件 院方罰扣表'
+};
+const CHECKLIST_TOTALS = {1:5, 2:6, 3:4};
 
-// ── Section switching ───────────────────────────────────────────────────────
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.add('section-hidden'));
-  const target = document.getElementById(id);
-  if (target) { target.classList.remove('section-hidden'); currentSection = id; }
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => {
-    if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'"+id+"'")) n.classList.add('active');
-  });
-  window.scrollTo({top: 0, behavior: 'smooth'});
-  closeSidebar();
-  clearSearch();
+let readState = {};     // {sectionId: true/false}
+let quizState = {};     // {chId: {passed: bool, score: int}}
+
+// ── Persistence ────────────────────────────────────────────────────────────────
+function save() {
+  try {
+    localStorage.setItem('mx_read', JSON.stringify(readState));
+    localStorage.setItem('mx_quiz', JSON.stringify(quizState));
+  } catch(e){}
+}
+function load() {
+  try {
+    readState = JSON.parse(localStorage.getItem('mx_read') || '{}');
+    quizState = JSON.parse(localStorage.getItem('mx_quiz') || '{}');
+  } catch(e){ readState={}; quizState={}; }
 }
 
-function scrollTo(id) {
+// ── Section nav ────────────────────────────────────────────────────────────────
+let _unreadTimer = null;
+function showUnreadReminder() {
+  const r = document.getElementById('unreadReminder');
+  if (!r) return;
+  r.style.display = 'block';
+  clearTimeout(_unreadTimer);
+  _unreadTimer = setTimeout(() => { r.style.display = 'none'; }, 3500);
+}
+
+// Section order for direction detection
+const ALL_SECTIONS = ['cover','qs','qr','ch1','ch2','ch3','ch4','a1','a2','a3','pen','selfcheck','end'];
+
+var _pendingNav = null;  // destination if user ignores reminder and clicks again
+
+function go(id, fromNav) {
+  // If navigating via next/prev button and current section is unread, pause and remind
+  if (fromNav && currentSection && SECTIONS.includes(currentSection) && !readState[currentSection]) {
+    if (_pendingNav === id) {
+      // User clicked same destination again — let them through
+      _pendingNav = null;
+    } else {
+      // First click: show reminder, stay on current page
+      _pendingNav = id;
+      showUnreadReminder();
+      return;
+    }
+  } else {
+    _pendingNav = null;
+  }
+
+  // Determine slide direction
+  var mc = document.getElementById('mc');
+  var fromIdx = ALL_SECTIONS.indexOf(currentSection);
+  var toIdx = ALL_SECTIONS.indexOf(id);
+  var goingForward = toIdx >= fromIdx;
+
+  // Slide out current content
+  if (mc) {
+    mc.classList.remove('slide-in-left','slide-in-right','slide-out-left','slide-out-right');
+    mc.classList.add(goingForward ? 'slide-out-left' : 'slide-out-right');
+  }
+
+  setTimeout(function() {
+    // Switch section
+    document.querySelectorAll('.sec').forEach(function(sec) { sec.classList.add('hidden'); });
+    var t = document.getElementById(id);
+    if (t) t.classList.remove('hidden');
+
+    // Update sidebar active state
+    document.querySelectorAll('.sb-link').forEach(function(l) {
+      l.classList.remove('active');
+      var oc = l.getAttribute('onclick') || '';
+      if (oc.includes("'"+id+"'") || oc.includes('"'+id+'"')) l.classList.add('active');
+    });
+
+    // Scroll to top instantly
+    window.scrollTo(0, 0);
+
+    // Slide in new content
+    if (mc) {
+      mc.classList.remove('slide-out-left','slide-out-right');
+      mc.classList.add(goingForward ? 'slide-in-left' : 'slide-in-right');
+      setTimeout(function() {
+        mc.classList.remove('slide-in-left','slide-in-right');
+      }, 250);
+    }
+
+    closeSb();
+    clearSearch();
+    if (id === 'selfcheck') renderSelfCheck();
+    trackSection(id);
+  }, 180);
+}
+
+function jmp(id) {
   setTimeout(() => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
-  }, 80);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 90);
 }
 
-// ── Accordion ───────────────────────────────────────────────────────────────
-function toggleAcc(btn) {
-  btn.classList.toggle('open');
-  const body = btn.nextElementSibling;
-  body.classList.toggle('open');
+// ── Section scroll progress ────────────────────────────────────────────────────
+let currentSection = 'cover';
+function trackSection(id) {
+  currentSection = id;
 }
 
-// ── Checklist ───────────────────────────────────────────────────────────────
-function toggleCheck(li) {
-  li.classList.toggle('checked');
-  const box = li.querySelector('.check-box');
-  box.textContent = li.classList.contains('checked') ? '✓' : '';
-  saveChecklist();
-}
-
-function saveChecklist() {
-  const state = {};
-  document.querySelectorAll('.checklist').forEach((cl, ci) => {
-    state[ci] = Array.from(cl.querySelectorAll('li')).map(li => li.classList.contains('checked'));
-  });
-  try { localStorage.setItem('mx_checklist', JSON.stringify(state)); } catch(e) {}
-}
-
-function loadChecklist() {
-  try {
-    const state = JSON.parse(localStorage.getItem('mx_checklist') || '{}');
-    document.querySelectorAll('.checklist').forEach((cl, ci) => {
-      if (state[ci]) {
-        cl.querySelectorAll('li').forEach((li, li_i) => {
-          if (state[ci][li_i]) {
-            li.classList.add('checked');
-            li.querySelector('.check-box').textContent = '✓';
-          }
-        });
-      }
-    });
-  } catch(e) {}
-}
-
-// ── Dark mode ────────────────────────────────────────────────────────────────
-function toggleDark() {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
-  document.getElementById('darkBtn').textContent = isDark ? '🌙 深色' : '☀️ 淺色';
-  try { localStorage.setItem('mx_dark', isDark ? '' : 'dark'); } catch(e) {}
-}
-
-// ── Font size ────────────────────────────────────────────────────────────────
-function cycleFontSize() {
-  document.body.classList.remove(...fontClasses);
-  fontStep = (fontStep + 1) % 3;
-  if (fontClasses[fontStep]) document.body.classList.add(fontClasses[fontStep]);
-  const labels = ['文字 A', '文字 A+', '文字 A++'];
-  document.getElementById('fontBtn').textContent = labels[fontStep];
-}
-
-// ── Sidebar (mobile) ─────────────────────────────────────────────────────────
-function toggleSidebar() {
-  const s = document.getElementById('sidebar');
-  const o = document.getElementById('overlay');
-  s.classList.toggle('open');
-  o.classList.toggle('show');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('overlay').classList.remove('show');
-}
-
-// ── Progress bar ─────────────────────────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  const doc = document.documentElement;
-  const scrolled = doc.scrollTop;
-  const total = doc.scrollHeight - doc.clientHeight;
-  document.getElementById('progressFill').style.width = (total > 0 ? (scrolled/total*100) : 0) + '%';
-  document.getElementById('backTop').classList.toggle('show', scrolled > 400);
-});
-
-// ── Search ────────────────────────────────────────────────────────────────────
-const searchIndex = [];
-
-function buildIndex() {
-  document.querySelectorAll('.section').forEach(sec => {
-    const id = sec.id;
-    // headings
-    sec.querySelectorAll('h1,h2,.h2,.h3').forEach(h => {
-      searchIndex.push({ id, title: h.textContent.trim(), context: '', type: 'heading' });
-    });
-    // table cells (td)
-    sec.querySelectorAll('td').forEach(td => {
-      const text = td.textContent.trim();
-      if (text.length > 4) {
-        const row = td.closest('tr');
-        const ctx = row ? row.textContent.replace(/\s+/g,' ').trim().slice(0,80) : text.slice(0,80);
-        const heading = sec.querySelector('h1,.chapter-header h1');
-        searchIndex.push({ id, title: heading ? heading.textContent.trim() : id, context: ctx, type: 'content' });
-      }
-    });
-    // paragraph text
-    sec.querySelectorAll('p,li').forEach(el => {
-      const text = el.textContent.trim();
-      if (text.length > 10) {
-        const heading = sec.querySelector('h1,.chapter-header h1');
-        searchIndex.push({ id, title: heading ? heading.textContent.trim() : id, context: text.slice(0,80), type: 'content' });
-      }
-    });
-  });
-}
-
-function doSearch(q) {
-  const res = document.getElementById('searchResults');
-  if (!q || q.length < 2) { res.classList.remove('show'); return; }
-  const kw = q.toLowerCase();
-  const matches = [];
-  const seen = new Set();
-  for (const item of searchIndex) {
-    if ((item.title + item.context).toLowerCase().includes(kw)) {
-      const key = item.id + item.context.slice(0,30);
-      if (!seen.has(key)) {
-        seen.add(key);
-        matches.push(item);
-        if (matches.length >= 8) break;
-      }
+// ── Mark read ──────────────────────────────────────────────────────────────────
+function markRead(id) {
+  const isNowRead = !readState[id];
+  readState[id] = isNowRead;
+  save();
+  const btn = document.getElementById('rb-'+id);
+  if (btn) {
+    if (isNowRead) {
+      btn.classList.add('done');
+      btn.innerHTML = '<span class="rb-icon">✓</span> 已讀完（點擊取消）';
+    } else {
+      btn.classList.remove('done');
+      btn.innerHTML = '<span class="rb-icon">○</span> 標記本章已讀';
     }
   }
-  if (matches.length === 0) {
-    res.innerHTML = '<div class="search-no-result">找不到相關內容</div>';
+  const dot = document.getElementById('dot-'+id);
+  if (dot) dot.classList.toggle('done', isNowRead);
+  updateReadPill();
+  // Celebrate animation when marking as read
+  if (isNowRead) {
+    const pill = document.getElementById('readPill');
+    if (pill) {
+      pill.classList.remove('celebrate');
+      void pill.offsetWidth; // reflow to restart animation
+      pill.classList.add('celebrate');
+      setTimeout(function(){ pill.classList.remove('celebrate'); }, 550);
+    }
+  }
+}
+
+function updateReadPill() {
+  const done = SECTIONS.filter(s => readState[s]).length;
+  document.getElementById('readPill').textContent = `已讀 ${done} / ${SECTIONS.length}`;
+}
+
+function restoreReadState() {
+  SECTIONS.forEach(id => {
+    if (readState[id]) {
+      const btn = document.getElementById('rb-'+id);
+      if (btn) { btn.classList.add('done'); btn.innerHTML = '<span class="rb-icon">✓</span> 已讀完（點擊取消）'; }
+      const dot = document.getElementById('dot-'+id);
+      if (dot) dot.classList.add('done');
+    }
+  });
+  updateReadPill();
+}
+
+// ── Self Check page ────────────────────────────────────────────────────────────
+function renderSelfCheck() {
+  const grid = document.getElementById('scGrid');
+  const done = SECTIONS.filter(s => readState[s]).length;
+  const pct = Math.round(done / SECTIONS.length * 100);
+  document.getElementById('scPct').textContent = pct + '%';
+  document.getElementById('scLabel').textContent =
+    pct === 100 ? '🎉 全部章節已讀完！' :
+    pct >= 50 ? `已讀 ${done} / ${SECTIONS.length} 章節，繼續加油！` :
+    `已讀 ${done} / ${SECTIONS.length} 章節，還有一段路要走`;
+
+  grid.innerHTML = SECTIONS.map(id => {
+    const isRead = readState[id];
+    return `<div class="sc-card ${isRead?'read':''}" onclick="go('${id}')">
+      <div class="sc-ch">${id.startsWith('ch')?'第'+id[2]+'章':id.startsWith('a')?'附件'+id[1]:id==='pen'?'罰則附件':'封面'}</div>
+      <div class="sc-tl">${SECTION_NAMES[id]}</div>
+      <div class="sc-st">${isRead ? '✓ 已完成閱讀' : '○ 尚未閱讀'}</div>
+    </div>`;
+  }).join('');
+
+  const qs = document.getElementById('quizSummary');
+  const quizChaps = ['ch1','ch2','ch3','ch4','a2','a3','pen'];
+  qs.innerHTML = quizChaps.map(id => {
+    const q = quizState[id];
+    const name = SECTION_NAMES[id];
+    if (!q) return `<div class="note" style="margin:6px 0">📝 <strong>${name}</strong> — 尚未作答，請先閱讀該章節並完成小考。</div>`;
+    if (q.passed) return `<div class="tip" style="margin:6px 0">✅ <strong>${name}</strong> — 通過！得分 ${q.score}%</div>`;
+    return `<div class="warn" style="margin:6px 0">❌ <strong>${name}</strong> — 未通過（得分 ${q.score}%），請重新閱讀後再試。 <button onclick="go('${id}')" style="margin-left:10px;padding:3px 10px;border-radius:6px;background:var(--pr);color:#fff;border:none;cursor:pointer;font-size:.78rem">重新閱讀</button></div>`;
+  }).join('');
+}
+
+// ── Quiz ───────────────────────────────────────────────────────────────────────
+function gradeQuiz(chId, answers) {
+  var names = Object.keys(answers);
+  var total = names.length;
+  var el = document.getElementById('qs-'+chId);
+  if (!el) return;
+
+  // Check unanswered
+  var missing = 0;
+  for (var i = 0; i < names.length; i++) {
+    if (!document.querySelector('input[name="'+names[i]+'"]:checked')) missing++;
+  }
+  if (missing > 0) {
+    el.style.display = 'block';
+    el.className = 'quiz-score fail';
+    el.innerHTML = '✏️ 還有 '+missing+' 題沒填喔！請全部作答後再提交。';
+    return;
+  }
+
+  // Grade
+  var correct = 0;
+  for (var j = 0; j < names.length; j++) {
+    var name = names[j];
+    var ans = answers[name];
+    var selected = document.querySelector('input[name="'+name+'"]:checked');
+    var inputs = document.querySelectorAll('input[name="'+name+'"]');
+    for (var k = 0; k < inputs.length; k++) {
+      var inp = inputs[k];
+      var lbl = inp.closest('label');
+      if (lbl) {
+        lbl.classList.remove('correct','wrong');
+        if (inp.value === ans) lbl.classList.add('correct');
+        else if (inp.checked) lbl.classList.add('wrong');
+      }
+      inp.disabled = true;
+    }
+    if (selected && selected.value === ans) correct++;
+  }
+
+  var score = Math.round(correct / total * 100);
+  var passed = score >= 80;
+  quizState[chId] = {passed: passed, score: score};
+  save();
+
+  el.style.display = 'block';
+  el.className = 'quiz-score ' + (passed ? 'pass' : 'fail');
+  if (passed) {
+    el.innerHTML = '🎉 通過！答對 '+correct+' / '+total+' 題（'+score+'%）太棒了！';
+  } else if (score >= 50) {
+    el.innerHTML = '😅 喔喔！答對 '+correct+' / '+total+' 題（'+score+'%），差一點點！建議再回去看一下，然後重新作答。';
   } else {
-    res.innerHTML = matches.map(m => `
-      <div class="search-result-item" onclick="goToResult('${m.id}','${escHtml(q)}')">
-        <div class="res-title">${highlightText(m.title, q)}</div>
-        ${m.context ? `<div class="res-context">${highlightText(m.context.slice(0,80), q)}…</div>` : ''}
-      </div>`).join('');
+    el.innerHTML = '😬 糟糕！答對 '+correct+' / '+total+' 題（'+score+'%），這一章需要再好好讀一次喔！';
   }
-  res.classList.add('show');
+};
+
+// ── Checklist ──────────────────────────────────────────────────────────────────
+let clState = {};
+function ck(li, gid) {
+  li.classList.toggle('done');
+  li.querySelector('.cb').textContent = li.classList.contains('done') ? '✓' : '';
+  updateClProg(gid);
+  saveCl();
 }
-
-function highlightText(text, q) {
-  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  return text.replace(new RegExp('('+escaped+')', 'gi'), '<mark>$1</mark>');
+function updateClProg(gid) {
+  const cl = document.getElementById('cl'+gid);
+  if (!cl) return;
+  const done = cl.querySelectorAll('li.done').length;
+  const total = CHECKLIST_TOTALS[gid];
+  document.getElementById('p'+gid+'txt').textContent = done+' / '+total;
+  document.getElementById('p'+gid+'bar').style.width = (done/total*100)+'%';
 }
-
-function escHtml(s) { return s.replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-
-function goToResult(id) {
-  showSection(id);
-  clearSearch();
-}
-
-function clearSearch() {
-  document.getElementById('searchInput').value = '';
-  document.getElementById('searchResults').classList.remove('show');
-}
-
-function searchKeydown(e) {
-  if (e.key === 'Escape') clearSearch();
-}
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.search-wrap') && !e.target.closest('.search-results')) {
-    document.getElementById('searchResults').classList.remove('show');
-  }
-});
-
-// ── Init ──────────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
+function saveCl() {
   try {
-    const dark = localStorage.getItem('mx_dark');
-    if (dark === 'dark') { document.documentElement.setAttribute('data-theme','dark'); document.getElementById('darkBtn').textContent = '☀️ 淺色'; }
-  } catch(e) {}
-  loadChecklist();
-  buildIndex();
+    const s = {};
+    [1,2,3].forEach(g => {
+      const cl = document.getElementById('cl'+g);
+      if (cl) s[g] = [...cl.querySelectorAll('li')].map(li => li.classList.contains('done'));
+    });
+    localStorage.setItem('mx_cl', JSON.stringify(s));
+  } catch(e){}
+}
+function loadCl() {
+  try {
+    const s = JSON.parse(localStorage.getItem('mx_cl') || '{}');
+    [1,2,3].forEach(g => {
+      if (!s[g]) return;
+      const cl = document.getElementById('cl'+g);
+      if (!cl) return;
+      cl.querySelectorAll('li').forEach((li, i) => {
+        if (s[g][i]) { li.classList.add('done'); li.querySelector('.cb').textContent = '✓'; }
+      });
+      updateClProg(g);
+    });
+  } catch(e){}
+}
+function resetAll() {
+  if (!confirm('確定要重置所有勾選嗎？')) return;
+  document.querySelectorAll('.cl li').forEach(li => { li.classList.remove('done'); li.querySelector('.cb').textContent = ''; });
+  [1,2,3].forEach(g => updateClProg(g));
+  try { localStorage.removeItem('mx_cl'); } catch(e){}
+}
+
+// ── Sidebar / scroll ───────────────────────────────────────────────────────────
+function isMobile() { return window.innerWidth <= 640; }
+window.addEventListener('resize', function() {
+  if (!isMobile()) {
+    // On desktop resize: close mobile overlay if open
+    document.getElementById('sb').classList.remove('on');
+    document.getElementById('ov').classList.remove('on');
+  }
 });
+
+function toggleSb() {
+  if (isMobile()) {
+    // Mobile: overlay sidebar
+    document.getElementById('sb').classList.toggle('on');
+    document.getElementById('ov').classList.toggle('on');
+  } else {
+    // Desktop: collapse sidebar
+    toggleCollapse();
+  }
+}
+function closeSb() {
+  document.getElementById('sb').classList.remove('on');
+  document.getElementById('ov').classList.remove('on');
+}
+function toggleCollapse() {
+  var isCollapsed = document.body.classList.toggle('sidebar-collapsed');
+  try { localStorage.setItem('mx_sb_collapsed', isCollapsed ? '1' : ''); } catch(e){}
+}
+
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const pct = doc.scrollHeight - doc.clientHeight;
+  document.getElementById('gpf').style.width = (pct > 0 ? doc.scrollTop/pct*100 : 0)+'%';
+  document.getElementById('btt').classList.toggle('on', doc.scrollTop > 400);
+  // per-section fill
+  const fill = document.getElementById('spf-'+currentSection);
+  if (fill && pct > 0) fill.style.width = (doc.scrollTop/pct*100)+'%';
+}, {passive:true});
+
+// ── Font size ──────────────────────────────────────────────────────────────────
+let fStep = 0;
+function cycleFont() {
+  fStep = (fStep + 1) % 3;
+  // Remove all size classes explicitly (no spread operator for compatibility)
+  document.documentElement.classList.remove('fL');
+  document.documentElement.classList.remove('fXL');
+  if (fStep === 1) document.documentElement.classList.add('fL');
+  if (fStep === 2) document.documentElement.classList.add('fXL');
+  var labels = ['A　字級', 'A＋ 字級', 'A＋＋ 字級'];
+  var btn = document.getElementById('fBtn');
+  if (btn) btn.textContent = labels[fStep];
+}
+
+// ── Accordion ──────────────────────────────────────────────────────────────────
+function ta(btn) { btn.classList.toggle('open'); btn.nextElementSibling.classList.toggle('open'); }
+
+// ── Search ─────────────────────────────────────────────────────────────────────
+const idx = [];
+function buildIdx() {
+  const names = SECTION_NAMES;
+  document.querySelectorAll('.sec').forEach(sec => {
+    const id = sec.id;
+    const sName = names[id] || id;
+    sec.querySelectorAll('h2,.h2,.h3').forEach(h => idx.push({id, sName, title:h.textContent.trim(), ctx:''}));
+    sec.querySelectorAll('tbody tr').forEach(tr => {
+      const txt = tr.textContent.replace(/\s+/g,' ').trim();
+      if (txt.length > 6) idx.push({id, sName, title:sName, ctx:txt.slice(0,90)});
+    });
+    sec.querySelectorAll('li,p').forEach(el => {
+      const txt = el.textContent.trim();
+      if (txt.length > 8) idx.push({id, sName, title:sName, ctx:txt.slice(0,90)});
+    });
+  });
+}
+function doSearch(q) {
+  const drop = document.getElementById('sd');
+  if (!q || q.length < 2) { drop.classList.remove('on'); return; }
+  const kw = q.toLowerCase();
+  const seen = new Set(); const hits = [];
+  for (const item of idx) {
+    if ((item.title+item.ctx).toLowerCase().includes(kw)) {
+      const key = item.id+(item.ctx||item.title).slice(0,30);
+      if (!seen.has(key)) { seen.add(key); hits.push(item); }
+      if (hits.length >= 8) break;
+    }
+  }
+  drop.innerHTML = hits.length === 0 ? '<div class="sr-none">找不到相關內容</div>' :
+    hits.map(h => `<div class="sr-item" onclick="go('${h.id}')">
+      <div class="sr-title">${hl(h.title,q)}</div>
+      ${h.ctx?`<div class="sr-ctx">${hl(h.ctx,q)}…</div>`:''}
+    </div>`).join('');
+  drop.classList.add('on');
+}
+function hl(text, q) {
+  return text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');
+}
+function clearSearch() {
+  document.getElementById('si').value = '';
+  document.getElementById('sd').classList.remove('on');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.hdr-search') && !e.target.closest('.sdrop'))
+    document.getElementById('sd').classList.remove('on');
+});
+
+// Expose all interactive functions globally for inline handlers
+// (needed for iframe environments and some mobile browsers)
+// These assignments happen after all function declarations, so no hoisting issues
+
+// ── Init ───────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  load();
+  loadCl();
+  restoreReadState();
+  buildIdx();
+  // Apply initial zone
+  trackSection('cover');
+  // Bind font button via addEventListener (avoids iframe Script error)
+  const fBtnEl = document.getElementById('fBtn');
+  if (fBtnEl) fBtnEl.addEventListener('click', cycleFont);
+  // Restore collapsed state
+  try { if (localStorage.getItem('mx_sb_collapsed') === '1') document.body.classList.add('sidebar-collapsed'); } catch(e){}
+  const darkBtnEl = document.getElementById('darkBtn');
+  if (darkBtnEl) darkBtnEl.addEventListener('click', toggleDark);
+  // Sync dark button label with current theme (theme already applied in <head>)
+  try {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const db = document.getElementById('darkBtn');
+    if (db) db.textContent = isDark ? '☀️ 淺色' : '🌙 深色';
+  } catch(e){}
+
+  // restore quiz states
+  Object.entries(quizState).forEach(([chId, q]) => {
+    const el = document.getElementById('qs-'+chId);
+    if (el) {
+      el.style.display = 'block';
+      el.className = 'quiz-score ' + (q.passed ? 'pass' : 'fail');
+      el.innerHTML = q.passed ? `🎉 通過！得分 ${q.score}%` : `未通過（得分 ${q.score}%），請重新閱讀後再試。`;
+    }
+  });
+});
+function toggleDark() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  document.getElementById('darkBtn').textContent = isDark ? '🌙 深色' : '☀️ 淺色';
+  try { localStorage.setItem('mx_dark', next); } catch(e){}
+}
+
+// Global assignments - placed here to ensure all functions are defined first
+window.go = go;
+window.ta = ta;
+window.ck = ck;
+window.markRead = markRead;
+window.gradeQuiz = gradeQuiz;
+window.resetAll = resetAll;
+window.toggleSb = toggleSb;
+window.doSearch = doSearch;
+window.clearSearch = clearSearch;
+window.cycleFont = cycleFont;
+window.jmp = jmp;
+window.toggleDark = toggleDark;
+window.toggleCollapse = toggleCollapse;
+
 </script>
 </body>
 </html>
